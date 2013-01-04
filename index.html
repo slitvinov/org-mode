@@ -3,11 +3,11 @@
                "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<title>a collection of examples for stata</title>
+<title>Home works for PH207x Health in Numbers</title>
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
-<meta name="title" content="a collection of examples for stata"/>
+<meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-04T23:13+0100"/>
+<meta name="generated" content="2013-01-04T23:59+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -132,18 +132,18 @@
 </div>
 
 <div id="content">
-<h1 class="title">a collection of examples for stata</h1>
+<h1 class="title">Home works for PH207x Health in Numbers</h1>
 
 
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Very basic</a></li>
-<li><a href="#sec-2">Probability distribution function</a>
+<li><a href="#sec-1">Basic</a></li>
+<li><a href="#sec-2">Probability distribution functions</a>
 <ul>
-<li><a href="#sec-2-1">binomial</a></li>
-<li><a href="#sec-2-2">poisson</a></li>
+<li><a href="#sec-2-1">normal</a></li>
+<li><a href="#sec-2-2">binomial</a></li>
 <li><a href="#sec-2-3">student</a></li>
 </ul>
 </li>
@@ -204,7 +204,7 @@
 </div>
 
 <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1">Very basic</h3>
+<h3 id="sec-1">Basic</h3>
 <div class="outline-text-3" id="text-1">
 
 
@@ -337,15 +337,33 @@ graph box x y
 </div>
 
 <div id="outline-container-2" class="outline-3">
-<h3 id="sec-2">Probability distribution function</h3>
+<h3 id="sec-2">Probability distribution functions</h3>
 <div class="outline-text-3" id="text-2">
 
 
 </div>
 
 <div id="outline-container-2-1" class="outline-4">
-<h4 id="sec-2-1">binomial</h4>
+<h4 id="sec-2-1">normal</h4>
 <div class="outline-text-4" id="text-2-1">
+
+
+
+
+<pre class="src src-stata">twoway function normalden(x, 0, 1), <span style="color: #a020f0;">range</span>(-4 4)
+</pre>
+
+
+<p>
+<img src="normal.png"  alt="normal.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2">binomial</h4>
+<div class="outline-text-4" id="text-2-2">
 
 <p>Plot binomial distribution
 </p>
@@ -358,14 +376,6 @@ graph box x y
 <p>
 <img src="binomial.png"  alt="binomial.png" />
 </p>
-</div>
-
-</div>
-
-<div id="outline-container-2-2" class="outline-4">
-<h4 id="sec-2-2">poisson</h4>
-<div class="outline-text-4" id="text-2-2">
-
 </div>
 
 </div>
