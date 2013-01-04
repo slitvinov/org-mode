@@ -1,1 +1,2565 @@
-My GitHub Page
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>a collection of examples for stata</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="a collection of examples for stata"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2013-01-04T23:13+0100"/>
+<meta name="author" content="Sergey Litvinov"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style><link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css" />
+<link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css" />
+<script type="text/javascript">
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+<!--/*--><![CDATA[/*><!--*/
+    MathJax.Hub.Config({
+        // Only one of the two following lines, depending on user settings
+        // First allows browser-native MathML display, second forces HTML/CSS
+        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
+                     "TeX/noUndefined.js"],
+        tex2jax: {
+            inlineMath: [ ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
+            skipTags: ["script","noscript","style","textarea","pre","code"],
+            ignoreClass: "tex2jax_ignore",
+            processEscapes: false,
+            processEnvironments: true,
+            preview: "TeX"
+        },
+        showProcessingMessages: true,
+        displayAlign: "center",
+        displayIndent: "2em",
+
+        "HTML-CSS": {
+             scale: 100,
+             availableFonts: ["STIX","TeX"],
+             preferredFont: "TeX",
+             webFont: "TeX",
+             imageFont: "TeX",
+             showMathMenu: true,
+        },
+        MMLorHTML: {
+             prefer: {
+                 MSIE:    "MML",
+                 Firefox: "MML",
+                 Opera:   "HTML",
+                 other:   "HTML"
+             }
+        }
+    });
+/*]]>*///-->
+</script>
+</head>
+<body>
+
+<div id="preamble">
+<div class="org-export">
+</div>
+
+<div id="content">
+<h1 class="title">a collection of examples for stata</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Very basic</a></li>
+<li><a href="#sec-2">Probability distribution function</a>
+<ul>
+<li><a href="#sec-2-1">binomial</a></li>
+<li><a href="#sec-2-2">poisson</a></li>
+<li><a href="#sec-2-3">student</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">Statistical functions</a>
+<ul>
+<li><a href="#sec-3-1">ttest</a></li>
+<li><a href="#sec-3-2">samsi</a></li>
+<li><a href="#sec-3-3">signtest</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Lecutre 5</a>
+<ul>
+<li><a href="#sec-4-1">Central Limit Theorem and Confidence Intervals</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">Lecture 6</a>
+<ul>
+<li><a href="#sec-5-1">intro</a></li>
+<li><a href="#sec-5-2">Two-Sample t-test</a></li>
+<li><a href="#sec-5-3">ANOVA</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Lecture 7</a>
+<ul>
+<li><a href="#sec-6-1">Inference for proportions</a></li>
+<li><a href="#sec-6-2">Contingency Tables</a></li>
+<li><a href="#sec-6-3">Final Thoughts on the Blood Transfusion Trial</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">Lecture 8</a>
+<ul>
+<li><a href="#sec-7-1">Survey Design</a></li>
+</ul>
+</li>
+<li><a href="#sec-8">Lecture 9</a>
+<ul>
+<li><a href="#sec-8-1">Trends in Unemployment</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">Lecture 10</a>
+<ul>
+<li><a href="#sec-9-1">Simple Linear Regression</a></li>
+<li><a href="#sec-9-2">High Blood Pressure and CHD Incidence</a></li>
+</ul>
+</li>
+<li><a href="#sec-10">Lecutre 11</a>
+<ul>
+<li><a href="#sec-10-1">Death, Blood Pressure, and Age</a></li>
+<li><a href="#sec-10-2">Death, Smoking, and Age</a></li>
+<li><a href="#sec-10-3">Binary Exposure and Binary Outcome Model</a></li>
+<li><a href="#sec-10-4">Obesity and Stroke Regression Model</a></li>
+<li><a href="#sec-10-5">Propensity Score vs. Randomization</a></li>
+<li><a href="#sec-10-6">Smoking and Death Logistic Regression</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-3">
+<h3 id="sec-1">Very basic</h3>
+<div class="outline-text-3" id="text-1">
+
+
+
+
+<pre class="src src-stata">di <span style="color: #8b2252;">"hello world"</span>
+</pre>
+
+
+<pre class="example">
+
+hello world
+
+</pre>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 41
+di `<span style="color: #a0522d;">N</span>'+1
+</pre>
+
+
+<pre class="example">
+
+42
+
+</pre>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+describe
+</pre>
+
+
+
+<pre class="example">
+obs was 0, now 5
+
+Contains data
+  obs:             5                          
+ vars:             1                          
+ size:            20                          
+-------------------------------------------------------------------------------
+              storage  display     value
+variable name   type   format      label      variable label
+-------------------------------------------------------------------------------
+x               float  %9.0g                  
+-------------------------------------------------------------------------------
+Sorted by:  
+     Note:  dataset has changed since last saved
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+quietly <span style="color: #008b8b;">summarize</span> x
+di <span style="color: #008b8b;">r</span>(mean)
+</pre>
+
+
+<pre class="example">
+
+obs was 0, now 5
+
+3
+
+</pre>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">gen</span> y = x^2
+scatter y x
+</pre>
+
+
+<p>
+<img src="stata-sq.png"  alt="stata-sq.png" />
+</p>
+<p>
+Plot simple function
+</p>
+
+
+<pre class="src src-stata">twoway function <span style="color: #008b8b;">sin</span>(x), <span style="color: #a020f0;">range</span>(0 10)
+</pre>
+
+
+<p>
+<img src="fun.png"  alt="fun.png" />
+</p>
+<p>
+Plot two functions
+</p>
+
+
+<pre class="src src-stata">twoway (function <span style="color: #008b8b;">sin</span>(x), <span style="color: #a020f0;">range</span>(0 10))  (function <span style="color: #008b8b;">cos</span>(x), <span style="color: #a020f0;">range</span>(0 10))
+</pre>
+
+
+<p>
+<img src="fun2.png"  alt="fun2.png" />
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">generate</span> y = <span style="color: #228b22;">_n</span> + 1
+graph box x y
+</pre>
+
+
+<p>
+<img src="box.png"  alt="box.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-3">
+<h3 id="sec-2">Probability distribution function</h3>
+<div class="outline-text-3" id="text-2">
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-4">
+<h4 id="sec-2-1">binomial</h4>
+<div class="outline-text-4" id="text-2-1">
+
+<p>Plot binomial distribution
+</p>
+
+
+<pre class="src src-stata">twoway (function binomial(10, x, 0.5), <span style="color: #a020f0;">range</span>(0 10)) (function binomial(10, x, 0.25), <span style="color: #a020f0;">range</span>(0 10))
+</pre>
+
+
+<p>
+<img src="binomial.png"  alt="binomial.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2-2" class="outline-4">
+<h4 id="sec-2-2">poisson</h4>
+<div class="outline-text-4" id="text-2-2">
+
+</div>
+
+</div>
+
+<div id="outline-container-2-3" class="outline-4">
+<h4 id="sec-2-3">student</h4>
+<div class="outline-text-4" id="text-2-3">
+
+
+
+
+<pre class="src src-stata">twoway (function tden(2, x), <span style="color: #a020f0;">range</span>(-10 10)) (function tden(10, x), <span style="color: #a020f0;">range</span>(-10 10))
+</pre>
+
+
+<p>
+<img src="tden.png"  alt="tden.png" />
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-3">
+<h3 id="sec-3">Statistical functions</h3>
+<div class="outline-text-3" id="text-3">
+
+
+</div>
+
+<div id="outline-container-3-1" class="outline-4">
+<h4 id="sec-3-1">ttest</h4>
+<div class="outline-text-4" id="text-3-1">
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">100</span>
+<span style="color: #a020f0;">gen</span> x = rnormal()
+sum x
+ttest x == 0
+</pre>
+
+
+
+<pre class="example">
+obs was 0, now 100
+
+    Variable |       Obs        Mean    Std. Dev.       Min        Max
+-------------+--------------------------------------------------------
+           x |       100    .0006276    1.061928  -2.885089   1.837664
+
+One-sample t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |     100    .0006276    .1061928    1.061928    -.210082    .2113372
+------------------------------------------------------------------------------
+    mean = mean(x)                                                t =   0.0059
+Ho: mean = 0                                     degrees of freedom =       99
+
+    Ha: mean &lt; 0                 Ha: mean != 0                 Ha: mean &gt; 0
+ Pr(T &lt; t) = 0.5024         Pr(|T| &gt; |t|) = 0.9953          Pr(T &gt; t) = 0.4976
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+<span style="color: #a020f0;">gen</span> x = rnormal(1.0)
+<span style="color: #a020f0;">gen</span> y = rnormal(1.5)
+ttest x == y
+</pre>
+
+
+
+<pre class="example">
+obs was 0, now 20
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      20    .6278007    .2067612    .9246643    .1950445    1.060557
+       y |      20    1.529019    .2938401    1.314093    .9140044    2.144033
+---------+--------------------------------------------------------------------
+    diff |      20    -.901218    .3177534    1.421036   -1.566283   -.2361526
+------------------------------------------------------------------------------
+     mean(diff) = mean(x - y)                                     t =  -2.8362
+ Ho: mean(diff) = 0                              degrees of freedom =       19
+
+ Ha: mean(diff) &lt; 0           Ha: mean(diff) != 0           Ha: mean(diff) &gt; 0
+ Pr(T &lt; t) = 0.0053         Pr(|T| &gt; |t|) = 0.0106          Pr(T &gt; t) = 0.9947
+
+</pre>
+
+
+<p>
+With group variable
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> 1000
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
+<span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
+<span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
+
+<span style="color: #a020f0;">gen</span> x = rnormal(1) if lev==0
+<span style="color: #a020f0;">replace</span> x = rnormal(2) if lev==1
+</pre>
+
+
+
+<pre class="example">
+obs was 0, now 1000
+
+(500 missing values generated)
+
+(500 real changes made)
+
+(500 missing values generated)
+
+(500 real changes made)
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> 1000
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
+<span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
+<span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
+
+<span style="color: #a020f0;">gen</span> x = rnormal(1) if lev==0
+<span style="color: #a020f0;">replace</span> x = rnormal(2) if lev==1
+graph box x, <span style="color: #228b22;">by</span>(lev)
+</pre>
+
+
+<p>
+<img src="twonorm.png"  alt="twonorm.png" />
+</p>
+
+<p>
+Immediate form of one-sample mean-comparison test
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> obs</span> = 20
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd</span> = 1.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> val</span> = 1.8
+ttesti `<span style="color: #a0522d;">obs</span>' `<span style="color: #a0522d;">mean</span>' `<span style="color: #a0522d;">sd</span>' `<span style="color: #a0522d;">val</span>'
+</pre>
+
+
+
+<pre class="example">
+One-sample t test
+------------------------------------------------------------------------------
+         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      20           1    .3354102         1.5    .2979784    1.702022
+------------------------------------------------------------------------------
+    mean = mean(x)                                                t =  -2.3851
+Ho: mean = 1.8                                   degrees of freedom =       19
+
+   Ha: mean &lt; 1.8               Ha: mean != 1.8               Ha: mean &gt; 1.8
+ Pr(T &lt; t) = 0.0138         Pr(|T| &gt; |t|) = 0.0276          Pr(T &gt; t) = 0.9862
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-4">
+<h4 id="sec-3-2">samsi</h4>
+<div class="outline-text-4" id="text-3-2">
+
+
+
+
+<pre class="src src-stata">sampsi 0.2 0.4
+</pre>
+
+
+
+<pre class="example">
+Estimated sample size for two-sample comparison of proportions
+
+Test Ho: p1 = p2, where p1 is the proportion in population 1
+                    and p2 is the proportion in population 2
+Assumptions:
+
+         alpha =   0.0500  (two-sided)
+         power =   0.9000
+            p1 =   0.2000
+            p2 =   0.4000
+         n2/n1 =   1.00
+
+Estimated required sample sizes:
+
+            n1 =      119
+            n2 =      119
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3-3" class="outline-4">
+<h4 id="sec-3-3">signtest</h4>
+<div class="outline-text-4" id="text-3-3">
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+<span style="color: #a020f0;">gen</span> x = rnormal()
+<span style="color: #a020f0;">gen</span> y = x + 1.0 + rnormal()
+signtest x=y
+</pre>
+
+
+
+<pre class="example">
+obs was 0, now 20
+
+Sign test
+
+        sign |    observed    expected
+-------------+------------------------
+    positive |           5          10
+    negative |          15          10
+        zero |           0           0
+-------------+------------------------
+         all |          20          20
+
+One-sided tests:
+  Ho: median of x - y = 0 vs.
+  Ha: median of x - y &gt; 0
+      Pr(#positive &gt;= 5) =
+         Binomial(n = 20, x &gt;= 5, p = 0.5) =  0.9941
+
+  Ho: median of x - y = 0 vs.
+  Ha: median of x - y &lt; 0
+      Pr(#negative &gt;= 15) =
+         Binomial(n = 20, x &gt;= 15, p = 0.5) =  0.0207
+
+Two-sided test:
+  Ho: median of x - y = 0 vs.
+  Ha: median of x - y != 0
+      Pr(#positive &gt;= 15 or #negative &gt;= 15) =
+         min(1, 2*Binomial(n = 20, x &gt;= 15, p = 0.5)) =  0.0414
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+<span style="color: #a020f0;">gen</span> x = rnormal()
+<span style="color: #a020f0;">gen</span> y = 0.15 + rnormal()
+signrank x=y
+ttest x=y
+</pre>
+
+
+
+<pre class="example">
+obs was 0, now 20
+
+Wilcoxon signed-rank test
+
+        sign |      obs   sum ranks    expected
+-------------+---------------------------------
+    positive |        7          63         105
+    negative |       13         147         105
+        zero |        0           0           0
+-------------+---------------------------------
+         all |       20         210         210
+
+unadjusted variance      717.50
+adjustment for ties        0.00
+adjustment for zeros       0.00
+                     ----------
+adjusted variance        717.50
+
+Ho: x = y
+             z =  -1.568
+    Prob &gt; |z| =   0.1169
+
+Paired t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      20   -.3721993    .2067612    .9246643   -.8049555    .0605569
+       y |      20    .1790187    .2938401    1.314093   -.4359956    .7940331
+---------+--------------------------------------------------------------------
+    diff |      20    -.551218    .3177534    1.421036   -1.216283    .1138474
+------------------------------------------------------------------------------
+     mean(diff) = mean(x - y)                                     t =  -1.7347
+ Ho: mean(diff) = 0                              degrees of freedom =       19
+
+ Ha: mean(diff) &lt; 0           Ha: mean(diff) != 0           Ha: mean(diff) &gt; 0
+ Pr(T &lt; t) = 0.0495         Pr(|T| &gt; |t|) = 0.0990          Pr(T &gt; t) = 0.9505
+
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-3">
+<h3 id="sec-4">Lecutre 5</h3>
+<div class="outline-text-3" id="text-4">
+
+
+</div>
+
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1">Central Limit Theorem and Confidence Intervals</h4>
+<div class="outline-text-4" id="text-4-1">
+
+<p>According to the WHO Global Database on Anaemia, the mean hemoglobin
+levels among primary school children in Delhi were estimated at \(\mu=
+108\) g/L, with standard deviation \(\sigma=12.5\) g/L. (Source:
+<a href="http://who.int/vmnis/anaemia/data/database/countries/ind_ida.pdf">http://who.int/vmnis/anaemia/data/database/countries/ind_ida.pdf</a>)
+</p>
+<p>
+Suppose we took a random sample of <b>75 primary school children</b> in
+Delhi. Denote the mean hemoglobin levels in this sample as
+\(\over{x}\). Throughout this question, assume that the sample size is
+large enough that the Central Limit Theorem is applicable and that
+\(\sigma\) is known.
+</p>
+<ol>
+<li>According to the Central Limit Theorem, what is the expected value
+   (mean) of \(\over{x}\)?
+</li>
+<li>According to the Central Limit Theorem, what is the standard
+   deviation of \(\over{x}\)?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+di `<span style="color: #a0522d;">std</span>'
+</pre>
+
+
+<pre class="example">
+
+1.4433757
+
+</pre>
+
+
+<ol>
+<li>Suppose we take a large number of samples of size 75. What
+   proportion of the samples would we expect to have a sample mean
+   \(\over{x}\) that lies between 106 and 110 g/L?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+di normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
+</pre>
+
+
+<pre class="example">
+
+.83414334
+
+</pre>
+
+
+<ol>
+<li>Suppose instead we repeatedly took random samples of size 25. What
+   proportion of the samples would we expect to have a sample mean
+   that lies between 106 and 110 g/L?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 25
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+di normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
+</pre>
+
+
+<pre class="example">
+
+.5762892
+
+</pre>
+
+
+<ol>
+<li>Again, suppose we repeatedly took samples of size 75. What
+   proportion of the samples would we expect to have a mean less than
+   \(\over{x}=103\) ?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (103 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+di normal(`<span style="color: #a0522d;">z1</span>')
+</pre>
+
+
+<pre class="example">
+
+.000266
+
+</pre>
+
+
+<ol>
+<li>If we repeatedly took samples of size 75, \(\over{x}\) we would
+   expect that, in 20% of the samples, would be greater than ___?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> =  invnormal(0.8)
+di `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
+</pre>
+
+
+<pre class="example">
+
+109.21478
+
+</pre>
+
+
+<ol>
+<li>After taking a sample of size 75, we found that the sample mean was
+   \(\over{x}=103\). Construct a 95% confidence interval for \(\mu\).
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sample_mean</span> = 103.0
+di `<span style="color: #a0522d;">sample_mean</span>' - 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+di `<span style="color: #a0522d;">sample_mean</span>' + 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+</pre>
+
+
+<pre class="example">
+
+100.17098
+
+105.82902
+
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5">Lecture 6</h3>
+<div class="outline-text-3" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1">intro</h4>
+<div class="outline-text-4" id="text-5-1">
+
+<p>Sample size and power for means and proportions
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
+</pre>
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
+sampsi `<span style="color: #a0522d;">m1</span>' `<span style="color: #a0522d;">m2</span>', sd1(`<span style="color: #a0522d;">sd1</span>') sd2(`<span style="color: #a0522d;">sd2</span>')
+</pre>
+
+
+
+<pre class="example">
+Estimated sample size for two-sample comparison of means
+
+Test Ho: m1 = m2, where m1 is the mean in population 1
+                    and m2 is the mean in population 2
+Assumptions:
+
+         alpha =   0.0500  (two-sided)
+         power =   0.9000
+            m1 =        1
+            m2 =        2
+           sd1 =       .5
+           sd2 =       .8
+         n2/n1 =     1.00
+
+Estimated required sample sizes:
+
+            n1 =       10
+            n2 =       10
+
+</pre>
+
+
+<p>
+Plot normal distributions
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmax</span>=<span style="color: #008b8b;">max</span>(`<span style="color: #a0522d;">m1</span>'+4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'+4*`<span style="color: #a0522d;">sd2</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmin</span>=<span style="color: #008b8b;">min</span>(`<span style="color: #a0522d;">m1</span>'-4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'-4*`<span style="color: #a0522d;">sd2</span>')
+twoway (function normalden(x,`<span style="color: #a0522d;">m1</span>',`<span style="color: #a0522d;">sd1</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')) (function normalden(x,`<span style="color: #a0522d;">m2</span>',`<span style="color: #a0522d;">sd2</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>'))
+</pre>
+
+
+<p>
+<img src="normal2.png"  alt="normal2.png" />
+</p>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> totchol = totchol1 - totchol2
+sampsi 0 13, sd1(33.3) <span style="color: #008b8b;">alpha</span>(0.05) onesample
+</pre>
+
+
+
+<pre class="example">
+(675 missing values generated)
+
+Estimated sample size for one-sample comparison of mean
+  to hypothesized value
+
+Test Ho: m =      0, where m is the mean in the population
+
+Assumptions:
+
+         alpha =   0.0500  (two-sided)
+         power =   0.9000
+ alternative m =       13
+            sd =     33.3
+
+Estimated required sample size:
+
+             n =       69
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> dchol = totchol2 - totchol1
+ttest dchol == 0
+</pre>
+
+
+
+<pre class="example">
+(675 missing values generated)
+
+One-sample t test
+------------------------------------------------------------------------------
+Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+   dchol |    3759    13.16574    .5432341    33.30605    12.10067     14.2308
+------------------------------------------------------------------------------
+    mean = mean(dchol)                                            t =  24.2358
+Ho: mean = 0                                     degrees of freedom =     3758
+
+    Ha: mean &lt; 0                 Ha: mean != 0                 Ha: mean &gt; 0
+ Pr(T &lt; t) = 1.0000         Pr(|T| &gt; |t|) = 0.0000          Pr(T &gt; t) = 0.0000
+
+</pre>
+
+
+<p>
+Independent samples
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">I have to use only 50%  of the observation because of Stata version </span><span style="color: #b22222;">*/</span>
+<span style="color: #a020f0;">sample</span> 50
+graph box totchol1 totchol2
+</pre>
+
+
+<p>
+<img src="t1t2.png"  alt="t1t2.png" />
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+<span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+</pre>
+
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption></caption>
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">(4336 observations deleted)</td></tr>
+</tbody>
+</table>
+
+
+<p>
+Independent samples
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+<span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+ttest totchol1, <span style="color: #228b22;">by</span>(hyperten)
+</pre>
+
+
+
+<pre class="example">
+(4336 observations deleted)
+
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+   Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+      No |      48    220.7083    5.953868    41.24961    208.7307     232.686
+     Yes |      48    236.0833    6.501557    45.04411    223.0039    249.1628
+---------+--------------------------------------------------------------------
+combined |      96    228.3958    4.455026    43.65016    219.5515    237.2402
+---------+--------------------------------------------------------------------
+    diff |             -15.375    8.815826               -32.87903    2.129029
+------------------------------------------------------------------------------
+    diff = mean(No) - mean(Yes)                                   t =  -1.7440
+Ho: diff = 0                                     degrees of freedom =       94
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.0422         Pr(|T| &gt; |t|) = 0.0844          Pr(T &gt; t) = 0.9578
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+<span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
+</pre>
+
+
+<p>
+<img src="dep.png"  alt="dep.png" />
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-5-2" class="outline-4">
+<h4 id="sec-5-2">Two-Sample t-test</h4>
+<div class="outline-text-4" id="text-5-2">
+
+<p>Schiff et al. (1990) investigated the effect of low doses of aspirin
+on women with mild pregnancy-induced hypertension. Forty-seven women
+hospitalized at 30-36 weeks’ gestation because of mild
+pregnancy-induced hypertension were treated by a daily dose of either
+100 mg aspirin or placebo. The <b>23 women</b> who received aspirin had a
+mean arterial blood pressure of <b>111 mm Hg</b> with a standard deviation
+of <b>8 mm Hg</b>. The <b>24 women</b> who received placebo had a mean arterial
+blood pressure of <b>109 mm Hg</b> and a standard deviation of <b>8 mm Hg</b>.
+</p>
+<p>
+Source: Schiff, E., Barkai,G., Ben-Baruch G., and Mashiach, S.,
+"Low-Dose Aspirin Does Not Influence the Clinical Course of Women with
+Mild Pregnancy-Induced Hypertension," Obstetrics and Gynecology,
+Vol. 76, November 1990, 742-744.
+</p>
+<ol>
+<li>Conduct a two sample t-test with equal variances at \(\alpha = 0.05\)
+</li>
+</ol>
+
+<p>to test whether the population mean arterial blood pressure for women
+treated with aspirin is equal to the population mean arterial blood
+pressure for women treated with placebo. What is the value of the test
+statistic?
+</p>
+<ol>
+<li>How many degrees of freedom does your test statistic have?
+
+</li>
+<li>The p-value for this test is greater than 0.05. Based on this
+</li>
+</ol>
+
+<p>result can we conclude that the population mean arterial blood
+pressure for pregnant women treated with aspirin is equal to the
+population mean arterial blood pressure for pregnant women treated
+with placebo? A) Yes B) No
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> obs1</span> = 23
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean1</span> = 111
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 8
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> obs2</span> = 24
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean2</span> = 109
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 8
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> level</span> = 95
+ttesti `<span style="color: #a0522d;">obs1</span>' `<span style="color: #a0522d;">mean1</span>' `<span style="color: #a0522d;">sd1</span>' `<span style="color: #a0522d;">obs2</span>' `<span style="color: #a0522d;">mean2</span>' `<span style="color: #a0522d;">sd2</span>', level(`<span style="color: #a0522d;">level</span>')
+display <span style="color: #8b2252;">"================== answers ===================="</span>
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"the test statistic = "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(t)
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"degrees of freedom = "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(df_t)
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"two-sided p-value = "</span> <span style="color: #008b8b;">as</span> result  <span style="color: #008b8b;">r</span>(p)
+<span style="color: #008b8b;">if</span> <span style="color: #008b8b;">r</span>(p)&gt;1-`<span style="color: #a0522d;">level</span>'/100 {
+    <span style="color: #008b8b;">display</span> <span style="color: #8b2252;">"We reject H0: mean(x)==mean(y)"</span>
+} 
+<span style="color: #008b8b;">else</span> {
+  <span style="color: #008b8b;">display</span> <span style="color: #8b2252;">"We cannot reject H0: mean(x)==mean(y)"</span>
+}
+</pre>
+
+
+
+<pre class="example">
+Two-sample t test with equal variances
+------------------------------------------------------------------------------
+         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      23         111    1.668115           8    107.5405    114.4595
+       y |      24         109    1.632993           8    105.6219    112.3781
+---------+--------------------------------------------------------------------
+combined |      47    109.9787    1.163542     7.97684    107.6366    112.3208
+---------+--------------------------------------------------------------------
+    diff |                   2    2.334368               -2.701659    6.701659
+------------------------------------------------------------------------------
+    diff = mean(x) - mean(y)                                      t =   0.8568
+Ho: diff = 0                                     degrees of freedom =       45
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(T &lt; t) = 0.8019         Pr(|T| &gt; |t|) = 0.3961          Pr(T &gt; t) = 0.1981
+
+================== answers ====================
+
+the test statistic = .85676283
+
+degrees of freedom = 45
+
+two-sided p-value = .39611566
+
+We reject H0: mean(x)==mean(y)
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5-3" class="outline-4">
+<h4 id="sec-5-3">ANOVA</h4>
+<div class="outline-text-4" id="text-5-3">
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6">Lecture 7</h3>
+<div class="outline-text-3" id="text-6">
+
+
+</div>
+
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
+<div class="outline-text-4" id="text-6-1">
+
+<ol>
+<li>Construct a 95% confidence interval for <b>the proportion</b> of infants
+</li>
+</ol>
+
+<p>experiencing <b>the composite outcome</b> in <b>the fresh</b> red blood cell
+group, using the following methods: exact binomial, Wilson normal
+approximation.
+</p>
+<ol>
+<li>Is the normal approximation to the binomial appropriate in this
+   setting? 
+</li>
+</ol>
+
+<p><code>two answer this quastion I need the number of observations with fresh==1 and fresh==0</code>
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">ci</span> outcome if fresh==1, binomial
+<span style="color: #008b8b;">ci</span> outcome if fresh==1, binomial wilson
+</pre>
+
+
+
+<pre class="example">
+                                                         -- Binomial Exact --
+    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+     outcome |        188    .5265957    .0364146        .4526364    .5997032
+
+                                                         ------ Wilson ------
+    Variable |        Obs        Mean    Std. Err.       [95% Conf. Interval]
+-------------+---------------------------------------------------------------
+     outcome |        188    .5265957    .0364146         .455408    .5967184
+
+</pre>
+
+
+<ol>
+<li>Suppose you wanted to calculate a 95% confidence interval for
+</li>
+</ol>
+
+<p>infants experiencing intraventricular hemorrhage after receiving a
+fresh blood transfusion as well. Examine the table above. Is the
+Wilson confidence interval still appropriate?
+</p>
+<ol>
+<li>Estimate and construct a large-sample 95% confidence interval for the
+</li>
+</ol>
+
+<p>risk difference for experiencing the composite outcome for those with
+fresh blood versus the standard protocol blood. Calculate the risk
+difference as the estimated proportion in the fresh blood group minus
+estimated proportion in the standard blood group.
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta
+<span style="color: #a020f0;">gen</span> nfresh = 1-fresh
+prtest outcome, <span style="color: #008b8b;">by</span> (nfresh)
+</pre>
+
+
+
+<pre class="example">
+Two-sample test of proportions                     0: Number of obs =      188
+                                                   1: Number of obs =      189
+------------------------------------------------------------------------------
+    Variable |       Mean   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           0 |   .5265957   .0364146                      .4552244    .5979671
+           1 |   .5291005    .036308                      .4579382    .6002629
+-------------+----------------------------------------------------------------
+        diff |  -.0025048   .0514227                     -.1032915    .0982819
+             |  under Ho:   .0514228    -0.05   0.961
+------------------------------------------------------------------------------
+        diff = prop(0) - prop(1)                                  z =  -0.0487
+    Ho: diff = 0
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(Z &lt; z) = 0.4806         Pr(|Z| &lt; |z|) = 0.9612          Pr(Z &gt; z) = 0.5194
+
+</pre>
+
+
+<ol>
+<li>Use a two-sample test of proportions to test whether there is a
+   difference in the proportion of infants experiencing the composite
+   outcome between fresh blood group and the standard protocol group
+   at \(\alpha=0.05\) the level of significance.
+</li>
+</ol>
+
+
+<p>
+What is the value of the test statistic?
+What is the p-value?
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta
+<span style="color: #a020f0;">gen</span> nfresh = 1-fresh
+prtest outcome, <span style="color: #008b8b;">by</span> (nfresh)
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(z)
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> P</span> = 1 - (normal(<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>'))-normal(-<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>')))
+display <span style="color: #8b2252;">"==================== answers ===================="</span>
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"test statistic = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">z</span>'
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"Pr(|Z| &lt; |z|) = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">P</span>'
+</pre>
+
+
+
+<pre class="example">
+Two-sample test of proportions                     0: Number of obs =      188
+                                                   1: Number of obs =      189
+------------------------------------------------------------------------------
+    Variable |       Mean   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+           0 |   .5265957   .0364146                      .4552244    .5979671
+           1 |   .5291005    .036308                      .4579382    .6002629
+-------------+----------------------------------------------------------------
+        diff |  -.0025048   .0514227                     -.1032915    .0982819
+             |  under Ho:   .0514228    -0.05   0.961
+------------------------------------------------------------------------------
+        diff = prop(0) - prop(1)                                  z =  -0.0487
+    Ho: diff = 0
+
+    Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
+ Pr(Z &lt; z) = 0.4806         Pr(|Z| &lt; |z|) = 0.9612          Pr(Z &gt; z) = 0.5194
+
+==================== answers ====================
+
+test statistic = -.04870957
+
+Pr(|Z| &lt; |z|) = .96115075
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
+<div class="outline-text-4" id="text-6-2">
+
+<p>Continue using the Fergusson et al. (2012) clinical trial data to
+complete the following questions. Again, use either the dataset from
+the previous question, hw7.dta, or the study results in the table
+below.
+<code>table is missing</code>
+</p>
+<ol>
+<li>Estimate the odds ratio and a 95% confidence interval for
+   experiencing the composite outcome for those in the fresh blood
+   group versus standard protocol blood group.
+</li>
+</ol>
+
+
+<p>
+OR Estimate:
+95% Confidence Interval:
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">cs</span> outcome fresh, or woolf
+</pre>
+
+
+
+<pre class="example">
+                 | fresh                  |
+                 |   Exposed   Unexposed  |      Total
+-----------------+------------------------+------------
+           Cases |        99         100  |        199
+        Noncases |        89          89  |        178
+-----------------+------------------------+------------
+           Total |       188         189  |        377
+                 |                        |
+            Risk |  .5265957    .5291005  |   .5278515
+                 |                        |
+                 |      Point estimate    |    [95% Conf. Interval]
+                 |------------------------+------------------------
+ Risk difference |        -.0025048       |   -.1032915    .0982819 
+      Risk ratio |          .995266       |    .8222696    1.204659 
+ Prev. frac. ex. |          .004734       |   -.2046588    .1777304 
+ Prev. frac. pop |         .0023607       |
+      Odds ratio |              .99       |    .6607011    1.483424 (Woolf)
+                 +-------------------------------------------------
+                               chi2(1) =     0.00  Pr&gt;chi2 = 0.9612
+
+</pre>
+
+
+<ol>
+<li>Construct a 2x2 table for the composite outcome versus blood
+   group. Are the expected cell counts large enough to conduct a
+   Pearson Chi-square test?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
+tabulate outcome fresh, row expected
+</pre>
+
+
+
+<pre class="example">
++--------------------+
+| Key                |
+|--------------------|
+|     frequency      |
+| expected frequency |
+|   row percentage   |
++--------------------+
+
+           |         fresh
+   outcome |         0          1 |     Total
+-----------+----------------------+----------
+         0 |        89         89 |       178 
+           |      89.2       88.8 |     178.0 
+           |     50.00      50.00 |    100.00 
+-----------+----------------------+----------
+         1 |       100         99 |       199 
+           |      99.8       99.2 |     199.0 
+           |     50.25      49.75 |    100.00 
+-----------+----------------------+----------
+     Total |       189        188 |       377 
+           |     189.0      188.0 |     377.0 
+           |     50.13      49.87 |    100.00 
+
+</pre>
+
+
+<ol>
+<li>Using the Pearson chi-square test, determine if there is evidence
+</li>
+</ol>
+
+<p>of an association between blood group and the composite outcome at the
+level of significance.  What is the value of the test statistic? Round
+your answer to two decimal places.
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
+tabulate outcome fresh, expected chi2
+</pre>
+
+
+
+<pre class="example">
++--------------------+
+| Key                |
+|--------------------|
+|     frequency      |
+| expected frequency |
++--------------------+
+
+           |         fresh
+   outcome |         0          1 |     Total
+-----------+----------------------+----------
+         0 |        89         89 |       178 
+           |      89.2       88.8 |     178.0 
+-----------+----------------------+----------
+         1 |       100         99 |       199 
+           |      99.8       99.2 |     199.0 
+-----------+----------------------+----------
+     Total |       189        188 |       377 
+           |     189.0      188.0 |     377.0 
+
+          Pearson chi2(1) =   0.0024   Pr = 0.961
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3">Final Thoughts on the Blood Transfusion Trial</h4>
+<div class="outline-text-4" id="text-6-3">
+
+<ol>
+<li>In this study, the authors state that they powered the study to
+   detect an absolute difference of 15% in the two groups with 80%
+   power, using a 2-sided test with . After a few more adjustments,
+   their final sample size calculation was 450. Now suppose you want
+   to replicate the study using a different population. Given that the
+   authors did not find an association in their data, you decide to
+   increase the power and decrease the difference detected between
+   standard and fresh groups. Using an equal number of infants in both
+   groups, what is the total sample size needed in order to achieve
+   90% power, assuming that the proportion of infants experiencing the
+   composite outcome in the standard group was 55% and 45% in the
+   fresh blood group (again, with ).
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-stata">sampsi .55 .45, <span style="color: #008b8b;">alpha</span>(0.05) power(0.90)
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"total sample size: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(N_1) + <span style="color: #008b8b;">r</span>(N_2)
+</pre>
+
+
+
+<pre class="example">
+Estimated sample size for two-sample comparison of proportions
+
+Test Ho: p1 = p2, where p1 is the proportion in population 1
+                    and p2 is the proportion in population 2
+Assumptions:
+
+         alpha =   0.0500  (two-sided)
+         power =   0.9000
+            p1 =   0.5500
+            p2 =   0.4500
+         n2/n1 =   1.00
+
+Estimated required sample sizes:
+
+            n1 =      544
+            n2 =      544
+
+total sample size: 1088
+
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7">Lecture 8</h3>
+<div class="outline-text-3" id="text-7">
+
+
+</div>
+
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1">Survey Design</h4>
+<div class="outline-text-4" id="text-7-1">
+
+<ol>
+<li>Suppose you decided to randomly sample 1,700 people from the city
+   of Boston (call this Design 1). For any given individual in South
+   Dorchester, what is the probability of being selected in the
+   survey? What is this probability for an individual in Harbor
+   Islands?
+</li>
+<li>Now, you randomly sample 100 people within each neighborhood
+   (Design 2). What is the probability of a random individual in South
+   Dorchester being sampled? What is the probability of a randomly
+   selected individual in Harbor Islands being sampled?
+
+</li>
+<li>Next, you decide you do not want to visit all 17 neighborhoods, so
+   you randomly sample 10 neighborhoods. Within each sampled
+   neighborhood selected, you randomly sample 170 people. Call this
+   Design 4. What is the probability of a random individual in South
+   Dorchester being included in the survey? What is the probability of
+   a random individual in Harbor Islands being included in the survey?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/boston.csv"</span>
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d1</span> = 1000
+quietly <span style="color: #008b8b;">sum</span> pop
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 1, both): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d1</span>'/<span style="color: #008b8b;">r</span>(mean)
+
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d2</span> = 100
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
+
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nn_d4</span> = 10
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d4</span> = 170
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+</pre>
+
+
+
+<pre class="example">
+P (design 1, both): .02752617
+
+P (design 2, South Dorchester): .00166808
+
+P (design 2, Harbor Islands): .18691589
+
+&gt; _d4'/_N
+P (design 2, South Dorchester): .00166808
+
+&gt; 4'/_N
+P (design 2, Harbor Islands): .18691589
+
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8"><span class="todo TODO">TODO</span> Lecture 9</h3>
+<div class="outline-text-3" id="text-8">
+
+
+</div>
+
+<div id="outline-container-8-1" class="outline-4">
+<h4 id="sec-8-1">Trends in Unemployment</h4>
+<div class="outline-text-4" id="text-8-1">
+
+<p>We again use publicly available data from the World Bank’s website to
+examine national trends in unemployment percentages (percent
+unemployed in total labor force) in four countries: the United States,
+Great Britain, Japan, and Canada.
+</p>
+<p>
+In this question, we examine unemployment trends over time using a
+correlation analysis, focusing primarily on the United States and
+Japan.
+</p>
+<p>
+Use the dataset UnemploymentbyCountry.dta to answer the following
+questions.
+</p>
+<ol>
+<li>Calculate the Pearson and Spearman correlations between total
+   unemployment and year for the United States and for Japan.
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>
+</pre>
+
+
+
+<pre class="example">
+(World Bank, World Dev. Indicators &amp; Global Dev. Finance: Int. Labour Org)
+
+             | unempl~l     year
+-------------+------------------
+unemployed~l |   1.0000 
+        year |   0.8437   1.0000 
+
+             | unempl~l     year
+-------------+------------------
+unemployed~l |   1.0000 
+        year |  -0.3415   1.0000 
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>
+</pre>
+
+
+<pre class="example">
+(World Bank, World Dev. Indicators &amp; Global Dev. Finance: Int. Labour Org)
+
+ Number of obs =      31
+Spearman's rho =       0.8162
+
+Test of Ho: unemployedtotal and year are independent
+    Prob &gt; |t| =       0.0000
+
+ Number of obs =      31
+Spearman's rho =      -0.4517
+
+Test of Ho: unemployedtotal and year are independent
+    Prob &gt; |t| =       0.0107
+
+</pre>
+
+
+<ol>
+<li>Exclude all years after 2007 (recall that the financial collapse
+   occurred in late 2008). Recalculate the correlations in
+   question 1. (Hint: use an "if" command to restrict to certain years
+   in Stata.)
+</li>
+</ol>
+
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span> &amp;&amp; year&lt;=2007
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span> &amp;&amp; year&lt;=2007
+</pre>
+
+
+
+<pre class="example">
+(World Bank, World Dev. Indicators &amp; Global Dev. Finance: Int. Labour Org)
+
+             | unempl~l     year
+-------------+------------------
+unemployed~l |   1.0000 
+        year |   0.8276   1.0000 
+
+             | unempl~l     year
+-------------+------------------
+unemployed~l |   1.0000 
+        year |  -0.7557   1.0000 
+
+</pre>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span> &amp;&amp; year&lt;=2007
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span> &amp;&amp; year&lt;=2007
+</pre>
+
+
+
+<pre class="example">
+(World Bank, World Dev. Indicators &amp; Global Dev. Finance: Int. Labour Org)
+
+ Number of obs =      28
+Spearman's rho =       0.7998
+
+Test of Ho: unemployedtotal and year are independent
+    Prob &gt; |t| =       0.0000
+
+ Number of obs =      28
+Spearman's rho =      -0.7733
+
+Test of Ho: unemployedtotal and year are independent
+    Prob &gt; |t| =       0.0000
+
+</pre>
+
+
+<ol>
+<li>Construct a scatter plot with year on the x-axis and with both
+   unemployment in the United States and unemployment in Japan on the
+   y-axis. (Hint: try plotting different symbols for the United States
+   and Japan by creating two different plots within the Twoway graphs
+   window; restrict to a specific country by using an "if" statement
+   within each plot window).
+</li>
+</ol>
+
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+twoway  (scatter unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>) *
+(scatter unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>
+</pre>
+
+
+<p>
+<img src="jappan-s.png"  alt="jappan-s.png" />
+</p>
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="todo TODO">TODO</span> Lecture 10</h3>
+<div class="outline-text-3" id="text-9">
+
+
+</div>
+
+<div id="outline-container-9-1" class="outline-4">
+<h4 id="sec-9-1">Simple Linear Regression</h4>
+<div class="outline-text-4" id="text-9-1">
+
+<p> We use data from the Environmental Protection Agency (EPA) to track
+ the BP oil spill in Louisiana between May and September 2010. The oil
+ well exploded on April 20, 2010, was capped in July and was declared
+ dead in September 2010. The oil spill killed wildlife in the Gulf of
+ Mexico and posed a significant public health risk to clean-up workers
+ and residents of the Gulf Coast (Solomon and Janssen 2010). The EPA
+ monitored air quality and took samples of sediment to measure the
+ impact of the oil spill. For more information from the EPA, visit
+ <a href="http://www.epa.gov/bpspill/sediment.html#understanding">http://www.epa.gov/bpspill/sediment.html#understanding</a>.
+</p>
+<p>
+*Solomon G., Janssen S. (2010). Health Effects of the Gulf Oil
+ Spill. JAMA. (<a href="http://dx.doi.org/doi:10.1001/jama.2010.1254">doi:10.1001/jama.2010.1254</a>)
+</p>
+<p>
+Use the dataset oilspill.dta to answer the following questions.
+</p>
+<p>
+Simple Linear Regression. In this example, we track changes in the
+amount of nickel found in sediment along the Louisiana coast between
+May and September 2010 (note that there is no data from July). Nickel
+is a metal that is found in sediment contaminated with oil. We model
+the amount of nickel as a function of time (month) using linear
+regression.
+</p>
+<p>
+Fit a linear regression model with nickel as the outcome and month as
+the explanatory variable. Using indicator variables, model month as a
+categorical covariate (i.e. for the variable "month", it is coded
+numerically as May = 5, June = 6, August = 8, September = 9). Call
+this <b>Model 1</b>.
+</p>
+<p>
+Assume the assumptions of linear regression are met for this
+model. You can make histograms of nickel by month to visually verify
+that the data does not appear to be skewed or any other evidence that
+would suggest a violation of the assumptions necessary to analyze this
+data using linear regression.
+</p>
+<ol>
+<li>Does the amount of nickel in the soil tend to increase over the
+   four month period? <code>TODO: make a histogram plot</code>
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+twoway (scatter nickel month) (lfit nickel month)
+</pre>
+
+
+<p>
+<img src="oil-scatter.png"  alt="oil-scatter.png" />
+</p>
+
+<ol>
+<li>Examine the regression coefficients. Compare how the average nickel
+   amount changes by month. Is it reasonable to assume that average
+   amount of nickel increases linearly by month?
+
+</li>
+<li>Make a residual plot.
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+<span style="color: #a020f0;">xi</span>: <span style="color: #008b8b;">regress</span> nickel i.month
+rvfplot
+</pre>
+
+
+<p>
+<img src="oil-res.png"  alt="oil-res.png" />
+</p>
+
+<p>
+Now, assume the amount of nickel increases linearly by month, and the
+assumptions of linear regression continue to hold. Fit a model with
+nickel as the outcome and month modeled as a continuous explanatory
+variable. Call this <b>Model 2</b>.
+</p>
+<ol>
+<li>Using <b>Model 2</b>, it is estimated that, on average, nickel increases
+   by ______ each month, from May to September.
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+<span style="color: #a020f0;">xi</span>: <span style="color: #008b8b;">regress</span> nickel i.month
+</pre>
+
+
+
+<pre class="example">
+i.month           _Imonth_5-9         (naturally coded; _Imonth_5 omitted)
+
+      Source |       SS       df       MS              Number of obs =     248
+-------------+------------------------------           F(  3,   244) =    7.39
+       Model |  1593.53316     3  531.177721           Prob &gt; F      =  0.0001
+    Residual |  17536.6077   244  71.8713429           R-squared     =  0.0833
+-------------+------------------------------           Adj R-squared =  0.0720
+       Total |  19130.1408   247  77.4499629           Root MSE      =  8.4777
+
+------------------------------------------------------------------------------
+      nickel |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   _Imonth_6 |   1.740536   1.975111     0.88   0.379    -2.149906    5.630979
+   _Imonth_8 |   4.265023   1.384627     3.08   0.002     1.537675     6.99237
+   _Imonth_9 |   7.109776   1.581158     4.50   0.000     3.995315    10.22424
+       _cons |   13.69724   1.113176    12.30   0.000     11.50458     15.8899
+------------------------------------------------------------------------------
+
+</pre>
+
+
+
+<ol>
+<li>What is the 95% confidence interval for the average increase in
+   nickel each month?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+regress nickel month
+</pre>
+
+
+
+<pre class="example">
+      Source |       SS       df       MS              Number of obs =     248
+-------------+------------------------------           F(  1,   246) =   21.47
+       Model |  1535.60852     1  1535.60852           Prob &gt; F      =  0.0000
+    Residual |  17594.5323   246  71.5224891           R-squared     =  0.0803
+-------------+------------------------------           Adj R-squared =  0.0765
+       Total |  19130.1408   247  77.4499629           Root MSE      =  8.4571
+
+------------------------------------------------------------------------------
+      nickel |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       month |   1.642664   .3545111     4.63   0.000     .9443998    2.340928
+       _cons |   5.335122   2.646702     2.02   0.045     .1220335    10.54821
+------------------------------------------------------------------------------
+
+</pre>
+
+
+
+<ol>
+<li>Given that the relationship between month and nickel appears to be
+   linear, is it reasonable to use Model 2 to predict the amount of
+   nickel in the soil in July 2010?
+
+</li>
+<li>Given that the relationship between month and nickel appears to be
+   linear, is it reasonable to use Model 2 to predict the amount of
+   nickel in the soil in October 2010?
+
+</li>
+<li>What is the average amount of nickel in the soil during August 2010?
+</li>
+</ol>
+
+<p>According to model 1 (Hint: Think about how dummy/indicator variables
+are coded.)
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #008b8b;">regress</span> nickel month
+ *** to extract coefficeint from matrix  ***
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases in one month by "</span> <span style="color: #008b8b;">as</span> result  betamonth[1]
+</pre>
+
+
+<pre class="example">
+
+nickel increases in one month by 1.642664
+
+</pre>
+
+
+
+<ol>
+<li>True or False: <b>Model 1</b> makes stronger modeling assumptions than
+   <b>Model 2</b>.
+</li>
+</ol>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-9-2" class="outline-4">
+<h4 id="sec-9-2">High Blood Pressure and CHD Incidence</h4>
+<div class="outline-text-4" id="text-9-2">
+
+<p>Use Stata and the NHLBI data set to create the two categories of high
+blood pressure (highbp1)
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> highbp1=.
+<span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+<span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+</pre>
+
+
+<ol>
+<li>What is the incidence rate ratio of stroke comparing those with
+   high blood pressure to those without high blood pressure? Hint: The
+   variable for stroke in the dataset is "stroke" and the number of
+   years a person was followed for stroke is recorded in the
+   "timestrk" variable.
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> highbp1=.
+<span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+<span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+ir stroke highbp1 timestrk
+</pre>
+
+
+<pre class="example">
+(4434 missing values generated)
+
+(1619 real changes made)
+
+(2815 real changes made)
+
+                 | highbp1                |
+                 |   Exposed   Unexposed  |      Total
+-----------------+------------------------+------------
+Incident Stroke  |       255         160  |        415
+Time [years] to  |  28887.76    59787.78  |   88675.54
+-----------------+------------------------+------------
+                 |                        |
+  Incidence rate |  .0088273    .0026761  |     .00468
+                 |                        |
+                 |      Point estimate    |    [95% Conf. Interval]
+                 |------------------------+------------------------
+ Inc. rate diff. |         .0061511       |    .0049911    .0073112 
+ Inc. rate ratio |         3.298517       |    2.696321    4.045047 (exact)
+ Attr. frac. ex. |         .6968334       |    .6291243    .7527841 (exact)
+ Attr. frac. pop |         .4281748       |
+                 +-------------------------------------------------
+                     (midp)   Pr(k&gt;=255) =                   0.0000 (exact)
+                     (midp) 2*Pr(k&gt;=255) =                   0.0000 (exact)
+
+</pre>
+
+
+<ol>
+<li>What is the incidence rate ratio (rounded to two decimal points)
+   for the association between high blood pressure (highbp1) and the
+   rate of stroke among men? Hint: Use the variable (sex1).
+</li>
+<li>What is the incidence rate ratio (rounded to two decimal points)
+   for the association between high blood pressure (highbp1) and the
+   rate of stroke among women?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> highbp1=.
+<span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+<span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+ir stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
+</pre>
+
+
+
+<pre class="example">
+(4434 missing values generated)
+
+(1619 real changes made)
+
+(2815 real changes made)
+
+     Sex, exam 1 |      IRR       [95% Conf. Interval]   M-H Weight
+-----------------+-------------------------------------------------
+            Male |   2.273711      1.697105   3.048007     29.75741 (exact)
+          Female |    4.74629      3.537425   6.429301     21.94115 (exact)
+-----------------+-------------------------------------------------
+           Crude |   3.298517      2.696321   4.045047              (exact)
+    M-H combined |   3.323088      2.725029   4.052401
+-------------------------------------------------------------------
+ Test of homogeneity (M-H)    chi2(1) =     12.84  Pr&gt;chi2 = 0.0003
+
+</pre>
+
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10">Lecutre 11</h3>
+<div class="outline-text-3" id="text-10">
+
+
+</div>
+
+<div id="outline-container-10-1" class="outline-4">
+<h4 id="sec-10-1">Death, Blood Pressure, and Age</h4>
+<div class="outline-text-4" id="text-10-1">
+
+<p>We return to the Framingham cohort. We aim to assess the probability
+of death as a function of systolic blood pressure and age at baseline.
+</p>
+<ol>
+<li>Fit a logistic regression model with death as your outcome and
+   systolic blood pressure at baseline as the single
+   predictor. (Assume "linearity on the logit-scale", i.e. the
+   relationship between age and the probability of death is linear on
+   the logit scale).
+</li>
+</ol>
+
+
+<p>
+Estimate the odds ratio of death for a one mmHg increase in systolic
+blood pressure and a corresponding 95% confidence interval.
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+logistic death sysbp1
+</pre>
+
+
+
+<pre class="example">
+Logistic regression                               Number of obs   =       4434
+                                                  LR chi2(1)      =     410.44
+                                                  Prob &gt; chi2     =     0.0000
+Log likelihood = -2664.3807                       Pseudo R2       =     0.0715
+
+------------------------------------------------------------------------------
+       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      sysbp1 |    1.03017   .0016201    18.90   0.000        1.027     1.03335
+       _cons |   .0099229   .0021315   -21.48   0.000     .0065133    .0151175
+------------------------------------------------------------------------------
+
+</pre>
+
+
+<p>
+Estimate the odds ratio of death for a ten mmHg increase in systolic
+blood pressure and a corresponding 95% confidence interval. (Hint: use
+the lincom command).
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #008b8b;">logistic</span> death sysbp1
+lincom 10*sysbp1
+</pre>
+
+
+<pre class="example">
+
+ ( 1)  10*[death]sysbp1 = 0
+
+------------------------------------------------------------------------------
+       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         (1) |   1.346138   .0211704    18.90   0.000     1.305277    1.388277
+------------------------------------------------------------------------------
+
+</pre>
+
+
+<ol>
+<li>Add age at baseline to the regression model in question 1
+   above. (Assume linearity on the logit-scale holds).
+</li>
+</ol>
+
+
+<p>
+Estimate the odds ratio of death for a one mmHg increase in systolic
+blood pressure, conditional on age, and 95% confidence interval for
+this odds ratio.
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+logit death sysbp1 age1, or
+</pre>
+
+
+
+<pre class="example">
+Iteration 0:   log likelihood = -2869.6004  
+Iteration 1:   log likelihood = -2406.3553  
+Iteration 2:   log likelihood = -2398.9058  
+Iteration 3:   log likelihood = -2398.8963  
+Iteration 4:   log likelihood = -2398.8963  
+
+Logistic regression                               Number of obs   =       4434
+                                                  LR chi2(2)      =     941.41
+                                                  Prob &gt; chi2     =     0.0000
+Log likelihood = -2398.8963                       Pseudo R2       =     0.1640
+
+------------------------------------------------------------------------------
+       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+      sysbp1 |   1.017406   .0017247    10.18   0.000     1.014031    1.020792
+        age1 |   1.104968   .0050887    21.67   0.000     1.095039    1.114987
+       _cons |   .0003234   .0000929   -27.98   0.000     .0001842    .0005678
+------------------------------------------------------------------------------
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-10-2" class="outline-4">
+<h4 id="sec-10-2">Death, Smoking, and Age</h4>
+<div class="outline-text-4" id="text-10-2">
+
+<p>We again use the Framingham cohort, but now aim to assess the
+probability of death as a function of smoking status.
+</p>
+<ol>
+<li>Fit a logistic regression model examining the relationship between
+   smoking and death. Test the hypothesis that smoking at baseline is
+   associated with death during follow up (versus the alternative of
+   no association) at the 0.05 level of significance:
+</li>
+</ol>
+
+
+<p>
+What is your test statistic?
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+logistic death cursmoke1
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> P</span> = <span style="color: #008b8b;">e</span>(p)
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P = "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">P</span>'
+</pre>
+
+
+<pre class="example">
+Logistic regression                               Number of obs   =       4434
+                                                  LR chi2(1)      =       2.60
+                                                  Prob &gt; chi2     =     0.1070
+Log likelihood = -2868.3016                       Pseudo R2       =     0.0005
+
+------------------------------------------------------------------------------
+       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   cursmoke1 |   1.106873   .0697412     1.61   0.107     .9782858    1.252362
+       _cons |   .5110664   .0227584   -15.07   0.000     .4683519    .5576765
+------------------------------------------------------------------------------
+
+P = .10701968
+
+</pre>
+
+
+<ol>
+<li>Use the logistic regression model in question 1 to estimate the
+   probability of death in the cohort for non-smokers and for
+   smokers. (Hint: one way to achieve this goal is via the predict
+   command in Stata.)
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #008b8b;">logistic</span> death cursmoke1
+<span style="color: #a020f0;">predict</span> pdeath, pr
+quietly <span style="color: #008b8b;">sum</span> pdeath
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"probability of death for non-smoker: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(min)
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"probability of death for smoker: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(max)
+</pre>
+
+
+<pre class="example">
+
+probability of death for non-smoker: .33821571
+
+probability of death for smoker: .36130217
+
+</pre>
+
+
+<ol>
+<li>Add age at baseline to the regression model in question 1. (Assume
+   linearity on the logit-scale holds).  Estimate the odds ratio
+   between smoking and death with 95% confidence interval, conditional
+   on age at baseline.
+</li>
+</ol>
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+logistic death cursmoke1 age1
+</pre>
+
+
+
+<pre class="example">
+Logistic regression                               Number of obs   =       4434
+                                                  LR chi2(2)      =     910.32
+                                                  Prob &gt; chi2     =     0.0000
+Log likelihood = -2414.4396                       Pseudo R2       =     0.1586
+
+------------------------------------------------------------------------------
+       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+   cursmoke1 |   1.900338    .141002     8.65   0.000     1.643134    2.197802
+        age1 |   1.133771   .0053181    26.77   0.000     1.123396    1.144243
+       _cons |   .0006416   .0001671   -28.22   0.000     .0003851     .001069
+------------------------------------------------------------------------------
+
+</pre>
+
+
+<ol>
+<li>Using the model in question 3, predict the probability of death for
+   a 50 year old at baseline who is a smoker; and for a 50 year old
+   who is a non-smoker. (Hint: use invlogit). <code>do it with invlogit</code>
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #008b8b;">logistic</span> death cursmoke1 age1
+quietly <span style="color: #a020f0;">predict</span> pdeath, pr
+quietly <span style="color: #a020f0;">gen</span> p50s = pdeath if cursmoke1==1 &amp; age1==50
+quietly <span style="color: #a020f0;">gen</span> p50n = pdeath if cursmoke1==0 &amp; age1==50
+quietly <span style="color: #008b8b;">sum</span> p50n
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"pr. of death for non-smoker, age=50: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
+quietly <span style="color: #008b8b;">sum</span> p50s
+display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"pr. of death for smoker, age=50: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
+</pre>
+
+
+<pre class="example">
+
+pr. of death for non-smoker, age=50: .25462919
+
+pr. of death for smoker, age=50: .39363885
+
+</pre>
+
+
+<ol>
+<li>Test for effect modification of the relationship between death and
+   smoking status by age at the 0.1 level of significance.
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> interaction = age1*cursmoke1
+logit death cursmoke1 age1 interaction, level(90)
+</pre>
+
+
+
+<pre class="example">
+Iteration 0:   log likelihood = -2869.6004  
+Iteration 1:   log likelihood = -2423.2408  
+Iteration 2:   log likelihood =  -2413.104  
+Iteration 3:   log likelihood = -2413.0545  
+Iteration 4:   log likelihood = -2413.0545  
+
+Logistic regression                               Number of obs   =       4434
+                                                  LR chi2(3)      =     913.09
+                                                  Prob &gt; chi2     =     0.0000
+Log likelihood = -2413.0545                       Pseudo R2       =     0.1591
+
+------------------------------------------------------------------------------
+       death |      Coef.   Std. Err.      z    P&gt;|z|     [90% Conf. Interval]
+-------------+----------------------------------------------------------------
+   cursmoke1 |   1.456121   .4962559     2.93   0.003     .6398525    2.272389
+        age1 |   .1335346   .0068082    19.61   0.000     .1223361     .144733
+ interaction |  -.0156416   .0094101    -1.66   0.096    -.0311199   -.0001633
+       _cons |  -7.787368   .3754011   -20.74   0.000    -8.404848   -7.169888
+------------------------------------------------------------------------------
+
+</pre>
+
+
+
+</div>
+
+</div>
+
+<div id="outline-container-10-3" class="outline-4">
+<h4 id="sec-10-3">Binary Exposure and Binary Outcome Model</h4>
+<div class="outline-text-4" id="text-10-3">
+
+</div>
+
+</div>
+
+<div id="outline-container-10-4" class="outline-4">
+<h4 id="sec-10-4">Obesity and Stroke Regression Model</h4>
+<div class="outline-text-4" id="text-10-4">
+
+</div>
+
+</div>
+
+<div id="outline-container-10-5" class="outline-4">
+<h4 id="sec-10-5">Propensity Score vs. Randomization</h4>
+<div class="outline-text-4" id="text-10-5">
+
+</div>
+
+</div>
+
+<div id="outline-container-10-6" class="outline-4">
+<h4 id="sec-10-6">Smoking and Death Logistic Regression</h4>
+<div class="outline-text-4" id="text-10-6">
+
+<p>In lecture, the following logistic regression model for the
+association between smoking and death was presented: Log(P/(1-P)) =
+-7.5869 + 0.5522(CURSMOKE1) + 0.1181(AGE1)+ 0.7759(MALE) +
+0.6386(HIGHBP1) + 1.5834(DIABETES1)
+</p>
+<ol>
+<li>Using the above model, what is the odds ratio of death for a 50
+   year old man who does not smoke, has high blood pressure and does
+   not have diabetes (ie AGE1=50, CURSMOKER1=0, MALE=1, HIGHBP1=1 and
+   DIABETES=0)compared to a 50 year old woman who does not smoke, does
+   not have high blood pressure and does not have diabetes (ie
+   AGE1=50, CURSMOKER1=0, MALE=0, HIGHBP1=0 and DIABETES=0)?
+
+</li>
+<li>What is this model’s estimate for the odds ratio of death for a
+   diabetic (DIABETES1=1) compared to a non-diabetic (DIABETES= 0),
+   controlling for AGE1, MALE, HIGHBP1 and CURSMOKE1?
+</li>
+</ol>
+
+
+
+
+<pre class="src src-awk"><span style="color: #a020f0;">function</span> <span style="color: #0000ff;">model</span>(AGE1, CURSMOKE1, MALE, HIGHBP1, DIABETES1) {
+   <span style="color: #a020f0;">return</span> -7.5869 + 0.5522*(CURSMOKE1) + 0.1181*(AGE1)+ 0.7759*(MALE) + 0.6386*(HIGHBP1) + 1.5834*(DIABETES1)
+}
+<span style="color: #a020f0;">function</span> <span style="color: #0000ff;">model2</span>(AGE1, CURSMOKE1, MALE, HIGHBP1, DIABETES1) {
+   <span style="color: #b22222;"># </span><span style="color: #b22222;">AGE1 is not used</span>
+   <span style="color: #a020f0;">return</span> -1.4584 + 0.1205*(CURSMOKE1) + 0.6902*(MALE) + 1.0304*(HIGHBP1) + 1.8144*(DIABETES1)
+}
+<span style="color: #a020f0;">function</span> <span style="color: #0000ff;">invlogit</span>(y) {
+   <span style="color: #a020f0;">return</span>  <span style="color: #7a378b;">exp</span>(y)/(<span style="color: #7a378b;">exp</span>(y)+1)
+}
+<span style="color: #a020f0;">function</span> <span style="color: #0000ff;">oratio</span>(p1, p2) {
+   q1 = 1 - p1
+   q2 = 1 - p2
+   <span style="color: #a020f0;">return</span> p1*q2/(p2*q1)
+}
+<span style="color: #a020f0;">BEGIN</span> {
+   p1=invlogit(model(60, 0, 1, 1, 0))
+   p2=invlogit(model(60, 0, 0, 0, 0))
+   <span style="color: #7a378b;">print</span> oratio(p1, p2)
+
+   p1=invlogit(model(60, 0, 0, 0, 1))
+   p2=invlogit(model(60, 0, 0, 0, 0))
+   <span style="color: #7a378b;">print</span> oratio(p1, p2)
+
+   p1=invlogit(model(60, 1, 0, 0, 0))
+   p2=invlogit(model(60, 0, 0, 0, 0))
+   <span style="color: #7a378b;">print</span> oratio(p1, p2)
+
+   p1=invlogit(model2(60, 1, 0, 0, 0))
+   p2=invlogit(model2(60, 0, 0, 0, 0))
+   <span style="color: #7a378b;">print</span> oratio(p1, p2)
+}
+</pre>
+
+
+<pre class="example">
+4.11443
+4.87149
+1.73707
+1.12806
+</pre>
+
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+</div>
+</div>
+</body>
+</html>
