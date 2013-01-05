@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T13:05+0100"/>
+<meta name="generated" content="2013-01-05T13:37+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -420,6 +420,37 @@ Plot two functions
 
 <p>
 <img src="fun2.png"  alt="fun2.png" />
+</p>
+<p>
+Bar Charts
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> = 10
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
+<span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
+graph bar x, over(lev)
+</pre>
+
+
+<p>
+<img src="bar.png"  alt="bar.png" />
+</p>
+<p>
+Histogram
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">1000</span>
+<span style="color: #a020f0;">generate</span> x = rnormal()
+twoway (histogram x, bin(20)) (function normalden(x), <span style="color: #a020f0;">range</span>(-4 4))
+</pre>
+
+
+<p>
+<img src="hist.png"  alt="hist.png" />
 </p>
 <p>
 Box plot
