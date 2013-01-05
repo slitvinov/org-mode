@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T20:30+0100"/>
+<meta name="generated" content="2013-01-05T21:17+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -196,7 +196,9 @@
 <li><a href="#sec-13">Lecture 10</a>
 <ul>
 <li><a href="#sec-13-1">Simple Linear Regression</a></li>
-<li><a href="#sec-13-2">High Blood Pressure and CHD Incidence</a></li>
+<li><a href="#sec-13-2">Multiple Linear Regression</a></li>
+<li><a href="#sec-13-3">More Regression</a></li>
+<li><a href="#sec-13-4">High Blood Pressure and CHD Incidence</a></li>
 </ul>
 </li>
 </ul>
@@ -328,7 +330,7 @@ Produce scatter plot
 <pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">7</span>
 <span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
 <span style="color: #a020f0;">gen</span> y = x^2
-scatter y x
+graph scatter y x
 </pre>
 
 
@@ -1478,11 +1480,11 @@ Plot corresponding normal distributions
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmax</span>=<span style="color: #008b8b;">max</span>(`<span style="color: #a0522d;">m1</span>'+4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'+4*`<span style="color: #a0522d;">sd2</span>')
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmin</span>=<span style="color: #008b8b;">min</span>(`<span style="color: #a0522d;">m1</span>'-4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'-4*`<span style="color: #a0522d;">sd2</span>')
-twoway (function normalden(x,`<span style="color: #a0522d;">m1</span>',`<span style="color: #a0522d;">sd1</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')) <span style="color: #b22222;">///</span>
-       (function normalden(x,`<span style="color: #a0522d;">m2</span>',`<span style="color: #a0522d;">sd2</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')), <span style="color: #b22222;">///</span>
-       legend( label(1 <span style="color: #8b2252;">"dist1"</span>) label(2 <span style="color: #8b2252;">"dist2"</span>) )
+ <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmax</span>=<span style="color: #008b8b;">max</span>(`<span style="color: #a0522d;">m1</span>'+4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'+4*`<span style="color: #a0522d;">sd2</span>')
+ <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmin</span>=<span style="color: #008b8b;">min</span>(`<span style="color: #a0522d;">m1</span>'-4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'-4*`<span style="color: #a0522d;">sd2</span>')
+ twoway (function normalden(x,`<span style="color: #a0522d;">m1</span>',`<span style="color: #a0522d;">sd1</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')) <span style="color: #b22222;">///</span>
+        (function normalden(x,`<span style="color: #a0522d;">m2</span>',`<span style="color: #a0522d;">sd2</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')), <span style="color: #b22222;">///</span>
+        legend( label(1 <span style="color: #8b2252;">"dist1"</span>) label(2 <span style="color: #8b2252;">"dist2"</span>) )
 </pre>
 
 
@@ -1524,15 +1526,13 @@ Estimated required sample size:
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-<span style="color: #a020f0;">generate</span> dchol = totchol2 - totchol1
+quietly <span style="color: #a020f0;">generate</span> dchol = totchol2 - totchol1
 ttest dchol == 0
 </pre>
 
 
 
 <pre class="example">
-(675 missing values generated)
-
 One-sample t test
 ------------------------------------------------------------------------------
 Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
@@ -1837,9 +1837,9 @@ What is the p-value?
 prtest outcome, <span style="color: #008b8b;">by</span> (nfresh)
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(z)
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> P</span> = 1 - (normal(<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>'))-normal(-<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>')))
-display <span style="color: #8b2252;">"==================== answers ===================="</span>
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"test statistic = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">z</span>'
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"Pr(|Z| &lt; |z|) = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">P</span>'
+di <span style="color: #8b2252;">"==================== answers ===================="</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"test statistic = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">z</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"Pr(|Z| &lt; |z|) = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">P</span>'
 </pre>
 
 
@@ -2045,7 +2045,7 @@ standard group was 55% and 45% in the fresh blood group (again, with
 
 
 <pre class="src src-stata">sampsi .55 .45, <span style="color: #008b8b;">alpha</span>(0.05) power(0.90)
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"total sample size: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(N_1) + <span style="color: #008b8b;">r</span>(N_2)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"total sample size: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(N_1) + <span style="color: #008b8b;">r</span>(N_2)
 </pre>
 
 
@@ -2123,7 +2123,7 @@ in Harbor Islands being included in the survey?
 <pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/boston.csv"</span>
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d1</span> = 1000
 quietly <span style="color: #008b8b;">sum</span> pop
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 1, both): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d1</span>'/<span style="color: #008b8b;">r</span>(mean)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 1, both): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d1</span>'/<span style="color: #008b8b;">r</span>(mean)
 
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d2</span> = 100
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
@@ -2455,25 +2455,17 @@ by ______ each month, from May to September.
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
-regress nickel month
+quietly <span style="color: #008b8b;">regress</span> nickel month
+<span style="color: #b22222;">/// to extract coefficients from matrix  </span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases in one month by "</span> <span style="color: #008b8b;">as</span> result  betamonth[1]
 </pre>
 
 
-
 <pre class="example">
-      Source |       SS       df       MS              Number of obs =     248
--------------+------------------------------           F(  1,   246) =   21.47
-       Model |  1535.60852     1  1535.60852           Prob &gt; F      =  0.0000
-    Residual |  17594.5323   246  71.5224891           R-squared     =  0.0803
--------------+------------------------------           Adj R-squared =  0.0765
-       Total |  19130.1408   247  77.4499629           Root MSE      =  8.4571
 
-------------------------------------------------------------------------------
-      nickel |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-       month |   1.642664   .3545111     4.63   0.000     .9443998    2.340928
-       _cons |   5.335122   2.646702     2.02   0.045     .1220335    10.54821
-------------------------------------------------------------------------------
+nickel increases in one month by 1.642664
 
 </pre>
 
@@ -2592,15 +2584,232 @@ than <b>Model 2</b>.
 </div>
 
 <div id="outline-container-13-2" class="outline-4">
-<h4 id="sec-13-2">High Blood Pressure and CHD Incidence</h4>
+<h4 id="sec-13-2">Multiple Linear Regression</h4>
 <div class="outline-text-4" id="text-13-2">
+
+<p>Again, we model the amount of nickel found in the sediment. Now, we
+model nickel as a function of both time (month) and location
+(longitude). The Gulf Coast in Louisiana is somewhat horizontal, so
+for simplicity we will ignore latitude in this problem.
+</p>
+<p>
+Fit a linear regression model with nickel as the outcome and with
+month and longitude as explanatory covariates. Model month as a
+continuous variable, as in <b>Model 2</b> from the previous question. Call
+this <b>Model 3</b>. Assume the assumptions of linear regression hold.
+</p>
+<ul>
+<li id="sec-13-2-1"><span class="todo TODO">TODO</span> Q1<br/>
+Compare the adjusted R-squared from Models 2 and 3. Does the addition
+of longitude improve the adjusted R-square?
+
+<p>
+<b>Answer: YES</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-13-2-2">Q2<br/>
+Test whether the coefficient for longitude in the model is equal to 0
+at the 0.05 level of significance.
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+regress  nickel month longitude
+<span style="color: #b22222;">/// getting answers from command output</span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+mat varcovar=<span style="color: #008b8b;">e</span>(V)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"estimated coefficient: "</span> <span style="color: #008b8b;">as</span> result  betalongitude[1]
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"degrees of freedom: "</span> <span style="color: #008b8b;">as</span> result  <span style="color: #008b8b;">e</span>(df_r)
+</pre>
+
+
+
+<pre class="example">
+      Source |       SS       df       MS              Number of obs =     248
+-------------+------------------------------           F(  2,   245) =   12.54
+       Model |  1776.53846     2  888.269231           Prob &gt; F      =  0.0000
+    Residual |  17353.6024   245  70.8310301           R-squared     =  0.0929
+-------------+------------------------------           Adj R-squared =  0.0855
+       Total |  19130.1408   247  77.4499629           Root MSE      =  8.4161
+
+------------------------------------------------------------------------------
+      nickel |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       month |   1.678598   .3533309     4.75   0.000     .9826447    2.374552
+   longitude |  -.7402628   .4013769    -1.84   0.066    -1.530852    .0503267
+       _cons |  -62.10854   36.66326    -1.69   0.092    -134.3239    10.10687
+------------------------------------------------------------------------------
+
+estimated coefficient: -.74026284
+
+degrees of freedom: 245
+
+</pre>
+
+
+<p>
+What is the estimated coefficient?
+</p>
+<p>
+<b>Answer: -.7402628</b>
+</p>
+<p>
+The estimated standard error of the estimated coefficient?
+</p>
+<p>
+<b>Answer: .4013769</b>
+</p>
+<p>
+The estimate of the test statistic?
+</p>
+<p>
+<b>Answer: -1.84</b>
+</p>
+<p>
+The number of degrees of freedom of the distribution of the test
+statistic under the null hypothesis?
+</p>
+<p>
+<b>Answer: 245</b>
+</p>
+<p>
+The p-value?
+</p>
+<p>
+<b>Answer: 0.066</b>
+</p>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-13-3" class="outline-4">
+<h4 id="sec-13-3">More Regression</h4>
+<div class="outline-text-4" id="text-13-3">
+
+<ul>
+<li id="sec-13-3-1">Q1<br/>
+ Examine the relationship between vanadium (another marker of oil in
+ sediment) and nickel using a scatter plot. Does this relationship
+ appear linear?
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+scatter vanadium nickel
+</pre>
+
+
+<p>
+<img src="oil-van.png"  alt="oil-van.png" />
+</p>
+<p>
+<b>Answer: Yes</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-13-3-2">Q2<br/>
+How many outliers do you observe in this scatterplot? 
+
+<p>
+<b>Answer: 3</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-13-3-3">Q3<br/>
+Fit a linear regression model with nickel as the outcome and vanadium
+as the explanatory covariate (Model 4). Use this model to answer
+questions 3 and 4.
+
+<p>
+How much does nickel increase, on average, for a one mg/kg increase in
+vanadium?
+</p>
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #008b8b;">regress</span> nickel vanadium
+<span style="color: #b22222;">/// to extract coefficients from matrix  </span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases by  "</span> <span style="color: #008b8b;">as</span> result  betavanadium[1]
+</pre>
+
+
+<pre class="example">
+
+nickel increases by  .4379549
+
+</pre>
+
+
+
+<p>
+<b>Answer: .4379549</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-13-3-4">Q4<br/>
+How much does nickel increase, on average, for a 10 mg/kg increase in
+vanadium?
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #008b8b;">regress</span> nickel vanadium
+<span style="color: #b22222;">/// to extract coefficients from matrix  </span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases by  "</span> <span style="color: #008b8b;">as</span> result  10*betavanadium[1]
+<span style="color: #b22222;">/// another way</span>
+lincom 10*vanadium
+</pre>
+
+
+
+<pre class="example">
+nickel increases by  4.379549
+
+ ( 1)  10*vanadium = 0
+
+------------------------------------------------------------------------------
+      nickel |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         (1) |   4.379549   .1613771    27.14   0.000     4.061692    4.697406
+------------------------------------------------------------------------------
+
+</pre>
+
+
+<p>
+<b>Answer 4.379549</b>
+</p>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-13-4" class="outline-4">
+<h4 id="sec-13-4">High Blood Pressure and CHD Incidence</h4>
+<div class="outline-text-4" id="text-13-4">
 
 <p>Use Stata and the NHLBI data set to create the two categories of high
 blood pressure (highbp1)
 </p>
 
 <ul>
-<li id="sec-13-2-1">Q1<br/>
+<li id="sec-13-4-1">Q1<br/>
 What is the incidence rate ratio of stroke comparing those with
 high blood pressure to those without high blood pressure? Hint: The
 variable for stroke in the dataset is "stroke" and the number of years
@@ -2641,21 +2850,17 @@ Time [years] to  |  28887.76    59787.78  |   88675.54
 </pre>
 
 
+<p>
+<b>Answer: 3.298517</b>
+</p>
 </li>
 </ul>
 <ul>
-<li id="sec-13-2-2">Q2<br/>
+<li id="sec-13-4-2">Q2<br/>
 What is the incidence rate ratio (rounded to two decimal points)
 for the association between high blood pressure (highbp1) and the rate
 of stroke among men? Hint: Use the variable (sex1).
 
-</li>
-</ul>
-<ul>
-<li id="sec-13-2-3">Q3<br/>
-What is the incidence rate ratio (rounded to two decimal points)
-for the association between high blood pressure (highbp1) and the rate
-of stroke among women?
 
 
 
@@ -2663,7 +2868,7 @@ of stroke among women?
 quietly <span style="color: #a020f0;">generate</span> highbp1=.
 quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
 quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
-ir stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
+ <span style="color: #008b8b;">ir</span> stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 </pre>
 
 
@@ -2681,6 +2886,55 @@ ir stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 
 </pre>
 
+
+<p>
+<b>Answer: 2.273711</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-13-4-3">Q3<br/>
+What is the incidence rate ratio (rounded to two decimal points)
+for the association between high blood pressure (highbp1) and the rate
+of stroke among women?
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">generate</span> highbp1=.
+quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+ <span style="color: #008b8b;">ir</span> stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
+</pre>
+
+
+
+<pre class="example">
+     Sex, exam 1 |      IRR       [95% Conf. Interval]   M-H Weight
+-----------------+-------------------------------------------------
+            Male |   2.273711      1.697105   3.048007     29.75741 (exact)
+          Female |    4.74629      3.537425   6.429301     21.94115 (exact)
+-----------------+-------------------------------------------------
+           Crude |   3.298517      2.696321   4.045047              (exact)
+    M-H combined |   3.323088      2.725029   4.052401
+-------------------------------------------------------------------
+ Test of homogeneity (M-H)    chi2(1) =     12.84  Pr&gt;chi2 = 0.0003
+
+</pre>
+
+
+<p>
+<b>Answer: 4.74629</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-13-4-4"><span class="todo TODO">TODO</span> Q4<br/>
+Conduct a test of homogeneity to evaluate whether the association
+between high blood pressure (highbp1) and the rate of stroke is
+different by sex. Based on this test, is there evidence that the
+difference between the sex-specific incidence rate ratios are more
+than just random sampling variability?
 
 </li>
 </ul>
