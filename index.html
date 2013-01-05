@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-04T23:59+0100"/>
+<meta name="generated" content="2013-01-05T03:10+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,6 +62,30 @@
 </style><link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css" />
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css" />
 <script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -84,6 +108,56 @@
 /*]]>*///-->
 </script>
 <script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
+/**
+ *
+ * @source: http://orgmode.org/mathjax/MathJax.js
+ *
+ * @licstart  The following is the entire license notice for the
+ *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ * Copyright (C) 2012  MathJax
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ *
+ * @licend  The above is the entire license notice
+ * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
+ *
+ */
+
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code below.
+
+Copyright (C) 2012  Free Software Foundation, Inc.
+
+The JavaScript code below is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code below.
+*/
 <!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
         // Only one of the two following lines, depending on user settings
@@ -139,7 +213,7 @@
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">Basic</a></li>
+<li><a href="#sec-1">Basics</a></li>
 <li><a href="#sec-2">Probability distribution functions</a>
 <ul>
 <li><a href="#sec-2-1">normal</a></li>
@@ -152,51 +226,43 @@
 <li><a href="#sec-3-1">ttest</a></li>
 <li><a href="#sec-3-2">samsi</a></li>
 <li><a href="#sec-3-3">signtest</a></li>
+<li><a href="#sec-3-4">lincom</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">Lecutre 5</a>
+<li><a href="#sec-4">Tutorial 11</a></li>
+<li><a href="#sec-5">Lecutre 5</a>
 <ul>
-<li><a href="#sec-4-1">Central Limit Theorem and Confidence Intervals</a></li>
+<li><a href="#sec-5-1">Central Limit Theorem and Confidence Intervals</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">Lecture 6</a>
+<li><a href="#sec-6">Lecture 6</a>
 <ul>
-<li><a href="#sec-5-1">intro</a></li>
-<li><a href="#sec-5-2">Two-Sample t-test</a></li>
-<li><a href="#sec-5-3">ANOVA</a></li>
+<li><a href="#sec-6-1">intro</a></li>
+<li><a href="#sec-6-2">Two-Sample t-test</a></li>
+<li><a href="#sec-6-3">ANOVA</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">Lecture 7</a>
+<li><a href="#sec-7">Lecture 7</a>
 <ul>
-<li><a href="#sec-6-1">Inference for proportions</a></li>
-<li><a href="#sec-6-2">Contingency Tables</a></li>
-<li><a href="#sec-6-3">Final Thoughts on the Blood Transfusion Trial</a></li>
+<li><a href="#sec-7-1">Inference for proportions</a></li>
+<li><a href="#sec-7-2">Contingency Tables</a></li>
+<li><a href="#sec-7-3">Final Thoughts on the Blood Transfusion Trial</a></li>
 </ul>
 </li>
-<li><a href="#sec-7">Lecture 8</a>
+<li><a href="#sec-8">Lecture 8</a>
 <ul>
-<li><a href="#sec-7-1">Survey Design</a></li>
+<li><a href="#sec-8-1">Survey Design</a></li>
 </ul>
 </li>
-<li><a href="#sec-8">Lecture 9</a>
+<li><a href="#sec-9">Lecture 9</a>
 <ul>
-<li><a href="#sec-8-1">Trends in Unemployment</a></li>
+<li><a href="#sec-9-1">Trends in Unemployment</a></li>
 </ul>
 </li>
-<li><a href="#sec-9">Lecture 10</a>
+<li><a href="#sec-10">Lecture 10</a>
 <ul>
-<li><a href="#sec-9-1">Simple Linear Regression</a></li>
-<li><a href="#sec-9-2">High Blood Pressure and CHD Incidence</a></li>
-</ul>
-</li>
-<li><a href="#sec-10">Lecutre 11</a>
-<ul>
-<li><a href="#sec-10-1">Death, Blood Pressure, and Age</a></li>
-<li><a href="#sec-10-2">Death, Smoking, and Age</a></li>
-<li><a href="#sec-10-3">Binary Exposure and Binary Outcome Model</a></li>
-<li><a href="#sec-10-4">Obesity and Stroke Regression Model</a></li>
-<li><a href="#sec-10-5">Propensity Score vs. Randomization</a></li>
-<li><a href="#sec-10-6">Smoking and Death Logistic Regression</a></li>
+<li><a href="#sec-10-1">Simple Linear Regression</a></li>
+<li><a href="#sec-10-2">High Blood Pressure and CHD Incidence</a></li>
 </ul>
 </li>
 </ul>
@@ -204,7 +270,7 @@
 </div>
 
 <div id="outline-container-1" class="outline-3">
-<h3 id="sec-1">Basic</h3>
+<h3 id="sec-1">Basics</h3>
 <div class="outline-text-3" id="text-1">
 
 
@@ -221,7 +287,9 @@ hello world
 </pre>
 
 
-
+<p>
+Use macro definition
+</p>
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 41
@@ -229,17 +297,19 @@ di `<span style="color: #a0522d;">N</span>'+1
 </pre>
 
 
-<pre class="example">
-
+<p>
+=
 42
+</p>
+<p>
+=:
+</p>
+<p>
+<code>quietly</code> suppresses for the duration of command
+</p>
 
-</pre>
 
-
-
-
-
-<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+<pre class="src src-stata">quietly set obs 5
 <span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
 describe
 </pre>
@@ -247,8 +317,6 @@ describe
 
 
 <pre class="example">
-obs was 0, now 5
-
 Contains data
   obs:             5                          
  vars:             1                          
@@ -264,6 +332,10 @@ Sorted by:
 
 </pre>
 
+
+<p>
+One can use <code>r(...)</code> or <code>e(...)</code> to get output from stata commands
+</p>
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
@@ -282,10 +354,29 @@ obs was 0, now 5
 </pre>
 
 
+<p>
+Multi-line command
+</p>
 
 
+<pre class="src src-stata">di <span style="color: #b22222;">///</span>
+   <span style="color: #8b2252;">"test"</span>
+</pre>
 
-<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+
+<pre class="example">
+
+test
+
+</pre>
+
+
+<p>
+Produce scatter plot
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">7</span>
 <span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
 <span style="color: #a020f0;">gen</span> y = x^2
 scatter y x
@@ -296,7 +387,7 @@ scatter y x
 <img src="stata-sq.png"  alt="stata-sq.png" />
 </p>
 <p>
-Plot simple function
+Plot a function
 </p>
 
 
@@ -312,14 +403,16 @@ Plot two functions
 </p>
 
 
-<pre class="src src-stata">twoway (function <span style="color: #008b8b;">sin</span>(x), <span style="color: #a020f0;">range</span>(0 10))  (function <span style="color: #008b8b;">cos</span>(x), <span style="color: #a020f0;">range</span>(0 10))
+<pre class="src src-stata">twoway (function <span style="color: #008b8b;">sin</span>(x), <span style="color: #a020f0;">range</span>(-10 10))  (function <span style="color: #008b8b;">cos</span>(x), <span style="color: #a020f0;">range</span>(-10 10)) 
 </pre>
 
 
 <p>
 <img src="fun2.png"  alt="fun2.png" />
 </p>
-
+<p>
+Box plot
+</p>
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
@@ -350,7 +443,7 @@ graph box x y
 
 
 
-<pre class="src src-stata">twoway function normalden(x, 0, 1), <span style="color: #a020f0;">range</span>(-4 4)
+<pre class="src src-stata">twoway function normalden(x, 0, 1), <span style="color: #a020f0;">range</span>(-4 4) ytitle(<span style="color: #8b2252;">"pr. density of normal distr."</span>)
 </pre>
 
 
@@ -365,11 +458,13 @@ graph box x y
 <h4 id="sec-2-2">binomial</h4>
 <div class="outline-text-4" id="text-2-2">
 
-<p>Plot binomial distribution
+<p>Plot binomial distribution, legend example
 </p>
 
 
-<pre class="src src-stata">twoway (function binomial(10, x, 0.5), <span style="color: #a020f0;">range</span>(0 10)) (function binomial(10, x, 0.25), <span style="color: #a020f0;">range</span>(0 10))
+<pre class="src src-stata">twoway (function binomial(10, x, 0.5), <span style="color: #a020f0;">range</span>(0 10)) <span style="color: #b22222;">///</span>
+       (function binomial(10, x, 0.25), <span style="color: #a020f0;">range</span>(0 10)), <span style="color: #b22222;">///</span>
+       legend( label(1 <span style="color: #8b2252;">"p=0.5"</span>) label(2 <span style="color: #8b2252;">"p=0.25"</span>) )
 </pre>
 
 
@@ -387,7 +482,10 @@ graph box x y
 
 
 
-<pre class="src src-stata">twoway (function tden(2, x), <span style="color: #a020f0;">range</span>(-10 10)) (function tden(10, x), <span style="color: #a020f0;">range</span>(-10 10))
+<pre class="src src-stata">twoway (function tden(2, x), <span style="color: #a020f0;">range</span>(-10 10)) <span style="color: #b22222;">///</span>
+       (function tden(10, x), <span style="color: #a020f0;">range</span>(-10 10)), <span style="color: #b22222;">///</span>
+       legend( label(1 <span style="color: #8b2252;">"n=2"</span>) label(2 <span style="color: #8b2252;">"n=10"</span>)) <span style="color: #b22222;">///</span>
+       ytitle(<span style="color: #8b2252;">"t-distribution"</span>)
 </pre>
 
 
@@ -690,20 +788,76 @@ Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
 
 
 </div>
+
+</div>
+
+<div id="outline-container-3-4" class="outline-4">
+<h4 id="sec-3-4">lincom</h4>
+<div class="outline-text-4" id="text-3-4">
+
+<p>lincom computes combinations of estimators (z, p-values etc.)
+</p></div>
 </div>
 
 </div>
 
 <div id="outline-container-4" class="outline-3">
-<h3 id="sec-4">Lecutre 5</h3>
+<h3 id="sec-4"><span class="todo TODO">TODO</span> Tutorial 11</h3>
 <div class="outline-text-3" id="text-4">
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/chis_healthdisparities.e85b34e4c45a.dta
+<span style="color: #a020f0;">gen</span> nopov = 1-poverty
+logit doctor nopov
+lincom nopov, eform
+</pre>
+
+
+<pre class="example">
+Iteration 0:   log likelihood =  -247.4035  
+Iteration 1:   log likelihood = -245.14765  
+Iteration 2:   log likelihood = -245.08244  
+Iteration 3:   log likelihood = -245.08242  
+
+Logistic regression                               Number of obs   =        500
+                                                  LR chi2(1)      =       4.64
+                                                  Prob &gt; chi2     =     0.0312
+Log likelihood = -245.08242                       Pseudo R2       =     0.0094
+
+------------------------------------------------------------------------------
+      doctor |      Coef.   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+       nopov |   .6713351   .3013476     2.23   0.026     .0807047    1.261965
+       _cons |     .83975   .2745156     3.06   0.002     .3017093    1.377791
+------------------------------------------------------------------------------
+
+ ( 1)  [doctor]nopov = 0
+
+------------------------------------------------------------------------------
+      doctor |     exp(b)   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         (1) |   1.956848   .5896914     2.23   0.026     1.084051    3.532357
+------------------------------------------------------------------------------
+
+</pre>
 
 
 </div>
 
-<div id="outline-container-4-1" class="outline-4">
-<h4 id="sec-4-1">Central Limit Theorem and Confidence Intervals</h4>
-<div class="outline-text-4" id="text-4-1">
+</div>
+
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5">Lecutre 5</h3>
+<div class="outline-text-3" id="text-5">
+
+
+</div>
+
+<div id="outline-container-5-1" class="outline-4">
+<h4 id="sec-5-1">Central Limit Theorem and Confidence Intervals</h4>
+<div class="outline-text-4" id="text-5-1">
 
 <p>According to the WHO Global Database on Anaemia, the mean hemoglobin
 levels among primary school children in Delhi were estimated at \(\mu=
@@ -717,7 +871,7 @@ Delhi. Denote the mean hemoglobin levels in this sample as
 large enough that the Central Limit Theorem is applicable and that
 \(\sigma\) is known.
 </p>
-<ol>
+<ol class="org-ol">
 <li>According to the Central Limit Theorem, what is the expected value
    (mean) of \(\over{x}\)?
 </li>
@@ -732,18 +886,18 @@ large enough that the Central Limit Theorem is applicable and that
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
-di `<span style="color: #a0522d;">std</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"standard deviation of sample mean: "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">std</span>'
 </pre>
 
 
 <pre class="example">
 
-1.4433757
+standard deviation of sample mean: 1.4433757
 
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Suppose we take a large number of samples of size 75. What
    proportion of the samples would we expect to have a sample mean
    \(\over{x}\) that lies between 106 and 110 g/L?
@@ -759,18 +913,18 @@ di `<span style="color: #a0522d;">std</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
-di normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
 <pre class="example">
 
-.83414334
+proportion: .83414334
 
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Suppose instead we repeatedly took random samples of size 25. What
    proportion of the samples would we expect to have a sample mean
    that lies between 106 and 110 g/L?
@@ -786,18 +940,18 @@ di normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color:
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
-di normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
 <pre class="example">
 
-.5762892
+proportion: .5762892
 
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Again, suppose we repeatedly took samples of size 75. What
    proportion of the samples would we expect to have a mean less than
    \(\over{x}=103\) ?
@@ -812,18 +966,18 @@ di normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color:
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (103 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
-di normal(`<span style="color: #a0522d;">z1</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
 <pre class="example">
 
-.000266
+proportion: .000266
 
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>If we repeatedly took samples of size 75, \(\over{x}\) we would
    expect that, in 20% of the samples, would be greater than ___?
 </li>
@@ -837,18 +991,18 @@ di normal(`<span style="color: #a0522d;">z1</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> =  invnormal(0.8)
-di `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"20% of the sample is greater than "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
 </pre>
 
 
 <pre class="example">
 
-109.21478
+20% of the sample is greater than 109.21478
 
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>After taking a sample of size 75, we found that the sample mean was
    \(\over{x}=103\). Construct a 95% confidence interval for \(\mu\).
 </li>
@@ -860,16 +1014,14 @@ di `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std<
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sample_mean</span> = 103.0
-di `<span style="color: #a0522d;">sample_mean</span>' - 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
-di `<span style="color: #a0522d;">sample_mean</span>' + 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> dM</span> = 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"interval: "</span> `<span style="color: #a0522d;">sample_mean</span>'-`<span style="color: #a0522d;">dM</span>' <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">" "</span> `<span style="color: #a0522d;">sample_mean</span>'+`<span style="color: #a0522d;">dM</span>'
 </pre>
 
 
 <pre class="example">
 
-100.17098
-
-105.82902
+interval: 100.17098 105.82902
 
 </pre>
 
@@ -879,16 +1031,16 @@ di `<span style="color: #a0522d;">sample_mean</span>' + 1.96*`<span style="color
 
 </div>
 
-<div id="outline-container-5" class="outline-3">
-<h3 id="sec-5">Lecture 6</h3>
-<div class="outline-text-3" id="text-5">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6">Lecture 6</h3>
+<div class="outline-text-3" id="text-6">
 
 
 </div>
 
-<div id="outline-container-5-1" class="outline-4">
-<h4 id="sec-5-1">intro</h4>
-<div class="outline-text-4" id="text-5-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1">intro</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <p>Sample size and power for means and proportions
 </p>
@@ -946,7 +1098,9 @@ Plot normal distributions
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmax</span>=<span style="color: #008b8b;">max</span>(`<span style="color: #a0522d;">m1</span>'+4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'+4*`<span style="color: #a0522d;">sd2</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmin</span>=<span style="color: #008b8b;">min</span>(`<span style="color: #a0522d;">m1</span>'-4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'-4*`<span style="color: #a0522d;">sd2</span>')
-twoway (function normalden(x,`<span style="color: #a0522d;">m1</span>',`<span style="color: #a0522d;">sd1</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')) (function normalden(x,`<span style="color: #a0522d;">m2</span>',`<span style="color: #a0522d;">sd2</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>'))
+twoway (function normalden(x,`<span style="color: #a0522d;">m1</span>',`<span style="color: #a0522d;">sd1</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')) <span style="color: #b22222;">///</span>
+       (function normalden(x,`<span style="color: #a0522d;">m2</span>',`<span style="color: #a0522d;">sd2</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')), <span style="color: #b22222;">///</span>
+       legend( label(1 <span style="color: #8b2252;">"dist1"</span>) label(2 <span style="color: #8b2252;">"dist2"</span>) )
 </pre>
 
 
@@ -1037,7 +1191,6 @@ graph box totchol1 totchol2
 
 
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<caption></caption>
 <colgroup><col class="left" />
 </colgroup>
 <tbody>
@@ -1097,9 +1250,9 @@ graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
 
 </div>
 
-<div id="outline-container-5-2" class="outline-4">
-<h4 id="sec-5-2">Two-Sample t-test</h4>
-<div class="outline-text-4" id="text-5-2">
+<div id="outline-container-6-2" class="outline-4">
+<h4 id="sec-6-2">Two-Sample t-test</h4>
+<div class="outline-text-4" id="text-6-2">
 
 <p>Schiff et al. (1990) investigated the effect of low doses of aspirin
 on women with mild pregnancy-induced hypertension. Forty-seven women
@@ -1116,7 +1269,7 @@ Source: Schiff, E., Barkai,G., Ben-Baruch G., and Mashiach, S.,
 Mild Pregnancy-Induced Hypertension," Obstetrics and Gynecology,
 Vol. 76, November 1990, 742-744.
 </p>
-<ol>
+<ol class="org-ol">
 <li>Conduct a two sample t-test with equal variances at \(\alpha = 0.05\)
 </li>
 </ol>
@@ -1126,7 +1279,7 @@ treated with aspirin is equal to the population mean arterial blood
 pressure for women treated with placebo. What is the value of the test
 statistic?
 </p>
-<ol>
+<ol class="org-ol">
 <li>How many degrees of freedom does your test statistic have?
 
 </li>
@@ -1200,27 +1353,27 @@ We reject H0: mean(x)==mean(y)
 
 </div>
 
-<div id="outline-container-5-3" class="outline-4">
-<h4 id="sec-5-3">ANOVA</h4>
-<div class="outline-text-4" id="text-5-3">
+<div id="outline-container-6-3" class="outline-4">
+<h4 id="sec-6-3">ANOVA</h4>
+<div class="outline-text-4" id="text-6-3">
 
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-6" class="outline-3">
-<h3 id="sec-6">Lecture 7</h3>
-<div class="outline-text-3" id="text-6">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7">Lecture 7</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
 
-<div id="outline-container-6-1" class="outline-4">
-<h4 id="sec-6-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
-<div class="outline-text-4" id="text-6-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
+<div class="outline-text-4" id="text-7-1">
 
-<ol>
+<ol class="org-ol">
 <li>Construct a 95% confidence interval for <b>the proportion</b> of infants
 </li>
 </ol>
@@ -1229,7 +1382,7 @@ We reject H0: mean(x)==mean(y)
 group, using the following methods: exact binomial, Wilson normal
 approximation.
 </p>
-<ol>
+<ol class="org-ol">
 <li>Is the normal approximation to the binomial appropriate in this
    setting? 
 </li>
@@ -1260,7 +1413,7 @@ approximation.
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Suppose you wanted to calculate a 95% confidence interval for
 </li>
 </ol>
@@ -1269,7 +1422,7 @@ approximation.
 fresh blood transfusion as well. Examine the table above. Is the
 Wilson confidence interval still appropriate?
 </p>
-<ol>
+<ol class="org-ol">
 <li>Estimate and construct a large-sample 95% confidence interval for the
 </li>
 </ol>
@@ -1309,7 +1462,7 @@ Two-sample test of proportions                     0: Number of obs =      188
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Use a two-sample test of proportions to test whether there is a
    difference in the proportion of infants experiencing the composite
    outcome between fresh blood group and the standard protocol group
@@ -1367,9 +1520,9 @@ Pr(|Z| &lt; |z|) = .96115075
 
 </div>
 
-<div id="outline-container-6-2" class="outline-4">
-<h4 id="sec-6-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
-<div class="outline-text-4" id="text-6-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <p>Continue using the Fergusson et al. (2012) clinical trial data to
 complete the following questions. Again, use either the dataset from
@@ -1377,7 +1530,7 @@ the previous question, hw7.dta, or the study results in the table
 below.
 <code>table is missing</code>
 </p>
-<ol>
+<ol class="org-ol">
 <li>Estimate the odds ratio and a 95% confidence interval for
    experiencing the composite outcome for those in the fresh blood
    group versus standard protocol blood group.
@@ -1422,7 +1575,7 @@ OR Estimate:
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Construct a 2x2 table for the composite outcome versus blood
    group. Are the expected cell counts large enough to conduct a
    Pearson Chi-square test?
@@ -1465,7 +1618,7 @@ tabulate outcome fresh, row expected
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Using the Pearson chi-square test, determine if there is evidence
 </li>
 </ol>
@@ -1512,11 +1665,11 @@ tabulate outcome fresh, expected chi2
 
 </div>
 
-<div id="outline-container-6-3" class="outline-4">
-<h4 id="sec-6-3">Final Thoughts on the Blood Transfusion Trial</h4>
-<div class="outline-text-4" id="text-6-3">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3">Final Thoughts on the Blood Transfusion Trial</h4>
+<div class="outline-text-4" id="text-7-3">
 
-<ol>
+<ol class="org-ol">
 <li>In this study, the authors state that they powered the study to
    detect an absolute difference of 15% in the two groups with 80%
    power, using a 2-sided test with . After a few more adjustments,
@@ -1570,18 +1723,18 @@ total sample size: 1088
 
 </div>
 
-<div id="outline-container-7" class="outline-3">
-<h3 id="sec-7">Lecture 8</h3>
-<div class="outline-text-3" id="text-7">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8">Lecture 8</h3>
+<div class="outline-text-3" id="text-8">
 
 
 </div>
 
-<div id="outline-container-7-1" class="outline-4">
-<h4 id="sec-7-1">Survey Design</h4>
-<div class="outline-text-4" id="text-7-1">
+<div id="outline-container-8-1" class="outline-4">
+<h4 id="sec-8-1">Survey Design</h4>
+<div class="outline-text-4" id="text-8-1">
 
-<ol>
+<ol class="org-ol">
 <li>Suppose you decided to randomly sample 1,700 people from the city
    of Boston (call this Design 1). For any given individual in South
    Dorchester, what is the probability of being selected in the
@@ -1648,16 +1801,16 @@ P (design 2, Harbor Islands): .18691589
 
 </div>
 
-<div id="outline-container-8" class="outline-3">
-<h3 id="sec-8"><span class="todo TODO">TODO</span> Lecture 9</h3>
-<div class="outline-text-3" id="text-8">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9"><span class="todo TODO">TODO</span> Lecture 9</h3>
+<div class="outline-text-3" id="text-9">
 
 
 </div>
 
-<div id="outline-container-8-1" class="outline-4">
-<h4 id="sec-8-1">Trends in Unemployment</h4>
-<div class="outline-text-4" id="text-8-1">
+<div id="outline-container-9-1" class="outline-4">
+<h4 id="sec-9-1">Trends in Unemployment</h4>
+<div class="outline-text-4" id="text-9-1">
 
 <p>We again use publicly available data from the World Bank’s website to
 examine national trends in unemployment percentages (percent
@@ -1673,7 +1826,7 @@ Japan.
 Use the dataset UnemploymentbyCountry.dta to answer the following
 questions.
 </p>
-<ol>
+<ol class="org-ol">
 <li>Calculate the Pearson and Spearman correlations between total
    unemployment and year for the United States and for Japan.
 </li>
@@ -1731,7 +1884,7 @@ Test of Ho: unemployedtotal and year are independent
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Exclude all years after 2007 (recall that the financial collapse
    occurred in late 2008). Recalculate the correlations in
    question 1. (Hint: use an "if" command to restrict to certain years
@@ -1793,7 +1946,7 @@ Test of Ho: unemployedtotal and year are independent
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>Construct a scatter plot with year on the x-axis and with both
    unemployment in the United States and unemployment in Japan on the
    y-axis. (Hint: try plotting different symbols for the United States
@@ -1809,8 +1962,9 @@ Test of Ho: unemployedtotal and year are independent
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
-twoway  (scatter unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>) *
-(scatter unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>
+twoway  (scatter unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>) <span style="color: #b22222;">///</span>
+(scatter unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>), <span style="color: #b22222;">///</span>
+legend( label(1 <span style="color: #8b2252;">"Japan"</span>) label(2 <span style="color: #8b2252;">"United States"</span>) )
 </pre>
 
 
@@ -1822,16 +1976,16 @@ twoway  (scatter unemployedtotal year if country==<span style="color: #8b2252;">
 
 </div>
 
-<div id="outline-container-9" class="outline-3">
-<h3 id="sec-9"><span class="todo TODO">TODO</span> Lecture 10</h3>
-<div class="outline-text-3" id="text-9">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="todo TODO">TODO</span> Lecture 10</h3>
+<div class="outline-text-3" id="text-10">
 
 
 </div>
 
-<div id="outline-container-9-1" class="outline-4">
-<h4 id="sec-9-1">Simple Linear Regression</h4>
-<div class="outline-text-4" id="text-9-1">
+<div id="outline-container-10-1" class="outline-4">
+<h4 id="sec-10-1">Simple Linear Regression</h4>
+<div class="outline-text-4" id="text-10-1">
 
 <p> We use data from the Environmental Protection Agency (EPA) to track
  the BP oil spill in Louisiana between May and September 2010. The oil
@@ -1872,7 +2026,7 @@ that the data does not appear to be skewed or any other evidence that
 would suggest a violation of the assumptions necessary to analyze this
 data using linear regression.
 </p>
-<ol>
+<ol class="org-ol">
 <li>Does the amount of nickel in the soil tend to increase over the
    four month period? <code>TODO: make a histogram plot</code>
 </li>
@@ -1890,7 +2044,7 @@ twoway (scatter nickel month) (lfit nickel month)
 <img src="oil-scatter.png"  alt="oil-scatter.png" />
 </p>
 
-<ol>
+<ol class="org-ol">
 <li>Examine the regression coefficients. Compare how the average nickel
    amount changes by month. Is it reasonable to assume that average
    amount of nickel increases linearly by month?
@@ -1919,7 +2073,7 @@ assumptions of linear regression continue to hold. Fit a model with
 nickel as the outcome and month modeled as a continuous explanatory
 variable. Call this <b>Model 2</b>.
 </p>
-<ol>
+<ol class="org-ol">
 <li>Using <b>Model 2</b>, it is estimated that, on average, nickel increases
    by ______ each month, from May to September.
 </li>
@@ -1957,7 +2111,7 @@ i.month           _Imonth_5-9         (naturally coded; _Imonth_5 omitted)
 
 
 
-<ol>
+<ol class="org-ol">
 <li>What is the 95% confidence interval for the average increase in
    nickel each month?
 </li>
@@ -1991,7 +2145,7 @@ regress nickel month
 
 
 
-<ol>
+<ol class="org-ol">
 <li>Given that the relationship between month and nickel appears to be
    linear, is it reasonable to use Model 2 to predict the amount of
    nickel in the soil in July 2010?
@@ -2014,7 +2168,7 @@ are coded.)
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
 quietly <span style="color: #008b8b;">regress</span> nickel month
- *** to extract coefficeint from matrix  ***
+** to extract coefficeint from matrix  ***
 mat beta=<span style="color: #008b8b;">e</span>(b)
 <span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
 di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases in one month by "</span> <span style="color: #008b8b;">as</span> result  betamonth[1]
@@ -2029,7 +2183,7 @@ nickel increases in one month by 1.642664
 
 
 
-<ol>
+<ol class="org-ol">
 <li>True or False: <b>Model 1</b> makes stronger modeling assumptions than
    <b>Model 2</b>.
 </li>
@@ -2040,9 +2194,9 @@ nickel increases in one month by 1.642664
 
 </div>
 
-<div id="outline-container-9-2" class="outline-4">
-<h4 id="sec-9-2">High Blood Pressure and CHD Incidence</h4>
-<div class="outline-text-4" id="text-9-2">
+<div id="outline-container-10-2" class="outline-4">
+<h4 id="sec-10-2">High Blood Pressure and CHD Incidence</h4>
+<div class="outline-text-4" id="text-10-2">
 
 <p>Use Stata and the NHLBI data set to create the two categories of high
 blood pressure (highbp1)
@@ -2056,7 +2210,7 @@ blood pressure (highbp1)
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>What is the incidence rate ratio of stroke comparing those with
    high blood pressure to those without high blood pressure? Hint: The
    variable for stroke in the dataset is "stroke" and the number of
@@ -2106,7 +2260,7 @@ Time [years] to  |  28887.76    59787.78  |   88675.54
 </pre>
 
 
-<ol>
+<ol class="org-ol">
 <li>What is the incidence rate ratio (rounded to two decimal points)
    for the association between high blood pressure (highbp1) and the
    rate of stroke among men? Hint: Use the variable (sex1).
@@ -2148,419 +2302,6 @@ ir stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 
 </pre>
 
-
-</div>
-</div>
-
-</div>
-
-<div id="outline-container-10" class="outline-3">
-<h3 id="sec-10">Lecutre 11</h3>
-<div class="outline-text-3" id="text-10">
-
-
-</div>
-
-<div id="outline-container-10-1" class="outline-4">
-<h4 id="sec-10-1">Death, Blood Pressure, and Age</h4>
-<div class="outline-text-4" id="text-10-1">
-
-<p>We return to the Framingham cohort. We aim to assess the probability
-of death as a function of systolic blood pressure and age at baseline.
-</p>
-<ol>
-<li>Fit a logistic regression model with death as your outcome and
-   systolic blood pressure at baseline as the single
-   predictor. (Assume "linearity on the logit-scale", i.e. the
-   relationship between age and the probability of death is linear on
-   the logit scale).
-</li>
-</ol>
-
-
-<p>
-Estimate the odds ratio of death for a one mmHg increase in systolic
-blood pressure and a corresponding 95% confidence interval.
-</p>
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-logistic death sysbp1
-</pre>
-
-
-
-<pre class="example">
-Logistic regression                               Number of obs   =       4434
-                                                  LR chi2(1)      =     410.44
-                                                  Prob &gt; chi2     =     0.0000
-Log likelihood = -2664.3807                       Pseudo R2       =     0.0715
-
-------------------------------------------------------------------------------
-       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-      sysbp1 |    1.03017   .0016201    18.90   0.000        1.027     1.03335
-       _cons |   .0099229   .0021315   -21.48   0.000     .0065133    .0151175
-------------------------------------------------------------------------------
-
-</pre>
-
-
-<p>
-Estimate the odds ratio of death for a ten mmHg increase in systolic
-blood pressure and a corresponding 95% confidence interval. (Hint: use
-the lincom command).
-</p>
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-quietly <span style="color: #008b8b;">logistic</span> death sysbp1
-lincom 10*sysbp1
-</pre>
-
-
-<pre class="example">
-
- ( 1)  10*[death]sysbp1 = 0
-
-------------------------------------------------------------------------------
-       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-         (1) |   1.346138   .0211704    18.90   0.000     1.305277    1.388277
-------------------------------------------------------------------------------
-
-</pre>
-
-
-<ol>
-<li>Add age at baseline to the regression model in question 1
-   above. (Assume linearity on the logit-scale holds).
-</li>
-</ol>
-
-
-<p>
-Estimate the odds ratio of death for a one mmHg increase in systolic
-blood pressure, conditional on age, and 95% confidence interval for
-this odds ratio.
-</p>
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-logit death sysbp1 age1, or
-</pre>
-
-
-
-<pre class="example">
-Iteration 0:   log likelihood = -2869.6004  
-Iteration 1:   log likelihood = -2406.3553  
-Iteration 2:   log likelihood = -2398.9058  
-Iteration 3:   log likelihood = -2398.8963  
-Iteration 4:   log likelihood = -2398.8963  
-
-Logistic regression                               Number of obs   =       4434
-                                                  LR chi2(2)      =     941.41
-                                                  Prob &gt; chi2     =     0.0000
-Log likelihood = -2398.8963                       Pseudo R2       =     0.1640
-
-------------------------------------------------------------------------------
-       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-      sysbp1 |   1.017406   .0017247    10.18   0.000     1.014031    1.020792
-        age1 |   1.104968   .0050887    21.67   0.000     1.095039    1.114987
-       _cons |   .0003234   .0000929   -27.98   0.000     .0001842    .0005678
-------------------------------------------------------------------------------
-
-</pre>
-
-
-</div>
-
-</div>
-
-<div id="outline-container-10-2" class="outline-4">
-<h4 id="sec-10-2">Death, Smoking, and Age</h4>
-<div class="outline-text-4" id="text-10-2">
-
-<p>We again use the Framingham cohort, but now aim to assess the
-probability of death as a function of smoking status.
-</p>
-<ol>
-<li>Fit a logistic regression model examining the relationship between
-   smoking and death. Test the hypothesis that smoking at baseline is
-   associated with death during follow up (versus the alternative of
-   no association) at the 0.05 level of significance:
-</li>
-</ol>
-
-
-<p>
-What is your test statistic?
-</p>
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-logistic death cursmoke1
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> P</span> = <span style="color: #008b8b;">e</span>(p)
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P = "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">P</span>'
-</pre>
-
-
-<pre class="example">
-Logistic regression                               Number of obs   =       4434
-                                                  LR chi2(1)      =       2.60
-                                                  Prob &gt; chi2     =     0.1070
-Log likelihood = -2868.3016                       Pseudo R2       =     0.0005
-
-------------------------------------------------------------------------------
-       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-   cursmoke1 |   1.106873   .0697412     1.61   0.107     .9782858    1.252362
-       _cons |   .5110664   .0227584   -15.07   0.000     .4683519    .5576765
-------------------------------------------------------------------------------
-
-P = .10701968
-
-</pre>
-
-
-<ol>
-<li>Use the logistic regression model in question 1 to estimate the
-   probability of death in the cohort for non-smokers and for
-   smokers. (Hint: one way to achieve this goal is via the predict
-   command in Stata.)
-</li>
-</ol>
-
-
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-quietly <span style="color: #008b8b;">logistic</span> death cursmoke1
-<span style="color: #a020f0;">predict</span> pdeath, pr
-quietly <span style="color: #008b8b;">sum</span> pdeath
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"probability of death for non-smoker: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(min)
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"probability of death for smoker: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(max)
-</pre>
-
-
-<pre class="example">
-
-probability of death for non-smoker: .33821571
-
-probability of death for smoker: .36130217
-
-</pre>
-
-
-<ol>
-<li>Add age at baseline to the regression model in question 1. (Assume
-   linearity on the logit-scale holds).  Estimate the odds ratio
-   between smoking and death with 95% confidence interval, conditional
-   on age at baseline.
-</li>
-</ol>
-
-
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-logistic death cursmoke1 age1
-</pre>
-
-
-
-<pre class="example">
-Logistic regression                               Number of obs   =       4434
-                                                  LR chi2(2)      =     910.32
-                                                  Prob &gt; chi2     =     0.0000
-Log likelihood = -2414.4396                       Pseudo R2       =     0.1586
-
-------------------------------------------------------------------------------
-       death | Odds Ratio   Std. Err.      z    P&gt;|z|     [95% Conf. Interval]
--------------+----------------------------------------------------------------
-   cursmoke1 |   1.900338    .141002     8.65   0.000     1.643134    2.197802
-        age1 |   1.133771   .0053181    26.77   0.000     1.123396    1.144243
-       _cons |   .0006416   .0001671   -28.22   0.000     .0003851     .001069
-------------------------------------------------------------------------------
-
-</pre>
-
-
-<ol>
-<li>Using the model in question 3, predict the probability of death for
-   a 50 year old at baseline who is a smoker; and for a 50 year old
-   who is a non-smoker. (Hint: use invlogit). <code>do it with invlogit</code>
-</li>
-</ol>
-
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-quietly <span style="color: #008b8b;">logistic</span> death cursmoke1 age1
-quietly <span style="color: #a020f0;">predict</span> pdeath, pr
-quietly <span style="color: #a020f0;">gen</span> p50s = pdeath if cursmoke1==1 &amp; age1==50
-quietly <span style="color: #a020f0;">gen</span> p50n = pdeath if cursmoke1==0 &amp; age1==50
-quietly <span style="color: #008b8b;">sum</span> p50n
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"pr. of death for non-smoker, age=50: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
-quietly <span style="color: #008b8b;">sum</span> p50s
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"pr. of death for smoker, age=50: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
-</pre>
-
-
-<pre class="example">
-
-pr. of death for non-smoker, age=50: .25462919
-
-pr. of death for smoker, age=50: .39363885
-
-</pre>
-
-
-<ol>
-<li>Test for effect modification of the relationship between death and
-   smoking status by age at the 0.1 level of significance.
-</li>
-</ol>
-
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-<span style="color: #a020f0;">generate</span> interaction = age1*cursmoke1
-logit death cursmoke1 age1 interaction, level(90)
-</pre>
-
-
-
-<pre class="example">
-Iteration 0:   log likelihood = -2869.6004  
-Iteration 1:   log likelihood = -2423.2408  
-Iteration 2:   log likelihood =  -2413.104  
-Iteration 3:   log likelihood = -2413.0545  
-Iteration 4:   log likelihood = -2413.0545  
-
-Logistic regression                               Number of obs   =       4434
-                                                  LR chi2(3)      =     913.09
-                                                  Prob &gt; chi2     =     0.0000
-Log likelihood = -2413.0545                       Pseudo R2       =     0.1591
-
-------------------------------------------------------------------------------
-       death |      Coef.   Std. Err.      z    P&gt;|z|     [90% Conf. Interval]
--------------+----------------------------------------------------------------
-   cursmoke1 |   1.456121   .4962559     2.93   0.003     .6398525    2.272389
-        age1 |   .1335346   .0068082    19.61   0.000     .1223361     .144733
- interaction |  -.0156416   .0094101    -1.66   0.096    -.0311199   -.0001633
-       _cons |  -7.787368   .3754011   -20.74   0.000    -8.404848   -7.169888
-------------------------------------------------------------------------------
-
-</pre>
-
-
-
-</div>
-
-</div>
-
-<div id="outline-container-10-3" class="outline-4">
-<h4 id="sec-10-3">Binary Exposure and Binary Outcome Model</h4>
-<div class="outline-text-4" id="text-10-3">
-
-</div>
-
-</div>
-
-<div id="outline-container-10-4" class="outline-4">
-<h4 id="sec-10-4">Obesity and Stroke Regression Model</h4>
-<div class="outline-text-4" id="text-10-4">
-
-</div>
-
-</div>
-
-<div id="outline-container-10-5" class="outline-4">
-<h4 id="sec-10-5">Propensity Score vs. Randomization</h4>
-<div class="outline-text-4" id="text-10-5">
-
-</div>
-
-</div>
-
-<div id="outline-container-10-6" class="outline-4">
-<h4 id="sec-10-6">Smoking and Death Logistic Regression</h4>
-<div class="outline-text-4" id="text-10-6">
-
-<p>In lecture, the following logistic regression model for the
-association between smoking and death was presented: Log(P/(1-P)) =
--7.5869 + 0.5522(CURSMOKE1) + 0.1181(AGE1)+ 0.7759(MALE) +
-0.6386(HIGHBP1) + 1.5834(DIABETES1)
-</p>
-<ol>
-<li>Using the above model, what is the odds ratio of death for a 50
-   year old man who does not smoke, has high blood pressure and does
-   not have diabetes (ie AGE1=50, CURSMOKER1=0, MALE=1, HIGHBP1=1 and
-   DIABETES=0)compared to a 50 year old woman who does not smoke, does
-   not have high blood pressure and does not have diabetes (ie
-   AGE1=50, CURSMOKER1=0, MALE=0, HIGHBP1=0 and DIABETES=0)?
-
-</li>
-<li>What is this model’s estimate for the odds ratio of death for a
-   diabetic (DIABETES1=1) compared to a non-diabetic (DIABETES= 0),
-   controlling for AGE1, MALE, HIGHBP1 and CURSMOKE1?
-</li>
-</ol>
-
-
-
-
-<pre class="src src-awk"><span style="color: #a020f0;">function</span> <span style="color: #0000ff;">model</span>(AGE1, CURSMOKE1, MALE, HIGHBP1, DIABETES1) {
-   <span style="color: #a020f0;">return</span> -7.5869 + 0.5522*(CURSMOKE1) + 0.1181*(AGE1)+ 0.7759*(MALE) + 0.6386*(HIGHBP1) + 1.5834*(DIABETES1)
-}
-<span style="color: #a020f0;">function</span> <span style="color: #0000ff;">model2</span>(AGE1, CURSMOKE1, MALE, HIGHBP1, DIABETES1) {
-   <span style="color: #b22222;"># </span><span style="color: #b22222;">AGE1 is not used</span>
-   <span style="color: #a020f0;">return</span> -1.4584 + 0.1205*(CURSMOKE1) + 0.6902*(MALE) + 1.0304*(HIGHBP1) + 1.8144*(DIABETES1)
-}
-<span style="color: #a020f0;">function</span> <span style="color: #0000ff;">invlogit</span>(y) {
-   <span style="color: #a020f0;">return</span>  <span style="color: #7a378b;">exp</span>(y)/(<span style="color: #7a378b;">exp</span>(y)+1)
-}
-<span style="color: #a020f0;">function</span> <span style="color: #0000ff;">oratio</span>(p1, p2) {
-   q1 = 1 - p1
-   q2 = 1 - p2
-   <span style="color: #a020f0;">return</span> p1*q2/(p2*q1)
-}
-<span style="color: #a020f0;">BEGIN</span> {
-   p1=invlogit(model(60, 0, 1, 1, 0))
-   p2=invlogit(model(60, 0, 0, 0, 0))
-   <span style="color: #7a378b;">print</span> oratio(p1, p2)
-
-   p1=invlogit(model(60, 0, 0, 0, 1))
-   p2=invlogit(model(60, 0, 0, 0, 0))
-   <span style="color: #7a378b;">print</span> oratio(p1, p2)
-
-   p1=invlogit(model(60, 1, 0, 0, 0))
-   p2=invlogit(model(60, 0, 0, 0, 0))
-   <span style="color: #7a378b;">print</span> oratio(p1, p2)
-
-   p1=invlogit(model2(60, 1, 0, 0, 0))
-   p2=invlogit(model2(60, 0, 0, 0, 0))
-   <span style="color: #7a378b;">print</span> oratio(p1, p2)
-}
-</pre>
-
-
-<pre class="example">
-4.11443
-4.87149
-1.73707
-1.12806
-</pre>
 
 
 </div>
