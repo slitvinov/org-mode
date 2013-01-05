@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T03:10+0100"/>
+<meta name="generated" content="2013-01-05T04:07+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -239,7 +239,6 @@ for the JavaScript code below.
 <ul>
 <li><a href="#sec-6-1">intro</a></li>
 <li><a href="#sec-6-2">Two-Sample t-test</a></li>
-<li><a href="#sec-6-3">ANOVA</a></li>
 </ul>
 </li>
 <li><a href="#sec-7">Lecture 7</a>
@@ -297,15 +296,16 @@ di `<span style="color: #a0522d;">N</span>'+1
 </pre>
 
 
-<p>
-=
+<pre class="example">
+
 42
-</p>
+
+</pre>
+
+
+
 <p>
-=:
-</p>
-<p>
-<code>quietly</code> suppresses for the duration of command
+<code>quietly</code> suppresses output for the duration of command
 </p>
 
 
@@ -338,7 +338,7 @@ One can use <code>r(...)</code> or <code>e(...)</code> to get output from stata 
 </p>
 
 
-<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+<pre class="src src-stata">quietly set obs 5
 <span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
 quietly <span style="color: #008b8b;">summarize</span> x
 di <span style="color: #008b8b;">r</span>(mean)
@@ -346,8 +346,6 @@ di <span style="color: #008b8b;">r</span>(mean)
 
 
 <pre class="example">
-
-obs was 0, now 5
 
 3
 
@@ -369,6 +367,7 @@ Multi-line command
 test
 
 </pre>
+
 
 
 <p>
@@ -1303,61 +1302,67 @@ with placebo? A) Yes B) No
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 8
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> level</span> = 95
 ttesti `<span style="color: #a0522d;">obs1</span>' `<span style="color: #a0522d;">mean1</span>' `<span style="color: #a0522d;">sd1</span>' `<span style="color: #a0522d;">obs2</span>' `<span style="color: #a0522d;">mean2</span>' `<span style="color: #a0522d;">sd2</span>', level(`<span style="color: #a0522d;">level</span>')
-display <span style="color: #8b2252;">"================== answers ===================="</span>
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"the test statistic = "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(t)
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"degrees of freedom = "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(df_t)
-display <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"two-sided p-value = "</span> <span style="color: #008b8b;">as</span> result  <span style="color: #008b8b;">r</span>(p)
+di <span style="color: #8b2252;">"================== answers ===================="</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"the test statistic = "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(t)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"degrees of freedom = "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(df_t)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"two-sided p-value = "</span> <span style="color: #008b8b;">as</span> result  <span style="color: #008b8b;">r</span>(p)
 <span style="color: #008b8b;">if</span> <span style="color: #008b8b;">r</span>(p)&gt;1-`<span style="color: #a0522d;">level</span>'/100 {
-    <span style="color: #008b8b;">display</span> <span style="color: #8b2252;">"We reject H0: mean(x)==mean(y)"</span>
+    <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"We reject H0: mean(x)==mean(y)"</span>
 } 
 <span style="color: #008b8b;">else</span> {
-  <span style="color: #008b8b;">display</span> <span style="color: #8b2252;">"We cannot reject H0: mean(x)==mean(y)"</span>
+  <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"We cannot reject H0: mean(x)==mean(y)"</span>
 }
 </pre>
 
 
-
-<pre class="example">
+<p>
+=
 Two-sample t test with equal variances
-------------------------------------------------------------------------------
-         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
----------+--------------------------------------------------------------------
+
+</p>
+<hr/>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<colgroup><col class="left" />
+</colgroup>
+<tbody>
+<tr><td class="left">Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]</td></tr>
+</tbody>
+</table>
+
+&mdash;&mdash;&mdash;+--------------------------------------------------------------------
        x |      23         111    1.668115           8    107.5405    114.4595
        y |      24         109    1.632993           8    105.6219    112.3781
----------+--------------------------------------------------------------------
+&mdash;&mdash;&mdash;+--------------------------------------------------------------------
 combined |      47    109.9787    1.163542     7.97684    107.6366    112.3208
----------+--------------------------------------------------------------------
+&mdash;&mdash;&mdash;+--------------------------------------------------------------------
     diff |                   2    2.334368               -2.701659    6.701659
-------------------------------------------------------------------------------
+
+<hr/>
     diff = mean(x) - mean(y)                                      t =   0.8568
 Ho: diff = 0                                     degrees of freedom =       45
 
+<p>
     Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
  Pr(T &lt; t) = 0.8019         Pr(|T| &gt; |t|) = 0.3961          Pr(T &gt; t) = 0.1981
-
+</p>
+<p>
 ================== answers ====================
-
+</p>
+<p>
 the test statistic = .85676283
-
+</p>
+<p>
 degrees of freedom = 45
-
+</p>
+<p>
 two-sided p-value = .39611566
-
+</p>
+<p>
 We reject H0: mean(x)==mean(y)
-
-</pre>
-
-
-
-</div>
-
-</div>
-
-<div id="outline-container-6-3" class="outline-4">
-<h4 id="sec-6-3">ANOVA</h4>
-<div class="outline-text-4" id="text-6-3">
-
-</div>
+</p>
+<p>
+=*** ANOVA
+</p></div>
 </div>
 
 </div>
@@ -2168,7 +2173,7 @@ are coded.)
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
 quietly <span style="color: #008b8b;">regress</span> nickel month
-** to extract coefficeint from matrix  ***
+** to extract coefficients from matrix  ***
 mat beta=<span style="color: #008b8b;">e</span>(b)
 <span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
 di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases in one month by "</span> <span style="color: #008b8b;">as</span> result  betamonth[1]
