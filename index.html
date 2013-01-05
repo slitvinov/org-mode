@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T12:39+0100"/>
+<meta name="generated" content="2013-01-05T12:46+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -230,7 +230,17 @@ for the JavaScript code below.
 <li><a href="#sec-3-5">lincom</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">Tutorial 10</a></li>
+<li><a href="#sec-4">Tutorial 10</a>
+<ul>
+<li><a href="#sec-4-1">Step 1</a></li>
+<li><a href="#sec-4-2">Step 2</a></li>
+<li><a href="#sec-4-3">Step 3</a></li>
+<li><a href="#sec-4-4">Step 4</a></li>
+<li><a href="#sec-4-5">Step 7</a></li>
+<li><a href="#sec-4-6">Step 8</a></li>
+<li><a href="#sec-4-7">Step 9</a></li>
+</ul>
+</li>
 <li><a href="#sec-5">Tutorial 11</a></li>
 <li><a href="#sec-6">Lecutre 5</a>
 <ul>
@@ -841,13 +851,16 @@ lincom 2*x
 <h3 id="sec-4"><span class="todo TODO">TODO</span> Tutorial 10</h3>
 <div class="outline-text-3" id="text-4">
 
-<ol class="org-ol">
-<li>Calculate the Pearson correlation for the percent of patients who
-</li>
-</ol>
 
-<p>say their nurse always communicated well (nursealways) and the percent
-of patients who would always recom- mend the hospital (recommendyes).
+</div>
+
+<div id="outline-container-4-1" class="outline-4">
+<h4 id="sec-4-1">Step 1</h4>
+<div class="outline-text-4" id="text-4-1">
+
+<p> Calculate the Pearson correlation for the percent of patients who say
+their nurse always communicated well (nursealways) and the percent of
+patients who would always recom- mend the hospital (recommendyes).
 </p>
 
 
@@ -870,12 +883,16 @@ recommendyes |   1.0000
 </pre>
 
 
-<ol class="org-ol">
-<li>Now that you have established that these variables are correlated,
-</li>
-</ol>
+</div>
 
-<p>you decide to fit a linear regression model to assess the relationship
+</div>
+
+<div id="outline-container-4-2" class="outline-4">
+<h4 id="sec-4-2">Step 2</h4>
+<div class="outline-text-4" id="text-4-2">
+
+<p>Now that you have established that these variables are correlated,
+you decide to fit a linear regression model to assess the relationship
 between recommendyes and nursealways.  State your model.
 </p>
 <p>
@@ -891,15 +908,19 @@ Y_i = \alpha + \beta X_i + \epsilon_i
 \end{equation}
 
 <p>
-where \(\epsilon_i \propto N(0, \sigmam^2)\).  Goal is to estimate and
+where \(\epsilon_i \propto N(0, \sigma^2)\).  Goal is to estimate and
 obtain measures of uncertainty for \(\alpha\) and \(\beta\). We use the
 method of least squares for estimation.
-</p><ol class="org-ol">
-<li>Construct a scatter plot with nursealways on the x-axis and recommendyes on the y axis.
-</li>
-</ol>
+</p></div>
 
-<p>Use the scatterplot to evaluate the assumptions of simple linear
+</div>
+
+<div id="outline-container-4-3" class="outline-4">
+<h4 id="sec-4-3">Step 3</h4>
+<div class="outline-text-4" id="text-4-3">
+
+<p>Construct a scatter plot with nursealways on the x-axis and recommendyes on the y axis.
+Use the scatterplot to evaluate the assumptions of simple linear
 regression.  Assumptions:
 </p><ul class="org-ul">
 <li>Independent observations
@@ -923,12 +944,16 @@ twoway (scatter recommendyes nursealways)
 <p>
 <img src="linrett2.png"  alt="linrett2.png" />
 </p>
-<ol class="org-ol">
-<li>Fit the linear regression model. Provide estimates, confidence intervals, and interpreta-
-</li>
-</ol>
+</div>
 
-<p>tions of the regression coefficients $&alpha; and \(\beta\).
+</div>
+
+<div id="outline-container-4-4" class="outline-4">
+<h4 id="sec-4-4">Step 4</h4>
+<div class="outline-text-4" id="text-4-4">
+
+<p>Fit the linear regression model. Provide estimates, confidence intervals, and interpreta-
+tions of the regression coefficients $&alpha; and \(\beta\).
 </p>
 
 
@@ -956,13 +981,17 @@ recommendyes |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval
 </pre>
 
 
-<ol class="org-ol">
-<li>Examine a residual plot. Using \(R^2\) and the plot, does the model
-   appear to fit well? (Are there any outliers?)
-</li>
-</ol>
+</div>
 
+</div>
 
+<div id="outline-container-4-5" class="outline-4">
+<h4 id="sec-4-5">Step 7</h4>
+<div class="outline-text-4" id="text-4-5">
+
+<p>Examine a residual plot. Using \(R^2\) and the plot, does the model
+appear to fit well? (Are there any outliers?)
+</p>
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
@@ -974,15 +1003,19 @@ rvfplot
 <p>
 <img src="rvf-lin.png"  alt="rvf-lin.png" />
 </p>
-<ol class="org-ol">
-<li>Using the regression line, predict the expected percent of patients
-   who always recommend the hospital when the reported percent of
-   nurses who always communicate well is 80%? Construct corresponding
-   95% confidence interval.
-</li>
-</ol>
+</div>
 
+</div>
 
+<div id="outline-container-4-6" class="outline-4">
+<h4 id="sec-4-6">Step 8</h4>
+<div class="outline-text-4" id="text-4-6">
+
+<p>Using the regression line, predict the expected percent of patients
+who always recommend the hospital when the reported percent of nurses
+who always communicate well is 80%? Construct corresponding 95%
+confidence interval.
+</p>
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
@@ -1018,13 +1051,18 @@ recommendyes |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval
 </pre>
 
 
-<ol class="org-ol">
-<li>For a new hospital with 80% of patients reporting that nurses always communicate well,
-</li>
-</ol>
+</div>
 
-<p>predict the percent of patients who will always recommend the
-hospital. Construct corresponding 95% confidence interval.
+</div>
+
+<div id="outline-container-4-7" class="outline-4">
+<h4 id="sec-4-7">Step 9</h4>
+<div class="outline-text-4" id="text-4-7">
+
+<p>For a new hospital with 80% of patients reporting that nurses always
+communicate well, predict the percent of patients who will always
+recommend the hospital. Construct corresponding 95% confidence
+interval.
 </p>
 
 
@@ -1039,6 +1077,7 @@ hospital. Construct corresponding 95% confidence interval.
 </pre>
 
 
+</div>
 </div>
 
 </div>
