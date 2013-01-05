@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T21:17+0100"/>
+<meta name="generated" content="2013-01-05T21:44+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -191,6 +191,8 @@
 <li><a href="#sec-12">Lecture 9</a>
 <ul>
 <li><a href="#sec-12-1">Trends in Unemployment</a></li>
+<li><a href="#sec-12-2">Nonparametric Tests</a></li>
+<li><a href="#sec-12-3">Obesity and Rate of Stroke</a></li>
 </ul>
 </li>
 <li><a href="#sec-13">Lecture 10</a>
@@ -2329,6 +2331,239 @@ legend( label(1 <span style="color: #8b2252;">"Japan"</span>) label(2 <span styl
 
 <p>
 <img src="jappan-s.png"  alt="jappan-s.png" />
+</p>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-12-2" class="outline-4">
+<h4 id="sec-12-2">Nonparametric Tests</h4>
+<div class="outline-text-4" id="text-12-2">
+
+<ul>
+<li id="sec-12-2-1">Q2<br/>
+Suppose you are conducting a two-sided sign test. You have data from 8
+paired samples, and you observe 1 positive sign and 7 negative
+signs. What is the p-value corresponding to the null hypothesis that
+there is no difference in median between the two groups?
+
+
+
+
+<pre class="src src-stata">quietly set obs 8
+quietly <span style="color: #a020f0;">generate</span> s1 = 1
+quietly <span style="color: #a020f0;">replace</span> s1 = -1 if <span style="color: #228b22;">_n</span> == 8
+quietly <span style="color: #a020f0;">generate</span> s2 = 0
+signtest s1=s2
+</pre>
+
+
+
+<pre class="example">
+Sign test
+
+        sign |    observed    expected
+-------------+------------------------
+    positive |           7           4
+    negative |           1           4
+        zero |           0           0
+-------------+------------------------
+         all |           8           8
+
+One-sided tests:
+  Ho: median of s1 - s2 = 0 vs.
+  Ha: median of s1 - s2 &gt; 0
+      Pr(#positive &gt;= 7) =
+         Binomial(n = 8, x &gt;= 7, p = 0.5) =  0.0352
+
+  Ho: median of s1 - s2 = 0 vs.
+  Ha: median of s1 - s2 &lt; 0
+      Pr(#negative &gt;= 1) =
+         Binomial(n = 8, x &gt;= 1, p = 0.5) =  0.9961
+
+Two-sided test:
+  Ho: median of s1 - s2 = 0 vs.
+  Ha: median of s1 - s2 != 0
+      Pr(#positive &gt;= 7 or #negative &gt;= 7) =
+         min(1, 2*Binomial(n = 8, x &gt;= 7, p = 0.5)) =  0.0703
+
+</pre>
+
+
+<p>
+Using formula
+</p>
+
+
+<pre class="src src-stata">di 2*(1-binomial(8, 6, 0.5))
+</pre>
+
+
+<pre class="example">
+
+.0703125
+
+</pre>
+
+
+<p>
+<b>Answer: 0.0703</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-12-2-2">Q3<br/>
+Walker et al. (1987) examined the characteristics of children dying
+from sudden infant death syndrome. The sids.dta contains the age at
+death (in days) for a sample of 12 girls and 17 boys. Using an
+appropriate non-parametric test with a 0.05 level of significance,
+test whether the median age at death is the same for boys and
+girls. Be sure to verify the assumptions of your test.
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/sids910.865dbf143262.dta
+ranksum Age, <span style="color: #228b22;">by</span>(Sex)
+</pre>
+
+
+
+<pre class="example">
+Two-sample Wilcoxon rank-sum (Mann-Whitney) test
+
+         Sex |      obs    rank sum    expected
+-------------+---------------------------------
+        Girl |       12         179         180
+         Boy |       17         256         255
+-------------+---------------------------------
+    combined |       29         435         435
+
+unadjusted variance      510.00
+adjustment for ties       -0.50
+                     ----------
+adjusted variance        509.50
+
+Ho: Age(Sex==Girl) = Age(Sex==Boy)
+             z =  -0.044
+    Prob &gt; |z| =   0.9647
+
+</pre>
+
+
+<p>
+What is the absolute value of your test statistic?
+</p>
+<p>
+<b>Answer: 0.044</b>
+</p>
+<p>
+What is your p-value?
+</p>
+<p>
+<b>Answer: 0.9647</b>
+</p>
+</li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-12-3" class="outline-4">
+<h4 id="sec-12-3">Obesity and Rate of Stroke</h4>
+<div class="outline-text-4" id="text-12-3">
+
+<p>In the Framingham dataset that can be downloaded from the course
+website, we would like to examine the association between obesity and
+the rate of stroke. Since people with hypertension may have a higher
+body mass index and they are also at greater risk of a stroke, you may
+be concerned about confounding by hypertension.
+</p>
+<ul>
+<li id="sec-12-3-1">Q1<br/>
+Use the Framingham dataset and Stata to calculate the incidence rate
+ratio of stroke comparing obese participants (bmi1&gt;=30) to all other
+participants. The variable for incident stroke in this dataset is
+“stroke” and number of years a person was followed for stroke is
+recorded in the “timestrk” variable in the NHLBI dataset.
+
+
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">gen</span> ob = 1 if bmi1&gt;=30
+quietly <span style="color: #a020f0;">replace</span> ob = 0 if bmi1&lt;30
+ir stroke  ob timestrk
+</pre>
+
+
+
+<pre class="example">
+                 | ob                     |
+                 |   Exposed   Unexposed  |      Total
+-----------------+------------------------+------------
+Incident Stroke  |        85         330  |        415
+Time [years] to  |  11144.75    77530.79  |   88675.54
+-----------------+------------------------+------------
+                 |                        |
+  Incidence rate |  .0076269    .0042564  |     .00468
+                 |                        |
+                 |      Point estimate    |    [95% Conf. Interval]
+                 |------------------------+------------------------
+ Inc. rate diff. |         .0033705       |    .0016854    .0050557 
+ Inc. rate ratio |          1.79188       |    1.394785    2.280687 (exact)
+ Attr. frac. ex. |          .441927       |    .2830436    .5615356 (exact)
+ Attr. frac. pop |         .0905152       |
+                 +-------------------------------------------------
+                     (midp)   Pr(k&gt;=85) =                    0.0000 (exact)
+                     (midp) 2*Pr(k&gt;=85) =                    0.0000 (exact)
+
+</pre>
+
+
+<p>
+<b>Answer: 1.79188</b> 
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-12-3-2">Q2<br/>
+Using the Framingham dataset and Stata, what is the incidence rate
+ratio (round to two decimal points) of stroke among obese participants
+(bmi1&gt;=30) compared to all other participants after adjusting for
+prevalent hypertension at visit 1 (prevhyp1)?
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">gen</span> ob = 1 if bmi1&gt;=30
+quietly <span style="color: #a020f0;">replace</span> ob = 0 if bmi1&lt;30
+ir stroke ob timestrk, <span style="color: #228b22;">by</span>(prevhyp1)
+</pre>
+
+
+
+<pre class="example">
+Prevalent hypert |      IRR       [95% Conf. Interval]   M-H Weight
+-----------------+-------------------------------------------------
+              No |   1.484769      .8687724   2.403521     11.75885 (exact)
+             Yes |   1.121565      .8335983   1.493098     44.64521 (exact)
+-----------------+-------------------------------------------------
+           Crude |    1.79188      1.394785   2.280687              (exact)
+    M-H combined |   1.197284       .939728    1.52543
+-------------------------------------------------------------------
+ Test of homogeneity (M-H)    chi2(1) =      0.99  Pr&gt;chi2 = 0.3208
+
+</pre>
+
+
+<p>
+<b>Answer: 1.197284</b>
 </p>
 </li>
 </ul>
