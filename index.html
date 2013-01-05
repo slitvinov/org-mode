@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T12:53+0100"/>
+<meta name="generated" content="2013-01-05T13:05+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -588,33 +588,7 @@ With group variable
 </p>
 
 
-<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> 1000
-<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
-<span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
-<span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
-
-<span style="color: #a020f0;">gen</span> x = rnormal(1) if lev==0
-<span style="color: #a020f0;">replace</span> x = rnormal(2) if lev==1
-</pre>
-
-
-
-<pre class="example">
-obs was 0, now 1000
-
-(500 missing values generated)
-
-(500 real changes made)
-
-(500 missing values generated)
-
-(500 real changes made)
-
-</pre>
-
-
-
-<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> 1000
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> = 1000
 <span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
 <span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
 <span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
@@ -628,7 +602,6 @@ graph box x, <span style="color: #228b22;">by</span>(lev)
 <p>
 <img src="twonorm.png"  alt="twonorm.png" />
 </p>
-
 <p>
 Immediate form of one-sample mean-comparison test
 </p>
@@ -709,7 +682,7 @@ Estimated required sample sizes:
 </p>
 
 
-<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+<pre class="src src-stata">quietly set obs 20
 <span style="color: #a020f0;">gen</span> x = rnormal()
 <span style="color: #a020f0;">gen</span> y = x + 1.0 + rnormal()
 signtest x=y
@@ -718,8 +691,6 @@ signtest x=y
 
 
 <pre class="example">
-obs was 0, now 20
-
 Sign test
 
         sign |    observed    expected
@@ -1609,7 +1580,6 @@ two-sided p-value = .39611566
 We reject H0: mean(x)==mean(y)
 
 </pre>
-
 
 
 </li>
