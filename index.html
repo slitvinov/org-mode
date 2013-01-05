@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T12:46+0100"/>
+<meta name="generated" content="2013-01-05T12:53+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -251,25 +251,29 @@ for the JavaScript code below.
 <ul>
 <li><a href="#sec-7-1">Introduction</a></li>
 <li><a href="#sec-7-2">Two-Sample t-test</a></li>
-<li><a href="#sec-7-3">Inference for proportions</a></li>
-<li><a href="#sec-7-4">Contingency Tables</a></li>
-<li><a href="#sec-7-5">Final Thoughts on the Blood Transfusion Trial</a></li>
 </ul>
 </li>
-<li><a href="#sec-8">Lecture 8</a>
+<li><a href="#sec-8">Lecture 7</a>
 <ul>
-<li><a href="#sec-8-1">Survey Design</a></li>
+<li><a href="#sec-8-1">Inference for proportions</a></li>
+<li><a href="#sec-8-2">Contingency Tables</a></li>
+<li><a href="#sec-8-3">Final Thoughts on the Blood Transfusion Trial</a></li>
 </ul>
 </li>
-<li><a href="#sec-9">Lecture 9</a>
+<li><a href="#sec-9">Lecture 8</a>
 <ul>
-<li><a href="#sec-9-1">Trends in Unemployment</a></li>
+<li><a href="#sec-9-1">Survey Design</a></li>
 </ul>
 </li>
-<li><a href="#sec-10">Lecture 10</a>
+<li><a href="#sec-10">Lecture 9</a>
 <ul>
-<li><a href="#sec-10-1">Simple Linear Regression</a></li>
-<li><a href="#sec-10-2">High Blood Pressure and CHD Incidence</a></li>
+<li><a href="#sec-10-1">Trends in Unemployment</a></li>
+</ul>
+</li>
+<li><a href="#sec-11">Lecture 10</a>
+<ul>
+<li><a href="#sec-11-1">Simple Linear Regression</a></li>
+<li><a href="#sec-11-2">High Blood Pressure and CHD Incidence</a></li>
 </ul>
 </li>
 </ul>
@@ -1575,65 +1579,59 @@ di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"t
 </pre>
 
 
-<p>
-=
+
+<pre class="example">
 Two-sample t test with equal variances
-
-</p>
-<hr/>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" />
-</colgroup>
-<tbody>
-<tr><td class="left">Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]</td></tr>
-</tbody>
-</table>
-
-&mdash;&mdash;&mdash;+--------------------------------------------------------------------
+------------------------------------------------------------------------------
+         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
        x |      23         111    1.668115           8    107.5405    114.4595
        y |      24         109    1.632993           8    105.6219    112.3781
-&mdash;&mdash;&mdash;+--------------------------------------------------------------------
+---------+--------------------------------------------------------------------
 combined |      47    109.9787    1.163542     7.97684    107.6366    112.3208
-&mdash;&mdash;&mdash;+--------------------------------------------------------------------
+---------+--------------------------------------------------------------------
     diff |                   2    2.334368               -2.701659    6.701659
-
-<hr/>
+------------------------------------------------------------------------------
     diff = mean(x) - mean(y)                                      t =   0.8568
 Ho: diff = 0                                     degrees of freedom =       45
 
-<p>
     Ha: diff &lt; 0                 Ha: diff != 0                 Ha: diff &gt; 0
  Pr(T &lt; t) = 0.8019         Pr(|T| &gt; |t|) = 0.3961          Pr(T &gt; t) = 0.1981
-</p>
-<p>
+
 ================== answers ====================
-</p>
-<p>
+
 the test statistic = .85676283
-</p>
-<p>
+
 degrees of freedom = 45
-</p>
-<p>
+
 two-sided p-value = .39611566
-</p>
-<p>
+
 We reject H0: mean(x)==mean(y)
-</p>
-<p>
-=** Lecture 7
-</p></li>
+
+</pre>
+
+
+
+</li>
 </ul>
 </div>
+</div>
 
 </div>
 
-<div id="outline-container-7-3" class="outline-4">
-<h4 id="sec-7-3"><span class="todo TODO">TODO</span> Inference for proportions</h4>
-<div class="outline-text-4" id="text-7-3">
+<div id="outline-container-8" class="outline-3">
+<h3 id="sec-8">Lecture 7</h3>
+<div class="outline-text-3" id="text-8">
+
+
+</div>
+
+<div id="outline-container-8-1" class="outline-4">
+<h4 id="sec-8-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
+<div class="outline-text-4" id="text-8-1">
 
 <ul>
-<li id="sec-7-3-1">Q1<br/>
+<li id="sec-8-1-1">Q1<br/>
 Construct a 95% confidence interval for <b>the proportion</b> of infants
 experiencing <b>the composite outcome</b> in <b>the fresh</b> red blood cell
 group, using the following methods: exact binomial, Wilson normal
@@ -1642,7 +1640,7 @@ approximation.
 </li>
 </ul>
 <ul>
-<li id="sec-7-3-2">Q2<br/>
+<li id="sec-8-1-2">Q2<br/>
 Is the normal approximation to the binomial appropriate in this
 setting?  <code>I need the number of observations with fresh==1 and fresh==0</code>
 
@@ -1672,7 +1670,7 @@ setting?  <code>I need the number of observations with fresh==1 and fresh==0</co
 </li>
 </ul>
 <ul>
-<li id="sec-7-3-3">Q3<br/>
+<li id="sec-8-1-3">Q3<br/>
 Suppose you wanted to calculate a 95% confidence interval for
 infants experiencing intraventricular hemorrhage after receiving a
 fresh blood transfusion as well. Examine the table above. Is the
@@ -1681,7 +1679,7 @@ Wilson confidence interval still appropriate?
 </li>
 </ul>
 <ul>
-<li id="sec-7-3-4">Q4<br/>
+<li id="sec-8-1-4">Q4<br/>
 Estimate and construct a large-sample 95% confidence interval for
 the risk difference for experiencing the composite outcome for those
 with fresh blood versus the standard protocol blood. Calculate the
@@ -1721,7 +1719,7 @@ Two-sample test of proportions                     0: Number of obs =      188
 </li>
 </ul>
 <ul>
-<li id="sec-7-3-5">Q5<br/>
+<li id="sec-8-1-5">Q5<br/>
 Use a two-sample test of proportions to test whether there is a
 difference in the proportion of infants experiencing the composite
 outcome between fresh blood group and the standard protocol group at
@@ -1778,9 +1776,9 @@ Pr(|Z| &lt; |z|) = .96115075
 
 </div>
 
-<div id="outline-container-7-4" class="outline-4">
-<h4 id="sec-7-4"><span class="todo TODO">TODO</span> Contingency Tables</h4>
-<div class="outline-text-4" id="text-7-4">
+<div id="outline-container-8-2" class="outline-4">
+<h4 id="sec-8-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
+<div class="outline-text-4" id="text-8-2">
 
 <p>Continue using the Fergusson et al. (2012) clinical trial data to
 complete the following questions. Again, use either the dataset from
@@ -1789,7 +1787,7 @@ below.
 <code>table is missing</code>
 </p>
 <ul>
-<li id="sec-7-4-1">Q1<br/>
+<li id="sec-8-2-1">Q1<br/>
 Estimate the odds ratio and a 95% confidence interval for
 experiencing the composite outcome for those in the fresh blood group
 versus standard protocol blood group.
@@ -1834,7 +1832,7 @@ OR Estimate:
 </li>
 </ul>
 <ul>
-<li id="sec-7-4-2">Q2<br/>
+<li id="sec-8-2-2">Q2<br/>
 Construct a 2x2 table for the composite outcome versus blood
 group. Are the expected cell counts large enough to conduct a Pearson
 Chi-square test?
@@ -1877,7 +1875,7 @@ tabulate outcome fresh, row expected
 </li>
 </ul>
 <ul>
-<li id="sec-7-4-3">Q3<br/>
+<li id="sec-8-2-3">Q3<br/>
 Using the Pearson chi-square test, determine if there is evidence
 of an association between blood group and the composite outcome at the
 level of significance.  What is the value of the test statistic? Round
@@ -1923,12 +1921,12 @@ tabulate outcome fresh, expected chi2
 
 </div>
 
-<div id="outline-container-7-5" class="outline-4">
-<h4 id="sec-7-5">Final Thoughts on the Blood Transfusion Trial</h4>
-<div class="outline-text-4" id="text-7-5">
+<div id="outline-container-8-3" class="outline-4">
+<h4 id="sec-8-3">Final Thoughts on the Blood Transfusion Trial</h4>
+<div class="outline-text-4" id="text-8-3">
 
 <ul>
-<li id="sec-7-5-1">Q4<br/>
+<li id="sec-8-3-1">Q4<br/>
 In this study, the authors state that they powered the study to
 detect an absolute difference of 15% in the two groups with 80% power,
 using a 2-sided test with . After a few more adjustments, their final
@@ -1981,19 +1979,19 @@ total sample size: 1088
 
 </div>
 
-<div id="outline-container-8" class="outline-3">
-<h3 id="sec-8">Lecture 8</h3>
-<div class="outline-text-3" id="text-8">
+<div id="outline-container-9" class="outline-3">
+<h3 id="sec-9">Lecture 8</h3>
+<div class="outline-text-3" id="text-9">
 
 
 </div>
 
-<div id="outline-container-8-1" class="outline-4">
-<h4 id="sec-8-1">Survey Design</h4>
-<div class="outline-text-4" id="text-8-1">
+<div id="outline-container-9-1" class="outline-4">
+<h4 id="sec-9-1">Survey Design</h4>
+<div class="outline-text-4" id="text-9-1">
 
 <ul>
-<li id="sec-8-1-1">Q1<br/>
+<li id="sec-9-1-1">Q1<br/>
 Suppose you decided to randomly sample 1,700 people from the city
 of Boston (call this Design 1). For any given individual in South
 Dorchester, what is the probability of being selected in the survey?
@@ -2002,7 +2000,7 @@ What is this probability for an individual in Harbor Islands?
 </li>
 </ul>
 <ul>
-<li id="sec-8-1-2">Q3<br/>
+<li id="sec-9-1-2">Q3<br/>
 Now, you randomly sample 100 people within each neighborhood
 (Design 2). What is the probability of a random individual in South
 Dorchester being sampled? What is the probability of a randomly
@@ -2011,7 +2009,7 @@ selected individual in Harbor Islands being sampled?
 </li>
 </ul>
 <ul>
-<li id="sec-8-1-3">Q8<br/>
+<li id="sec-9-1-3">Q8<br/>
 Next, you decide you do not want to visit all 17 neighborhoods, so
 you randomly sample 10 neighborhoods. Within each sampled neighborhood
 selected, you randomly sample 170 people. Call this Design 4. What is
@@ -2065,16 +2063,16 @@ P (design 2, Harbor Islands): .18691589
 
 </div>
 
-<div id="outline-container-9" class="outline-3">
-<h3 id="sec-9"><span class="todo TODO">TODO</span> Lecture 9</h3>
-<div class="outline-text-3" id="text-9">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10"><span class="todo TODO">TODO</span> Lecture 9</h3>
+<div class="outline-text-3" id="text-10">
 
 
 </div>
 
-<div id="outline-container-9-1" class="outline-4">
-<h4 id="sec-9-1">Trends in Unemployment</h4>
-<div class="outline-text-4" id="text-9-1">
+<div id="outline-container-10-1" class="outline-4">
+<h4 id="sec-10-1">Trends in Unemployment</h4>
+<div class="outline-text-4" id="text-10-1">
 
 <p>We again use publicly available data from the World Bank’s website to
 examine national trends in unemployment percentages (percent
@@ -2091,7 +2089,7 @@ Use the dataset UnemploymentbyCountry.dta to answer the following
 questions.
 </p>
 <ul>
-<li id="sec-9-1-1">Q1<br/>
+<li id="sec-10-1-1">Q1<br/>
 Calculate the Pearson and Spearman correlations between total
 unemployment and year for the United States and for Japan.
 
@@ -2149,7 +2147,7 @@ Test of Ho: unemployedtotal and year are independent
 </li>
 </ul>
 <ul>
-<li id="sec-9-1-2">Q2<br/>
+<li id="sec-10-1-2">Q2<br/>
 Exclude all years after 2007 (recall that the financial collapse
 occurred in late 2008). Recalculate the correlations in
 question 1. (Hint: use an "if" command to restrict to certain years in
@@ -2211,7 +2209,7 @@ Test of Ho: unemployedtotal and year are independent
 </li>
 </ul>
 <ul>
-<li id="sec-9-1-3">Q3<br/>
+<li id="sec-10-1-3">Q3<br/>
 Construct a scatter plot with year on the x-axis and with both
 unemployment in the United States and unemployment in Japan on the
 y-axis. (Hint: try plotting different symbols for the United States
@@ -2240,16 +2238,16 @@ legend( label(1 <span style="color: #8b2252;">"Japan"</span>) label(2 <span styl
 
 </div>
 
-<div id="outline-container-10" class="outline-3">
-<h3 id="sec-10"><span class="todo TODO">TODO</span> Lecture 10</h3>
-<div class="outline-text-3" id="text-10">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11"><span class="todo TODO">TODO</span> Lecture 10</h3>
+<div class="outline-text-3" id="text-11">
 
 
 </div>
 
-<div id="outline-container-10-1" class="outline-4">
-<h4 id="sec-10-1">Simple Linear Regression</h4>
-<div class="outline-text-4" id="text-10-1">
+<div id="outline-container-11-1" class="outline-4">
+<h4 id="sec-11-1">Simple Linear Regression</h4>
+<div class="outline-text-4" id="text-11-1">
 
 <p> We use data from the Environmental Protection Agency (EPA) to track
  the BP oil spill in Louisiana between May and September 2010. The oil
@@ -2291,7 +2289,7 @@ would suggest a violation of the assumptions necessary to analyze this
 data using linear regression.
 </p>
 <ul>
-<li id="sec-10-1-1">Q1<br/>
+<li id="sec-11-1-1">Q1<br/>
 Does the amount of nickel in the soil tend to increase over the
 four month period? <code>TODO: make a histogram plot</code>
 
@@ -2309,7 +2307,7 @@ twoway (scatter nickel month) (lfit nickel month)
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-2">Q2<br/>
+<li id="sec-11-1-2">Q2<br/>
 Examine the regression coefficients. Compare how the average nickel
 amount changes by month. Is it reasonable to assume that average
 amount of nickel increases linearly by month?
@@ -2317,7 +2315,7 @@ amount of nickel increases linearly by month?
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-3">Q3<br/>
+<li id="sec-11-1-3">Q3<br/>
 Make a residual plot.
 
 
@@ -2341,7 +2339,7 @@ variable. Call this <b>Model 2</b>.
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-4">Q4<br/>
+<li id="sec-11-1-4">Q4<br/>
 Using <b>Model 2</b>, it is estimated that, on average, nickel increases
 by ______ each month, from May to September.
 
@@ -2379,7 +2377,7 @@ i.month           _Imonth_5-9         (naturally coded; _Imonth_5 omitted)
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-5">Q5<br/>
+<li id="sec-11-1-5">Q5<br/>
 What is the 95% confidence interval for the average increase in
 nickel each month?
 
@@ -2413,7 +2411,7 @@ regress nickel month
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-6">Q6<br/>
+<li id="sec-11-1-6">Q6<br/>
 Given that the relationship between month and nickel appears to be
 linear, is it reasonable to use Model 2 to predict the amount of
 nickel in the soil in July 2010?
@@ -2421,7 +2419,7 @@ nickel in the soil in July 2010?
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-7">Q7<br/>
+<li id="sec-11-1-7">Q7<br/>
 Given that the relationship between month and nickel appears to be
 linear, is it reasonable to use Model 2 to predict the amount of
 nickel in the soil in October 2010?
@@ -2429,7 +2427,7 @@ nickel in the soil in October 2010?
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-8">Q8<br/>
+<li id="sec-11-1-8">Q8<br/>
 What is the average amount of nickel in the soil during August
 2010?  According to model 1 (Hint: Think about how dummy/indicator
 variables are coded.)
@@ -2457,7 +2455,7 @@ nickel increases in one month by 1.642664
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-9">Q9<br/>
+<li id="sec-11-1-9">Q9<br/>
 True or False: <b>Model 1</b> makes stronger modeling assumptions
 than <b>Model 2</b>.
 
@@ -2467,14 +2465,14 @@ than <b>Model 2</b>.
 
 </div>
 
-<div id="outline-container-10-2" class="outline-4">
-<h4 id="sec-10-2">High Blood Pressure and CHD Incidence</h4>
-<div class="outline-text-4" id="text-10-2">
+<div id="outline-container-11-2" class="outline-4">
+<h4 id="sec-11-2">High Blood Pressure and CHD Incidence</h4>
+<div class="outline-text-4" id="text-11-2">
 
 <p>Use Stata and the NHLBI data set to create the two categories of high
 blood pressure (highbp1)
 </p><ul>
-<li id="sec-10-2-1">Q1<br/>
+<li id="sec-11-2-1">Q1<br/>
 What is the incidence rate ratio of stroke comparing those with
 high blood pressure to those without high blood pressure? Hint: The
 variable for stroke in the dataset is "stroke" and the number of years
@@ -2518,7 +2516,7 @@ Time [years] to  |  28887.76    59787.78  |   88675.54
 </li>
 </ul>
 <ul>
-<li id="sec-10-2-2">Q2<br/>
+<li id="sec-11-2-2">Q2<br/>
 What is the incidence rate ratio (rounded to two decimal points)
 for the association between high blood pressure (highbp1) and the rate
 of stroke among men? Hint: Use the variable (sex1).
@@ -2526,7 +2524,7 @@ of stroke among men? Hint: Use the variable (sex1).
 </li>
 </ul>
 <ul>
-<li id="sec-10-2-3">Q3<br/>
+<li id="sec-11-2-3">Q3<br/>
 What is the incidence rate ratio (rounded to two decimal points)
 for the association between high blood pressure (highbp1) and the rate
 of stroke among women?
