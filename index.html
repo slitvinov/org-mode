@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T19:43+0100"/>
+<meta name="generated" content="2013-01-05T20:01+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -411,6 +411,39 @@ graph box x y
 <p>
 <img src="box.png"  alt="box.png" />
 </p>
+<p>
+Horizontal box plot
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">generate</span> y = <span style="color: #228b22;">_n</span> + 1
+graph box x y, horizontal
+</pre>
+
+
+<p>
+<img src="hbox.png"  alt="hbox.png" />
+</p>
+<p>
+Combining separate graphs into one graph
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">generate</span> y = <span style="color: #228b22;">_n</span> + 1
+twoway (function normalden(x), <span style="color: #a020f0;">range</span>(-4 4)), name(f1)
+twoway (function normal(x), <span style="color: #a020f0;">range</span>(-4 4)), name(f2)
+graph combine f1 f2, row(2)
+</pre>
+
+
+<p>
+<img src="combine.png"  alt="combine.png" />
+</p>
+
 </div>
 
 </div>
@@ -444,7 +477,7 @@ graph box x y
 <h4 id="sec-3-2">binomial</h4>
 <div class="outline-text-4" id="text-3-2">
 
-<p>Plot binomial distribution: probability of observing of fewer
+<p>Plot binomial distribution: probability of observing n ore fewer
 successes then probability of one successes is p.
 </p>
 
