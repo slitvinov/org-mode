@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-05T04:07+0100"/>
+<meta name="generated" content="2013-01-05T12:39+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -162,8 +162,8 @@ for the JavaScript code below.
     MathJax.Hub.Config({
         // Only one of the two following lines, depending on user settings
         // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
+            config: ["MMLorHTML.js"], jax: ["input/TeX"],
+        //  jax: ["input/TeX", "output/HTML-CSS"],
         extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
                      "TeX/noUndefined.js"],
         tex2jax: {
@@ -176,7 +176,7 @@ for the JavaScript code below.
             preview: "TeX"
         },
         showProcessingMessages: true,
-        displayAlign: "center",
+        displayAlign: "left",
         displayIndent: "2em",
 
         "HTML-CSS": {
@@ -226,26 +226,24 @@ for the JavaScript code below.
 <li><a href="#sec-3-1">ttest</a></li>
 <li><a href="#sec-3-2">samsi</a></li>
 <li><a href="#sec-3-3">signtest</a></li>
-<li><a href="#sec-3-4">lincom</a></li>
+<li><a href="#sec-3-4">signrank</a></li>
+<li><a href="#sec-3-5">lincom</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">Tutorial 11</a></li>
-<li><a href="#sec-5">Lecutre 5</a>
+<li><a href="#sec-4">Tutorial 10</a></li>
+<li><a href="#sec-5">Tutorial 11</a></li>
+<li><a href="#sec-6">Lecutre 5</a>
 <ul>
-<li><a href="#sec-5-1">Central Limit Theorem and Confidence Intervals</a></li>
+<li><a href="#sec-6-1">Central Limit Theorem and Confidence Intervals</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">Lecture 6</a>
+<li><a href="#sec-7">Lecture 6</a>
 <ul>
-<li><a href="#sec-6-1">intro</a></li>
-<li><a href="#sec-6-2">Two-Sample t-test</a></li>
-</ul>
-</li>
-<li><a href="#sec-7">Lecture 7</a>
-<ul>
-<li><a href="#sec-7-1">Inference for proportions</a></li>
-<li><a href="#sec-7-2">Contingency Tables</a></li>
-<li><a href="#sec-7-3">Final Thoughts on the Blood Transfusion Trial</a></li>
+<li><a href="#sec-7-1">Introduction</a></li>
+<li><a href="#sec-7-2">Two-Sample t-test</a></li>
+<li><a href="#sec-7-3">Inference for proportions</a></li>
+<li><a href="#sec-7-4">Contingency Tables</a></li>
+<li><a href="#sec-7-5">Final Thoughts on the Blood Transfusion Trial</a></li>
 </ul>
 </li>
 <li><a href="#sec-8">Lecture 8</a>
@@ -507,7 +505,8 @@ graph box x y
 <h4 id="sec-3-1">ttest</h4>
 <div class="outline-text-4" id="text-3-1">
 
-
+<p>Mean-comparison tests
+</p>
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">100</span>
@@ -654,7 +653,8 @@ Ho: mean = 1.8                                   degrees of freedom =       19
 <h4 id="sec-3-2">samsi</h4>
 <div class="outline-text-4" id="text-3-2">
 
-
+<p>Sample size and power for means and proportions
+</p>
 
 
 <pre class="src src-stata">sampsi 0.2 0.4
@@ -691,7 +691,8 @@ Estimated required sample sizes:
 <h4 id="sec-3-3">signtest</h4>
 <div class="outline-text-4" id="text-3-3">
 
-
+<p>Sign test of matched pairs
+</p>
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
@@ -791,18 +792,260 @@ Variable |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
 </div>
 
 <div id="outline-container-3-4" class="outline-4">
-<h4 id="sec-3-4">lincom</h4>
+<h4 id="sec-3-4">signrank</h4>
 <div class="outline-text-4" id="text-3-4">
 
-<p>lincom computes combinations of estimators (z, p-values etc.)
+<p>Equality tests on matched data
 </p></div>
+
+</div>
+
+<div id="outline-container-3-5" class="outline-4">
+<h4 id="sec-3-5">lincom</h4>
+<div class="outline-text-4" id="text-3-5">
+
+<p>lincom computes combinations of estimators (z, p-values etc.). 
+</p>
+<p>
+Construct a liniear regression and use <code>lincom</code> 
+</p>
+
+
+<pre class="src src-stata">quietly set obs 10
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">gen</span> y = x + 2*rnormal()
+quietly <span style="color: #008b8b;">regress</span> y x
+lincom 2*x
+</pre>
+
+
+<pre class="example">
+
+ ( 1)  2*x = 0
+
+------------------------------------------------------------------------------
+           y |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         (1) |   1.856045   .5219802     3.56   0.007     .6523569    3.059734
+------------------------------------------------------------------------------
+
+</pre>
+
+
+</div>
 </div>
 
 </div>
 
 <div id="outline-container-4" class="outline-3">
-<h3 id="sec-4"><span class="todo TODO">TODO</span> Tutorial 11</h3>
+<h3 id="sec-4"><span class="todo TODO">TODO</span> Tutorial 10</h3>
 <div class="outline-text-3" id="text-4">
+
+<ol class="org-ol">
+<li>Calculate the Pearson correlation for the percent of patients who
+</li>
+</ol>
+
+<p>say their nurse always communicated well (nursealways) and the percent
+of patients who would always recom- mend the hospital (recommendyes).
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
+pwcorr recommendyes nursealways, sig
+</pre>
+
+
+
+<pre class="example">
+             | recomm~s nursea~s
+-------------+------------------
+recommendyes |   1.0000 
+             |
+             |
+ nursealways |   0.6580   1.0000 
+             |   0.0000
+             |
+
+</pre>
+
+
+<ol class="org-ol">
+<li>Now that you have established that these variables are correlated,
+</li>
+</ol>
+
+<p>you decide to fit a linear regression model to assess the relationship
+between recommendyes and nursealways.  State your model.
+</p>
+<p>
+\(Y_i\) = percent of patients who always recommend the hospital
+</p>
+<p>
+\(X_i\) = perecnt of patients who say that the nurse always communicates well
+</p>
+
+
+\begin{equation}
+Y_i = \alpha + \beta X_i + \epsilon_i
+\end{equation}
+
+<p>
+where \(\epsilon_i \propto N(0, \sigmam^2)\).  Goal is to estimate and
+obtain measures of uncertainty for \(\alpha\) and \(\beta\). We use the
+method of least squares for estimation.
+</p><ol class="org-ol">
+<li>Construct a scatter plot with nursealways on the x-axis and recommendyes on the y axis.
+</li>
+</ol>
+
+<p>Use the scatterplot to evaluate the assumptions of simple linear
+regression.  Assumptions:
+</p><ul class="org-ul">
+<li>Independent observations
+</li>
+<li>\(Y|X\) is normally distributed
+</li>
+<li>Homoscedasticity (constant variance)
+</li>
+<li>Linearity
+</li>
+</ul>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
+twoway (scatter recommendyes nursealways)
+</pre>
+
+
+<p>
+<img src="linrett2.png"  alt="linrett2.png" />
+</p>
+<ol class="org-ol">
+<li>Fit the linear regression model. Provide estimates, confidence intervals, and interpreta-
+</li>
+</ol>
+
+<p>tions of the regression coefficients $&alpha; and \(\beta\).
+</p>
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
+regress recommendyes nursealways
+</pre>
+
+
+
+<pre class="example">
+      Source |       SS       df       MS              Number of obs =    3570
+-------------+------------------------------           F(  1,  3568) = 2723.72
+       Model |  144368.851     1  144368.851           Prob &gt; F      =  0.0000
+    Residual |  189118.972  3568  53.0041962           R-squared     =  0.4329
+-------------+------------------------------           Adj R-squared =  0.4327
+       Total |  333487.823  3569  93.4401297           Root MSE      =  7.2804
+
+------------------------------------------------------------------------------
+recommendyes |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ nursealways |   1.159487   .0222169    52.19   0.000     1.115928    1.203046
+       _cons |  -19.21559   1.712829   -11.22   0.000    -22.57381   -15.85737
+------------------------------------------------------------------------------
+
+</pre>
+
+
+<ol class="org-ol">
+<li>Examine a residual plot. Using \(R^2\) and the plot, does the model
+   appear to fit well? (Are there any outliers?)
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
+regress recommendyes nursealways
+rvfplot
+</pre>
+
+
+<p>
+<img src="rvf-lin.png"  alt="rvf-lin.png" />
+</p>
+<ol class="org-ol">
+<li>Using the regression line, predict the expected percent of patients
+   who always recommend the hospital when the reported percent of
+   nurses who always communicate well is 80%? Construct corresponding
+   95% confidence interval.
+</li>
+</ol>
+
+
+
+
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
+regress recommendyes nursealways
+lincom _cons + 80*nursealways
+</pre>
+
+
+
+<pre class="example">
+      Source |       SS       df       MS              Number of obs =    3570
+-------------+------------------------------           F(  1,  3568) = 2723.72
+       Model |  144368.851     1  144368.851           Prob &gt; F      =  0.0000
+    Residual |  189118.972  3568  53.0041962           R-squared     =  0.4329
+-------------+------------------------------           Adj R-squared =  0.4327
+       Total |  333487.823  3569  93.4401297           Root MSE      =  7.2804
+
+------------------------------------------------------------------------------
+recommendyes |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+ nursealways |   1.159487   .0222169    52.19   0.000     1.115928    1.203046
+       _cons |  -19.21559   1.712829   -11.22   0.000    -22.57381   -15.85737
+------------------------------------------------------------------------------
+
+ ( 1)  80*nursealways + _cons = 0
+
+------------------------------------------------------------------------------
+recommendyes |      Coef.   Std. Err.      t    P&gt;|t|     [95% Conf. Interval]
+-------------+----------------------------------------------------------------
+         (1) |   73.54339   .1399631   525.45   0.000     73.26897     73.8178
+------------------------------------------------------------------------------
+
+</pre>
+
+
+<ol class="org-ol">
+<li>For a new hospital with 80% of patients reporting that nurses always communicate well,
+</li>
+</ol>
+
+<p>predict the percent of patients who will always recommend the
+hospital. Construct corresponding 95% confidence interval.
+</p>
+
+
+<pre class="src src-stata">di 73.54339 - invttail(3568, 0.025)*7.281745
+</pre>
+
+
+<pre class="example">
+
+59.266589
+
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-3">
+<h3 id="sec-5"><span class="todo TODO">TODO</span> Tutorial 11</h3>
+<div class="outline-text-3" id="text-5">
 
 
 
@@ -847,16 +1090,16 @@ Log likelihood = -245.08242                       Pseudo R2       =     0.0094
 
 </div>
 
-<div id="outline-container-5" class="outline-3">
-<h3 id="sec-5">Lecutre 5</h3>
-<div class="outline-text-3" id="text-5">
+<div id="outline-container-6" class="outline-3">
+<h3 id="sec-6">Lecutre 5</h3>
+<div class="outline-text-3" id="text-6">
 
 
 </div>
 
-<div id="outline-container-5-1" class="outline-4">
-<h4 id="sec-5-1">Central Limit Theorem and Confidence Intervals</h4>
-<div class="outline-text-4" id="text-5-1">
+<div id="outline-container-6-1" class="outline-4">
+<h4 id="sec-6-1">Central Limit Theorem and Confidence Intervals</h4>
+<div class="outline-text-4" id="text-6-1">
 
 <p>According to the WHO Global Database on Anaemia, the mean hemoglobin
 levels among primary school children in Delhi were estimated at \(\mu=
@@ -870,39 +1113,43 @@ Delhi. Denote the mean hemoglobin levels in this sample as
 large enough that the Central Limit Theorem is applicable and that
 \(\sigma\) is known.
 </p>
-<ol class="org-ol">
-<li>According to the Central Limit Theorem, what is the expected value
+<ul>
+<li id="sec-6-1-1">Q1<br/>
+   According to the Central Limit Theorem, what is the expected value
    (mean) of \(\over{x}\)?
 </li>
-<li>According to the Central Limit Theorem, what is the standard
+</ul>
+<ul>
+<li id="sec-6-1-2">Q2<br/>
+   According to the Central Limit Theorem, what is the standard
    deviation of \(\over{x}\)?
-</li>
-</ol>
-
 
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"exp. mean of sample = mean of population: "</span> <span style="color: #008b8b;">as</span> result 108
 di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"standard deviation of sample mean: "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">std</span>'
 </pre>
 
 
 <pre class="example">
 
+exp. mean of sample = mean of population: 108
+
 standard deviation of sample mean: 1.4433757
 
 </pre>
 
 
-<ol class="org-ol">
-<li>Suppose we take a large number of samples of size 75. What
-   proportion of the samples would we expect to have a sample mean
-   \(\over{x}\) that lies between 106 and 110 g/L?
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-6-1-3">Q3<br/>
+   Suppose we take a large number of samples of <b>size 75</b>. What
+   proportion of the samples would we expect to have a sample mean
+   \(\over{x}\) that lies between <b>106</b> and <b>110 g/L</b>?
 
 
 
@@ -923,13 +1170,13 @@ proportion: .83414334
 </pre>
 
 
-<ol class="org-ol">
-<li>Suppose instead we repeatedly took random samples of size 25. What
-   proportion of the samples would we expect to have a sample mean
-   that lies between 106 and 110 g/L?
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-6-1-4">Q4<br/>
+   Suppose instead we repeatedly took random samples of <b>size 25</b>. What
+   proportion of the samples would we expect to have a sample mean
+   that lies between <b>106</b> and <b>110 g/L</b>?
 
 
 
@@ -950,18 +1197,18 @@ proportion: .5762892
 </pre>
 
 
-<ol class="org-ol">
-<li>Again, suppose we repeatedly took samples of size 75. What
-   proportion of the samples would we expect to have a mean less than
-   \(\over{x}=103\) ?
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-6-1-5">Q1<br/>
+Again, suppose we repeatedly took samples of <b>size 75</b>. What
+proportion of the samples would we expect to have a mean less than
+\(\over{x}=103\) ?
 
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (103 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
@@ -976,12 +1223,12 @@ proportion: .000266
 </pre>
 
 
-<ol class="org-ol">
-<li>If we repeatedly took samples of size 75, \(\over{x}\) we would
-   expect that, in 20% of the samples, would be greater than ___?
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-6-1-6">Q6<br/>
+If we repeatedly took samples of <b>size 75</b>, \(\over{x}\) we would
+expect that, in <b>20% of the samples</b>, would be greater than ___?
 
 
 
@@ -989,24 +1236,24 @@ proportion: .000266
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> =  invnormal(0.8)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"20% of the sample is greater than "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> =  invnormal(1-0.2)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"20% of the samples is greater than "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
 </pre>
 
 
 <pre class="example">
 
-20% of the sample is greater than 109.21478
+20% of the samples is greater than 109.21478
 
 </pre>
 
 
-<ol class="org-ol">
-<li>After taking a sample of size 75, we found that the sample mean was
-   \(\over{x}=103\). Construct a 95% confidence interval for \(\mu\).
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-6-1-7">Q7<br/>
+After taking a sample of <b>size 75</b>, we found that the sample mean
+was \(\over{x}=103\). Construct a 95% confidence interval for \(\mu\).
 
 
 
@@ -1025,33 +1272,26 @@ interval: 100.17098 105.82902
 </pre>
 
 
+</li>
+</ul>
 </div>
 </div>
 
 </div>
 
-<div id="outline-container-6" class="outline-3">
-<h3 id="sec-6">Lecture 6</h3>
-<div class="outline-text-3" id="text-6">
+<div id="outline-container-7" class="outline-3">
+<h3 id="sec-7">Lecture 6</h3>
+<div class="outline-text-3" id="text-7">
 
 
 </div>
 
-<div id="outline-container-6-1" class="outline-4">
-<h4 id="sec-6-1">intro</h4>
-<div class="outline-text-4" id="text-6-1">
+<div id="outline-container-7-1" class="outline-4">
+<h4 id="sec-7-1">Introduction</h4>
+<div class="outline-text-4" id="text-7-1">
 
 <p>Sample size and power for means and proportions
 </p>
-
-
-<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
-<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
-</pre>
-
-
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
@@ -1087,7 +1327,7 @@ Estimated required sample sizes:
 
 
 <p>
-Plot normal distributions
+Plot corresponding normal distributions
 </p>
 
 
@@ -1180,24 +1420,6 @@ graph box totchol1 totchol2
 <p>
 <img src="t1t2.png"  alt="t1t2.png" />
 </p>
-
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
-<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
-<span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
-</pre>
-
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-<colgroup><col class="left" />
-</colgroup>
-<tbody>
-<tr><td class="left">(4336 observations deleted)</td></tr>
-</tbody>
-</table>
-
-
 <p>
 Independent samples
 </p>
@@ -1205,15 +1427,13 @@ Independent samples
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
 <span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
-<span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+quietly <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
 ttest totchol1, <span style="color: #228b22;">by</span>(hyperten)
 </pre>
 
 
 
 <pre class="example">
-(4336 observations deleted)
-
 Two-sample t test with equal variances
 ------------------------------------------------------------------------------
    Group |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
@@ -1237,7 +1457,7 @@ Ho: diff = 0                                     degrees of freedom =       94
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
 <span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
-<span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+quietly <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
 graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
 </pre>
 
@@ -1249,9 +1469,9 @@ graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
 
 </div>
 
-<div id="outline-container-6-2" class="outline-4">
-<h4 id="sec-6-2">Two-Sample t-test</h4>
-<div class="outline-text-4" id="text-6-2">
+<div id="outline-container-7-2" class="outline-4">
+<h4 id="sec-7-2">Two-Sample t-test</h4>
+<div class="outline-text-4" id="text-7-2">
 
 <p>Schiff et al. (1990) investigated the effect of low doses of aspirin
 on women with mild pregnancy-induced hypertension. Forty-seven women
@@ -1268,29 +1488,30 @@ Source: Schiff, E., Barkai,G., Ben-Baruch G., and Mashiach, S.,
 Mild Pregnancy-Induced Hypertension," Obstetrics and Gynecology,
 Vol. 76, November 1990, 742-744.
 </p>
-<ol class="org-ol">
-<li>Conduct a two sample t-test with equal variances at \(\alpha = 0.05\)
-</li>
-</ol>
-
-<p>to test whether the population mean arterial blood pressure for women
+<ul>
+<li id="sec-7-2-1">Q1<br/>
+Conduct a two sample t-test with equal variances at \(\alpha = 0.05\)
+to test whether the population mean arterial blood pressure for women
 treated with aspirin is equal to the population mean arterial blood
 pressure for women treated with placebo. What is the value of the test
 statistic?
-</p>
-<ol class="org-ol">
-<li>How many degrees of freedom does your test statistic have?
 
 </li>
-<li>The p-value for this test is greater than 0.05. Based on this
-</li>
-</ol>
+</ul>
+<ul>
+<li id="sec-7-2-2">Q2<br/>
+How many degrees of freedom does your test statistic have?
 
-<p>result can we conclude that the population mean arterial blood
+</li>
+</ul>
+<ul>
+<li id="sec-7-2-3">Q3<br/>
+The p-value for this test is greater than 0.05. Based on this
+result can we conclude that the population mean arterial blood
 pressure for pregnant women treated with aspirin is equal to the
 population mean arterial blood pressure for pregnant women treated
 with placebo? A) Yes B) No
-</p>
+
 
 
 
@@ -1361,40 +1582,31 @@ two-sided p-value = .39611566
 We reject H0: mean(x)==mean(y)
 </p>
 <p>
-=*** ANOVA
-</p></div>
+=** Lecture 7
+</p></li>
+</ul>
 </div>
 
 </div>
 
-<div id="outline-container-7" class="outline-3">
-<h3 id="sec-7">Lecture 7</h3>
-<div class="outline-text-3" id="text-7">
+<div id="outline-container-7-3" class="outline-4">
+<h4 id="sec-7-3"><span class="todo TODO">TODO</span> Inference for proportions</h4>
+<div class="outline-text-4" id="text-7-3">
 
-
-</div>
-
-<div id="outline-container-7-1" class="outline-4">
-<h4 id="sec-7-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
-<div class="outline-text-4" id="text-7-1">
-
-<ol class="org-ol">
-<li>Construct a 95% confidence interval for <b>the proportion</b> of infants
-</li>
-</ol>
-
-<p>experiencing <b>the composite outcome</b> in <b>the fresh</b> red blood cell
+<ul>
+<li id="sec-7-3-1">Q1<br/>
+Construct a 95% confidence interval for <b>the proportion</b> of infants
+experiencing <b>the composite outcome</b> in <b>the fresh</b> red blood cell
 group, using the following methods: exact binomial, Wilson normal
 approximation.
-</p>
-<ol class="org-ol">
-<li>Is the normal approximation to the binomial appropriate in this
-   setting? 
-</li>
-</ol>
 
-<p><code>two answer this quastion I need the number of observations with fresh==1 and fresh==0</code>
-</p>
+</li>
+</ul>
+<ul>
+<li id="sec-7-3-2">Q2<br/>
+Is the normal approximation to the binomial appropriate in this
+setting?  <code>I need the number of observations with fresh==1 and fresh==0</code>
+
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
@@ -1418,25 +1630,25 @@ approximation.
 </pre>
 
 
-<ol class="org-ol">
-<li>Suppose you wanted to calculate a 95% confidence interval for
 </li>
-</ol>
-
-<p>infants experiencing intraventricular hemorrhage after receiving a
+</ul>
+<ul>
+<li id="sec-7-3-3">Q3<br/>
+Suppose you wanted to calculate a 95% confidence interval for
+infants experiencing intraventricular hemorrhage after receiving a
 fresh blood transfusion as well. Examine the table above. Is the
 Wilson confidence interval still appropriate?
-</p>
-<ol class="org-ol">
-<li>Estimate and construct a large-sample 95% confidence interval for the
-</li>
-</ol>
 
-<p>risk difference for experiencing the composite outcome for those with
-fresh blood versus the standard protocol blood. Calculate the risk
-difference as the estimated proportion in the fresh blood group minus
-estimated proportion in the standard blood group.
-</p>
+</li>
+</ul>
+<ul>
+<li id="sec-7-3-4">Q4<br/>
+Estimate and construct a large-sample 95% confidence interval for
+the risk difference for experiencing the composite outcome for those
+with fresh blood versus the standard protocol blood. Calculate the
+risk difference as the estimated proportion in the fresh blood group
+minus estimated proportion in the standard blood group.
+
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta
@@ -1467,14 +1679,14 @@ Two-sample test of proportions                     0: Number of obs =      188
 </pre>
 
 
-<ol class="org-ol">
-<li>Use a two-sample test of proportions to test whether there is a
-   difference in the proportion of infants experiencing the composite
-   outcome between fresh blood group and the standard protocol group
-   at \(\alpha=0.05\) the level of significance.
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-7-3-5">Q5<br/>
+Use a two-sample test of proportions to test whether there is a
+difference in the proportion of infants experiencing the composite
+outcome between fresh blood group and the standard protocol group at
+\(\alpha=0.05\) the level of significance.
 
 <p>
 What is the value of the test statistic?
@@ -1521,13 +1733,15 @@ Pr(|Z| &lt; |z|) = .96115075
 </pre>
 
 
+</li>
+</ul>
 </div>
 
 </div>
 
-<div id="outline-container-7-2" class="outline-4">
-<h4 id="sec-7-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
-<div class="outline-text-4" id="text-7-2">
+<div id="outline-container-7-4" class="outline-4">
+<h4 id="sec-7-4"><span class="todo TODO">TODO</span> Contingency Tables</h4>
+<div class="outline-text-4" id="text-7-4">
 
 <p>Continue using the Fergusson et al. (2012) clinical trial data to
 complete the following questions. Again, use either the dataset from
@@ -1535,13 +1749,11 @@ the previous question, hw7.dta, or the study results in the table
 below.
 <code>table is missing</code>
 </p>
-<ol class="org-ol">
-<li>Estimate the odds ratio and a 95% confidence interval for
-   experiencing the composite outcome for those in the fresh blood
-   group versus standard protocol blood group.
-</li>
-</ol>
-
+<ul>
+<li id="sec-7-4-1">Q1<br/>
+Estimate the odds ratio and a 95% confidence interval for
+experiencing the composite outcome for those in the fresh blood group
+versus standard protocol blood group.
 
 <p>
 OR Estimate:
@@ -1580,13 +1792,13 @@ OR Estimate:
 </pre>
 
 
-<ol class="org-ol">
-<li>Construct a 2x2 table for the composite outcome versus blood
-   group. Are the expected cell counts large enough to conduct a
-   Pearson Chi-square test?
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-7-4-2">Q2<br/>
+Construct a 2x2 table for the composite outcome versus blood
+group. Are the expected cell counts large enough to conduct a Pearson
+Chi-square test?
 
 
 
@@ -1623,15 +1835,15 @@ tabulate outcome fresh, row expected
 </pre>
 
 
-<ol class="org-ol">
-<li>Using the Pearson chi-square test, determine if there is evidence
 </li>
-</ol>
-
-<p>of an association between blood group and the composite outcome at the
+</ul>
+<ul>
+<li id="sec-7-4-3">Q3<br/>
+Using the Pearson chi-square test, determine if there is evidence
+of an association between blood group and the composite outcome at the
 level of significance.  What is the value of the test statistic? Round
 your answer to two decimal places.
-</p>
+
 
 
 
@@ -1666,30 +1878,30 @@ tabulate outcome fresh, expected chi2
 </pre>
 
 
-</div>
-
-</div>
-
-<div id="outline-container-7-3" class="outline-4">
-<h4 id="sec-7-3">Final Thoughts on the Blood Transfusion Trial</h4>
-<div class="outline-text-4" id="text-7-3">
-
-<ol class="org-ol">
-<li>In this study, the authors state that they powered the study to
-   detect an absolute difference of 15% in the two groups with 80%
-   power, using a 2-sided test with . After a few more adjustments,
-   their final sample size calculation was 450. Now suppose you want
-   to replicate the study using a different population. Given that the
-   authors did not find an association in their data, you decide to
-   increase the power and decrease the difference detected between
-   standard and fresh groups. Using an equal number of infants in both
-   groups, what is the total sample size needed in order to achieve
-   90% power, assuming that the proportion of infants experiencing the
-   composite outcome in the standard group was 55% and 45% in the
-   fresh blood group (again, with ).
 </li>
-</ol>
+</ul>
+</div>
 
+</div>
+
+<div id="outline-container-7-5" class="outline-4">
+<h4 id="sec-7-5">Final Thoughts on the Blood Transfusion Trial</h4>
+<div class="outline-text-4" id="text-7-5">
+
+<ul>
+<li id="sec-7-5-1">Q4<br/>
+In this study, the authors state that they powered the study to
+detect an absolute difference of 15% in the two groups with 80% power,
+using a 2-sided test with . After a few more adjustments, their final
+sample size calculation was 450. Now suppose you want to replicate the
+study using a different population. Given that the authors did not
+find an association in their data, you decide to increase the power
+and decrease the difference detected between standard and fresh
+groups. Using an equal number of infants in both groups, what is the
+total sample size needed in order to achieve 90% power, assuming that
+the proportion of infants experiencing the composite outcome in the
+standard group was 55% and 45% in the fresh blood group (again, with
+).
 
 
 
@@ -1723,6 +1935,8 @@ total sample size: 1088
 </pre>
 
 
+</li>
+</ul>
 </div>
 </div>
 
@@ -1739,28 +1953,32 @@ total sample size: 1088
 <h4 id="sec-8-1">Survey Design</h4>
 <div class="outline-text-4" id="text-8-1">
 
-<ol class="org-ol">
-<li>Suppose you decided to randomly sample 1,700 people from the city
-   of Boston (call this Design 1). For any given individual in South
-   Dorchester, what is the probability of being selected in the
-   survey? What is this probability for an individual in Harbor
-   Islands?
-</li>
-<li>Now, you randomly sample 100 people within each neighborhood
-   (Design 2). What is the probability of a random individual in South
-   Dorchester being sampled? What is the probability of a randomly
-   selected individual in Harbor Islands being sampled?
+<ul>
+<li id="sec-8-1-1">Q1<br/>
+Suppose you decided to randomly sample 1,700 people from the city
+of Boston (call this Design 1). For any given individual in South
+Dorchester, what is the probability of being selected in the survey?
+What is this probability for an individual in Harbor Islands?
 
 </li>
-<li>Next, you decide you do not want to visit all 17 neighborhoods, so
-   you randomly sample 10 neighborhoods. Within each sampled
-   neighborhood selected, you randomly sample 170 people. Call this
-   Design 4. What is the probability of a random individual in South
-   Dorchester being included in the survey? What is the probability of
-   a random individual in Harbor Islands being included in the survey?
-</li>
-</ol>
+</ul>
+<ul>
+<li id="sec-8-1-2">Q3<br/>
+Now, you randomly sample 100 people within each neighborhood
+(Design 2). What is the probability of a random individual in South
+Dorchester being sampled? What is the probability of a randomly
+selected individual in Harbor Islands being sampled?
 
+</li>
+</ul>
+<ul>
+<li id="sec-8-1-3">Q8<br/>
+Next, you decide you do not want to visit all 17 neighborhoods, so
+you randomly sample 10 neighborhoods. Within each sampled neighborhood
+selected, you randomly sample 170 people. Call this Design 4. What is
+the probability of a random individual in South Dorchester being
+included in the survey? What is the probability of a random individual
+in Harbor Islands being included in the survey?
 
 
 
@@ -1801,6 +2019,8 @@ P (design 2, Harbor Islands): .18691589
 </pre>
 
 
+</li>
+</ul>
 </div>
 </div>
 
@@ -1831,12 +2051,10 @@ Japan.
 Use the dataset UnemploymentbyCountry.dta to answer the following
 questions.
 </p>
-<ol class="org-ol">
-<li>Calculate the Pearson and Spearman correlations between total
-   unemployment and year for the United States and for Japan.
-</li>
-</ol>
-
+<ul>
+<li id="sec-9-1-1">Q1<br/>
+Calculate the Pearson and Spearman correlations between total
+unemployment and year for the United States and for Japan.
 
 
 
@@ -1889,14 +2107,14 @@ Test of Ho: unemployedtotal and year are independent
 </pre>
 
 
-<ol class="org-ol">
-<li>Exclude all years after 2007 (recall that the financial collapse
-   occurred in late 2008). Recalculate the correlations in
-   question 1. (Hint: use an "if" command to restrict to certain years
-   in Stata.)
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-9-1-2">Q2<br/>
+Exclude all years after 2007 (recall that the financial collapse
+occurred in late 2008). Recalculate the correlations in
+question 1. (Hint: use an "if" command to restrict to certain years in
+Stata.)
 
 
 
@@ -1951,16 +2169,16 @@ Test of Ho: unemployedtotal and year are independent
 </pre>
 
 
-<ol class="org-ol">
-<li>Construct a scatter plot with year on the x-axis and with both
-   unemployment in the United States and unemployment in Japan on the
-   y-axis. (Hint: try plotting different symbols for the United States
-   and Japan by creating two different plots within the Twoway graphs
-   window; restrict to a specific country by using an "if" statement
-   within each plot window).
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-9-1-3">Q3<br/>
+Construct a scatter plot with year on the x-axis and with both
+unemployment in the United States and unemployment in Japan on the
+y-axis. (Hint: try plotting different symbols for the United States
+and Japan by creating two different plots within the Twoway graphs
+window; restrict to a specific country by using an "if" statement
+within each plot window).
 
 
 
@@ -1976,6 +2194,8 @@ legend( label(1 <span style="color: #8b2252;">"Japan"</span>) label(2 <span styl
 <p>
 <img src="jappan-s.png"  alt="jappan-s.png" />
 </p>
+</li>
+</ul>
 </div>
 </div>
 
@@ -2031,12 +2251,10 @@ that the data does not appear to be skewed or any other evidence that
 would suggest a violation of the assumptions necessary to analyze this
 data using linear regression.
 </p>
-<ol class="org-ol">
-<li>Does the amount of nickel in the soil tend to increase over the
-   four month period? <code>TODO: make a histogram plot</code>
-</li>
-</ol>
-
+<ul>
+<li id="sec-10-1-1">Q1<br/>
+Does the amount of nickel in the soil tend to increase over the
+four month period? <code>TODO: make a histogram plot</code>
 
 
 
@@ -2049,16 +2267,19 @@ twoway (scatter nickel month) (lfit nickel month)
 <img src="oil-scatter.png"  alt="oil-scatter.png" />
 </p>
 
-<ol class="org-ol">
-<li>Examine the regression coefficients. Compare how the average nickel
-   amount changes by month. Is it reasonable to assume that average
-   amount of nickel increases linearly by month?
+</li>
+</ul>
+<ul>
+<li id="sec-10-1-2">Q2<br/>
+Examine the regression coefficients. Compare how the average nickel
+amount changes by month. Is it reasonable to assume that average
+amount of nickel increases linearly by month?
 
 </li>
-<li>Make a residual plot.
-</li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-10-1-3">Q3<br/>
+Make a residual plot.
 
 
 
@@ -2078,12 +2299,12 @@ assumptions of linear regression continue to hold. Fit a model with
 nickel as the outcome and month modeled as a continuous explanatory
 variable. Call this <b>Model 2</b>.
 </p>
-<ol class="org-ol">
-<li>Using <b>Model 2</b>, it is estimated that, on average, nickel increases
-   by ______ each month, from May to September.
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-10-1-4">Q4<br/>
+Using <b>Model 2</b>, it is estimated that, on average, nickel increases
+by ______ each month, from May to September.
 
 
 
@@ -2116,12 +2337,12 @@ i.month           _Imonth_5-9         (naturally coded; _Imonth_5 omitted)
 
 
 
-<ol class="org-ol">
-<li>What is the 95% confidence interval for the average increase in
-   nickel each month?
 </li>
-</ol>
-
+</ul>
+<ul>
+<li id="sec-10-1-5">Q5<br/>
+What is the 95% confidence interval for the average increase in
+nickel each month?
 
 
 
@@ -2150,24 +2371,30 @@ regress nickel month
 
 
 
-<ol class="org-ol">
-<li>Given that the relationship between month and nickel appears to be
-   linear, is it reasonable to use Model 2 to predict the amount of
-   nickel in the soil in July 2010?
+</li>
+</ul>
+<ul>
+<li id="sec-10-1-6">Q6<br/>
+Given that the relationship between month and nickel appears to be
+linear, is it reasonable to use Model 2 to predict the amount of
+nickel in the soil in July 2010?
 
 </li>
-<li>Given that the relationship between month and nickel appears to be
-   linear, is it reasonable to use Model 2 to predict the amount of
-   nickel in the soil in October 2010?
+</ul>
+<ul>
+<li id="sec-10-1-7">Q7<br/>
+Given that the relationship between month and nickel appears to be
+linear, is it reasonable to use Model 2 to predict the amount of
+nickel in the soil in October 2010?
 
 </li>
-<li>What is the average amount of nickel in the soil during August 2010?
-</li>
-</ol>
+</ul>
+<ul>
+<li id="sec-10-1-8">Q8<br/>
+What is the average amount of nickel in the soil during August
+2010?  According to model 1 (Hint: Think about how dummy/indicator
+variables are coded.)
 
-<p>According to model 1 (Hint: Think about how dummy/indicator variables
-are coded.)
-</p>
 
 
 
@@ -2188,13 +2415,15 @@ nickel increases in one month by 1.642664
 
 
 
-<ol class="org-ol">
-<li>True or False: <b>Model 1</b> makes stronger modeling assumptions than
-   <b>Model 2</b>.
 </li>
-</ol>
+</ul>
+<ul>
+<li id="sec-10-1-9">Q9<br/>
+True or False: <b>Model 1</b> makes stronger modeling assumptions
+than <b>Model 2</b>.
 
-
+</li>
+</ul>
 </div>
 
 </div>
@@ -2205,44 +2434,26 @@ nickel increases in one month by 1.642664
 
 <p>Use Stata and the NHLBI data set to create the two categories of high
 blood pressure (highbp1)
-</p>
-
-
-<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-<span style="color: #a020f0;">generate</span> highbp1=.
-<span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
-<span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
-</pre>
-
-
-<ol class="org-ol">
-<li>What is the incidence rate ratio of stroke comparing those with
-   high blood pressure to those without high blood pressure? Hint: The
-   variable for stroke in the dataset is "stroke" and the number of
-   years a person was followed for stroke is recorded in the
-   "timestrk" variable.
-</li>
-</ol>
-
+</p><ul>
+<li id="sec-10-2-1">Q1<br/>
+What is the incidence rate ratio of stroke comparing those with
+high blood pressure to those without high blood pressure? Hint: The
+variable for stroke in the dataset is "stroke" and the number of years
+a person was followed for stroke is recorded in the "timestrk"
+variable.
 
 
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-<span style="color: #a020f0;">generate</span> highbp1=.
-<span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
-<span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+quietly <span style="color: #a020f0;">generate</span> highbp1=.
+quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
 ir stroke highbp1 timestrk
 </pre>
 
 
 <pre class="example">
-(4434 missing values generated)
-
-(1619 real changes made)
-
-(2815 real changes made)
-
                  | highbp1                |
                  |   Exposed   Unexposed  |      Total
 -----------------+------------------------+------------
@@ -2265,36 +2476,34 @@ Time [years] to  |  28887.76    59787.78  |   88675.54
 </pre>
 
 
-<ol class="org-ol">
-<li>What is the incidence rate ratio (rounded to two decimal points)
-   for the association between high blood pressure (highbp1) and the
-   rate of stroke among men? Hint: Use the variable (sex1).
 </li>
-<li>What is the incidence rate ratio (rounded to two decimal points)
-   for the association between high blood pressure (highbp1) and the
-   rate of stroke among women?
-</li>
-</ol>
+</ul>
+<ul>
+<li id="sec-10-2-2">Q2<br/>
+What is the incidence rate ratio (rounded to two decimal points)
+for the association between high blood pressure (highbp1) and the rate
+of stroke among men? Hint: Use the variable (sex1).
 
+</li>
+</ul>
+<ul>
+<li id="sec-10-2-3">Q3<br/>
+What is the incidence rate ratio (rounded to two decimal points)
+for the association between high blood pressure (highbp1) and the rate
+of stroke among women?
 
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-<span style="color: #a020f0;">generate</span> highbp1=.
-<span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
-<span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+quietly <span style="color: #a020f0;">generate</span> highbp1=.
+quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
 ir stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 </pre>
 
 
 
 <pre class="example">
-(4434 missing values generated)
-
-(1619 real changes made)
-
-(2815 real changes made)
-
      Sex, exam 1 |      IRR       [95% Conf. Interval]   M-H Weight
 -----------------+-------------------------------------------------
             Male |   2.273711      1.697105   3.048007     29.75741 (exact)
@@ -2309,6 +2518,8 @@ ir stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 
 
 
+</li>
+</ul>
 </div>
 </div>
 </div>
