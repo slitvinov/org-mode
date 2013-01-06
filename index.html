@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-06T02:32+0100"/>
+<meta name="generated" content="2013-01-06T03:23+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -248,40 +248,44 @@ for the JavaScript code below.
 <li><a href="#sec-9">Home Work 4</a>
 <ul>
 <li><a href="#sec-9-1">Titanic Survival Risk Ratios</a></li>
-<li><a href="#sec-9-2">Central Limit Theorem and Confidence Intervals</a></li>
 </ul>
 </li>
-<li><a href="#sec-10">Home Work 6</a>
+<li><a href="#sec-10">Home Work 5</a>
 <ul>
-<li><a href="#sec-10-1">Introduction</a></li>
-<li><a href="#sec-10-2">Two-Sample t-test</a></li>
+<li><a href="#sec-10-1">Central Limit Theorem and Confidence Intervals</a></li>
 </ul>
 </li>
-<li><a href="#sec-11">Home Work 7</a>
+<li><a href="#sec-11">Home Work 6</a>
 <ul>
-<li><a href="#sec-11-1">Inference for proportions</a></li>
-<li><a href="#sec-11-2">Contingency Tables</a></li>
-<li><a href="#sec-11-3">Final Thoughts on the Blood Transfusion Trial</a></li>
+<li><a href="#sec-11-1">Introduction</a></li>
+<li><a href="#sec-11-2">Two-Sample t-test</a></li>
 </ul>
 </li>
-<li><a href="#sec-12">Home Work 8</a>
+<li><a href="#sec-12">Home Work 7</a>
 <ul>
-<li><a href="#sec-12-1">Survey Design</a></li>
+<li><a href="#sec-12-1">Inference for proportions</a></li>
+<li><a href="#sec-12-2">Contingency Tables</a></li>
+<li><a href="#sec-12-3">Final Thoughts on the Blood Transfusion Trial</a></li>
 </ul>
 </li>
-<li><a href="#sec-13">Home Work 9</a>
+<li><a href="#sec-13">Home Work 8</a>
 <ul>
-<li><a href="#sec-13-1">Trends in Unemployment</a></li>
-<li><a href="#sec-13-2">Nonparametric Tests</a></li>
-<li><a href="#sec-13-3">Obesity and Rate of Stroke</a></li>
+<li><a href="#sec-13-1">Survey Design</a></li>
 </ul>
 </li>
-<li><a href="#sec-14">Home Work 10</a>
+<li><a href="#sec-14">Home Work 9</a>
 <ul>
-<li><a href="#sec-14-1">Simple Linear Regression</a></li>
-<li><a href="#sec-14-2">Multiple Linear Regression</a></li>
-<li><a href="#sec-14-3">More Regression</a></li>
-<li><a href="#sec-14-4">High Blood Pressure and CHD Incidence</a></li>
+<li><a href="#sec-14-1">Trends in Unemployment</a></li>
+<li><a href="#sec-14-2">Nonparametric Tests</a></li>
+<li><a href="#sec-14-3">Obesity and Rate of Stroke</a></li>
+</ul>
+</li>
+<li><a href="#sec-15">Home Work 10</a>
+<ul>
+<li><a href="#sec-15-1">Simple Linear Regression</a></li>
+<li><a href="#sec-15-2">Multiple Linear Regression</a></li>
+<li><a href="#sec-15-3">More Regression</a></li>
+<li><a href="#sec-15-4">High Blood Pressure and CHD Incidence</a></li>
 </ul>
 </li>
 </ul>
@@ -406,7 +410,6 @@ Multi-line command
 test
 
 </pre>
-
 
 
 <p>
@@ -774,9 +777,11 @@ Estimated required sample sizes:
 </p>
 
 
-<pre class="src src-stata">quietly set obs 20
-<span style="color: #a020f0;">gen</span> x = rnormal()
-<span style="color: #a020f0;">gen</span> y = x + 1.0 + rnormal()
+<pre class="src src-stata">quietly {
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+  <span style="color: #a020f0;">gen</span> x = rnormal()
+  <span style="color: #a020f0;">gen</span> y = x + 1.0 + rnormal()
+}
 signtest x=y
 </pre>
 
@@ -1371,12 +1376,14 @@ Reproduce the table
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-quietly <span style="color: #a020f0;">generate</span> more1 = 0 if bmi1&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
-quietly <span style="color: #a020f0;">replace</span>  more1 = 1 if bmi1&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
+quietly {
+  <span style="color: #a020f0;">generate</span> more1 = 0 if bmi1&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
+  <span style="color: #a020f0;">replace</span>  more1 = 1 if bmi1&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
 
-quietly <span style="color: #a020f0;">generate</span> more2 = 0 if bmi2&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
-quietly <span style="color: #a020f0;">replace</span>  more2 = 1 if bmi2&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
- <span style="color: #008b8b;">tab</span> more1 more2
+  <span style="color: #a020f0;">generate</span> more2 = 0 if bmi2&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+  <span style="color: #a020f0;">replace</span>  more2 = 1 if bmi2&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+}
+tab more1 more2
 </pre>
 
 
@@ -1408,19 +1415,30 @@ Are A and B independent?
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
-quietly <span style="color: #a020f0;">generate</span> more1 = 0 if bmi1&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
-quietly <span style="color: #a020f0;">replace</span>  more1 = 1 if bmi1&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
+quietly {
+  <span style="color: #a020f0;">generate</span> more1 = 0 if bmi1&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
+  <span style="color: #a020f0;">replace</span>  more1 = 1 if bmi1&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
 
-quietly <span style="color: #a020f0;">generate</span> more2 = 0 if bmi2&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
-quietly <span style="color: #a020f0;">replace</span>  more2 = 1 if bmi2&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+  <span style="color: #a020f0;">generate</span> more2 = 0 if bmi2&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+  <span style="color: #a020f0;">replace</span>  more2 = 1 if bmi2&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+}
 quietly <span style="color: #008b8b;">tab</span> more1 more2, matcell(table)
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> ntot</span> = <span style="color: #008b8b;">table</span>[1,1]+table[1,2]+table[2,1]+table[2,2]
-di <span style="color: #8b2252;">"P(A): "</span> (table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
-di <span style="color: #8b2252;">"P(B): "</span> (table[1,2]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
-di <span style="color: #8b2252;">"P(A&amp;B): "</span> <span style="color: #008b8b;">table</span>[2,2]/`<span style="color: #a0522d;">ntot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PA</span> = (table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PB</span> = (table[1,2]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PAandB</span> = <span style="color: #008b8b;">table</span>[2,2]/`<span style="color: #a0522d;">ntot</span>'
+di <span style="color: #8b2252;">"P(A): "</span> `<span style="color: #a0522d;">PA</span>'
+di <span style="color: #8b2252;">"P(B): "</span> `<span style="color: #a0522d;">PB</span>'
+di <span style="color: #8b2252;">"P(A&amp;B): "</span> `<span style="color: #a0522d;">PAandB</span>'
 di <span style="color: #8b2252;">"P(A||B): "</span> (table[1,2]+table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
 di <span style="color: #8b2252;">"P(B|A): "</span> (table[2,2])/(table[2,1]+table[2,2])
-di <span style="color: #8b2252;">"P(B|A): "</span> (table[2,1])/(table[2,1]+table[2,2])
+di <span style="color: #8b2252;">"P(A|B): "</span> (table[2,1])/(table[2,1]+table[2,2])
+<span style="color: #008b8b;">if</span> (`<span style="color: #a0522d;">PAandB</span>' == `<span style="color: #a0522d;">PA</span>'*`<span style="color: #a0522d;">PB</span>') {
+   <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are independent"</span>
+}
+<span style="color: #008b8b;">else</span>  {
+   <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are not independent"</span>
+}
 </pre>
 
 
@@ -1436,7 +1454,9 @@ P(A||B): .61831671
 
 P(B|A): .88359046
 
-P(B|A): .11640954
+P(A|B): .11640954
+
+A and B are not independent
 
 </pre>
 
@@ -1614,7 +1634,7 @@ To get table in stata I save it as tex file <a href="#titani.tex">titani.tex</a>
 
 
 <p>
-and process it with to generate data set
+and process it with the following shell command to generate <a href="titanic.csv">csv data set</a>
 </p>
 
 
@@ -1625,15 +1645,13 @@ and process it with to generate data set
 
 
 
-<pre class="src src-stata"><span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/titanic.csv"</span>, names
+<pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/titanic.csv"</span>, names
 describe
 </pre>
 
 
 
 <pre class="example">
-(3 vars, 1316 obs)
-
 Contains data
   obs:         1,316                          
  vars:             3                          
@@ -1663,12 +1681,12 @@ quietly <span style="color: #a020f0;">replace</span> sus = 1 if survivalstatus==
 
 <p>
 Use these data to calculate the Risk Ratio for surviving comparing
-“women or children” as the exposed group and “all other passengers”
+"women or children" as the exposed group and "all other passengers"
 as the non-exposed group.
 </p>
 <p>
 Use these data to calculate the Risk Ratio for surviving comparing
-“women or children” as the exposed group and “all other passengers” as
+"women or children" as the exposed group and "all other passengers" as
 the non-exposed group for each passenger class.
 </p>
 
@@ -1681,37 +1699,44 @@ quietly <span style="color: #a020f0;">gen</span> sus = 0
 quietly <span style="color: #a020f0;">replace</span> sus = 1 if survivalstatus==<span style="color: #8b2252;">"Survived"</span>
 quietly <span style="color: #008b8b;">cs</span> sus woc
 di <span style="color: #8b2252;">"Combined: "</span> <span style="color: #008b8b;">r</span>(rr)
-quietly <span style="color: #008b8b;">cs</span> sus woc if passengerclass==<span style="color: #8b2252;">"First"</span>
-di <span style="color: #8b2252;">"First class: "</span> <span style="color: #008b8b;">r</span>(rr)
-quietly <span style="color: #008b8b;">cs</span> sus woc if passengerclass==<span style="color: #8b2252;">"Second"</span>
-di <span style="color: #8b2252;">"Second class: "</span> <span style="color: #008b8b;">r</span>(rr)
-quietly <span style="color: #008b8b;">cs</span> sus woc if passengerclass==<span style="color: #8b2252;">"Third"</span>
-di <span style="color: #8b2252;">"Third class: "</span> <span style="color: #008b8b;">r</span>(rr)
+<span style="color: #b22222;">/// loop over all calsses</span>
+quietly levelsof passengerclass, local(pc)
+foreach pc in `<span style="color: #a0522d;">pc</span>' {
+quietly <span style="color: #008b8b;">cs</span> sus woc if passengerclass==<span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span>
+di <span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span> <span style="color: #8b2252;">" class: "</span> <span style="color: #008b8b;">r</span>(rr)
+}
 </pre>
 
 
-<p>
-=
+
+<pre class="example">
 Combined: 3.808876
-</p>
-<p>
+
+  2. quietly cs sus woc if passengerclass=="`pc'"
+  3. di "`pc'" " class: " r(rr)
+  4. }
 First class: 2.9883041
-</p>
-<p>
 Second class: 10.666667
-</p>
-<p>
 Third class: 2.6003279
-</p>
-<p>
-=** Home Work 5
-</p></div>
+
+</pre>
+
+
+</div>
+</div>
 
 </div>
 
-<div id="outline-container-9-2" class="outline-4">
-<h4 id="sec-9-2">Central Limit Theorem and Confidence Intervals</h4>
-<div class="outline-text-4" id="text-9-2">
+<div id="outline-container-10" class="outline-3">
+<h3 id="sec-10">Home Work 5</h3>
+<div class="outline-text-3" id="text-10">
+
+
+</div>
+
+<div id="outline-container-10-1" class="outline-4">
+<h4 id="sec-10-1">Central Limit Theorem and Confidence Intervals</h4>
+<div class="outline-text-4" id="text-10-1">
 
 <p>According to the WHO Global Database on Anaemia, the mean hemoglobin
 levels among primary school children in Delhi were estimated at \(\mu=
@@ -1726,13 +1751,13 @@ large enough that the Central Limit Theorem is applicable and that
 \(\sigma\) is known.
 </p>
 <ul>
-<li id="sec-9-2-1">Q1<br/>
+<li id="sec-10-1-1">Q1<br/>
    According to the Central Limit Theorem, what is the expected value
    (mean) of \(\over{x}\)?
 </li>
 </ul>
 <ul>
-<li id="sec-9-2-2">Q2<br/>
+<li id="sec-10-1-2">Q2<br/>
    According to the Central Limit Theorem, what is the standard
    deviation of \(\over{x}\)?
 
@@ -1758,7 +1783,7 @@ standard deviation of sample mean: 1.4433757
 </li>
 </ul>
 <ul>
-<li id="sec-9-2-3">Q3<br/>
+<li id="sec-10-1-3">Q3<br/>
    Suppose we take a large number of samples of <b>size 75</b>. What
    proportion of the samples would we expect to have a sample mean
    \(\over{x}\) that lies between <b>106</b> and <b>110 g/L</b>?
@@ -1785,7 +1810,7 @@ proportion: .83414334
 </li>
 </ul>
 <ul>
-<li id="sec-9-2-4">Q4<br/>
+<li id="sec-10-1-4">Q4<br/>
    Suppose instead we repeatedly took random samples of <b>size 25</b>. What
    proportion of the samples would we expect to have a sample mean
    that lies between <b>106</b> and <b>110 g/L</b>?
@@ -1812,7 +1837,7 @@ proportion: .5762892
 </li>
 </ul>
 <ul>
-<li id="sec-9-2-5">Q1<br/>
+<li id="sec-10-1-5">Q1<br/>
 Again, suppose we repeatedly took samples of <b>size 75</b>. What
 proportion of the samples would we expect to have a mean less than
 \(\over{x}=103\) ?
@@ -1838,7 +1863,7 @@ proportion: .000266
 </li>
 </ul>
 <ul>
-<li id="sec-9-2-6">Q6<br/>
+<li id="sec-10-1-6">Q6<br/>
 If we repeatedly took samples of <b>size 75</b>, \(\over{x}\) we would
 expect that, in <b>20% of the samples</b>, would be greater than ___?
 
@@ -1863,9 +1888,9 @@ di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"2
 </li>
 </ul>
 <ul>
-<li id="sec-9-2-7">Q7<br/>
+<li id="sec-10-1-7">Q7<br/>
 After taking a sample of <b>size 75</b>, we found that the sample mean
-was \(\over{x}=103\). Construct a 95% confidence interval for \(\mu\).
+was $\over{x}$=103. Construct a 95% confidence interval for \(\mu\).
 
 
 
@@ -1891,16 +1916,16 @@ interval: 100.17098 105.82902
 
 </div>
 
-<div id="outline-container-10" class="outline-3">
-<h3 id="sec-10">Home Work 6</h3>
-<div class="outline-text-3" id="text-10">
+<div id="outline-container-11" class="outline-3">
+<h3 id="sec-11">Home Work 6</h3>
+<div class="outline-text-3" id="text-11">
 
 
 </div>
 
-<div id="outline-container-10-1" class="outline-4">
-<h4 id="sec-10-1">Introduction</h4>
-<div class="outline-text-4" id="text-10-1">
+<div id="outline-container-11-1" class="outline-4">
+<h4 id="sec-11-1">Introduction</h4>
+<div class="outline-text-4" id="text-11-1">
 
 <p>Sample size and power for means and proportions
 </p>
@@ -2021,7 +2046,7 @@ Independent samples
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
-<span style="color: #b22222;">/* </span><span style="color: #b22222;">I have to use only 50%  of the observation because of Stata version </span><span style="color: #b22222;">*/</span>
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">I use 50%  of observations because of limited Stata version </span><span style="color: #b22222;">*/</span>
 <span style="color: #a020f0;">sample</span> 50
 graph box totchol1 totchol2
 </pre>
@@ -2036,8 +2061,10 @@ Independent samples
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
-<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
-quietly <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+quietly {
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+  <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+}
 ttest totchol1, <span style="color: #228b22;">by</span>(hyperten)
 </pre>
 
@@ -2066,8 +2093,10 @@ Ho: diff = 0                                     degrees of freedom =       94
 
 
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
-<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
-quietly <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+quietly {
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+  <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
+}
 graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
 </pre>
 
@@ -2079,9 +2108,9 @@ graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
 
 </div>
 
-<div id="outline-container-10-2" class="outline-4">
-<h4 id="sec-10-2">Two-Sample t-test</h4>
-<div class="outline-text-4" id="text-10-2">
+<div id="outline-container-11-2" class="outline-4">
+<h4 id="sec-11-2">Two-Sample t-test</h4>
+<div class="outline-text-4" id="text-11-2">
 
 <p>Schiff et al. (1990) investigated the effect of low doses of aspirin
 on women with mild pregnancy-induced hypertension. Forty-seven women
@@ -2099,7 +2128,7 @@ Mild Pregnancy-Induced Hypertension," Obstetrics and Gynecology,
 Vol. 76, November 1990, 742-744.
 </p>
 <ul>
-<li id="sec-10-2-1">Q1<br/>
+<li id="sec-11-2-1">Q1<br/>
 Conduct a two sample t-test with equal variances at \(\alpha = 0.05\)
 to test whether the population mean arterial blood pressure for women
 treated with aspirin is equal to the population mean arterial blood
@@ -2109,13 +2138,13 @@ statistic?
 </li>
 </ul>
 <ul>
-<li id="sec-10-2-2">Q2<br/>
+<li id="sec-11-2-2">Q2<br/>
 How many degrees of freedom does your test statistic have?
 
 </li>
 </ul>
 <ul>
-<li id="sec-10-2-3">Q3<br/>
+<li id="sec-11-2-3">Q3<br/>
 The p-value for this test is greater than 0.05. Based on this
 result can we conclude that the population mean arterial blood
 pressure for pregnant women treated with aspirin is equal to the
@@ -2182,19 +2211,19 @@ We reject H0: mean(x)==mean(y)
 
 </div>
 
-<div id="outline-container-11" class="outline-3">
-<h3 id="sec-11">Home Work 7</h3>
-<div class="outline-text-3" id="text-11">
+<div id="outline-container-12" class="outline-3">
+<h3 id="sec-12">Home Work 7</h3>
+<div class="outline-text-3" id="text-12">
 
 
 </div>
 
-<div id="outline-container-11-1" class="outline-4">
-<h4 id="sec-11-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
-<div class="outline-text-4" id="text-11-1">
+<div id="outline-container-12-1" class="outline-4">
+<h4 id="sec-12-1"><span class="todo TODO">TODO</span> Inference for proportions</h4>
+<div class="outline-text-4" id="text-12-1">
 
 <ul>
-<li id="sec-11-1-1">Q1<br/>
+<li id="sec-12-1-1">Q1<br/>
 Construct a 95% confidence interval for <b>the proportion</b> of infants
 experiencing <b>the composite outcome</b> in <b>the fresh</b> red blood cell
 group, using the following methods: exact binomial, Wilson normal
@@ -2203,7 +2232,7 @@ approximation.
 </li>
 </ul>
 <ul>
-<li id="sec-11-1-2">Q2<br/>
+<li id="sec-12-1-2">Q2<br/>
 Is the normal approximation to the binomial appropriate in this
 setting?  <code>I need the number of observations with fresh==1 and fresh==0</code>
 
@@ -2236,7 +2265,7 @@ di <span style="color: #008b8b;">r</span>(mean)
 </li>
 </ul>
 <ul>
-<li id="sec-11-1-3">Q3<br/>
+<li id="sec-12-1-3">Q3<br/>
 Suppose you wanted to calculate a 95% confidence interval for
 infants experiencing intraventricular hemorrhage after receiving a
 fresh blood transfusion as well. Examine the table above. Is the
@@ -2245,7 +2274,7 @@ Wilson confidence interval still appropriate?
 </li>
 </ul>
 <ul>
-<li id="sec-11-1-4">Q4<br/>
+<li id="sec-12-1-4">Q4<br/>
 Estimate and construct a large-sample 95% confidence interval for
 the risk difference for experiencing the composite outcome for those
 with fresh blood versus the standard protocol blood. Calculate the
@@ -2285,7 +2314,7 @@ Two-sample test of proportions                     0: Number of obs =      188
 </li>
 </ul>
 <ul>
-<li id="sec-11-1-5">Q5<br/>
+<li id="sec-12-1-5">Q5<br/>
 Use a two-sample test of proportions to test whether there is a
 difference in the proportion of infants experiencing the composite
 outcome between fresh blood group and the standard protocol group at
@@ -2342,9 +2371,9 @@ Pr(|Z| &lt; |z|) = .96115075
 
 </div>
 
-<div id="outline-container-11-2" class="outline-4">
-<h4 id="sec-11-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
-<div class="outline-text-4" id="text-11-2">
+<div id="outline-container-12-2" class="outline-4">
+<h4 id="sec-12-2"><span class="todo TODO">TODO</span> Contingency Tables</h4>
+<div class="outline-text-4" id="text-12-2">
 
 <p>Continue using the Fergusson et al. (2012) clinical trial data to
 complete the following questions. Again, use either the dataset from
@@ -2353,7 +2382,7 @@ below.
 <code>table is missing</code>
 </p>
 <ul>
-<li id="sec-11-2-1">Q1<br/>
+<li id="sec-12-2-1">Q1<br/>
 Estimate the odds ratio and a 95% confidence interval for
 experiencing the composite outcome for those in the fresh blood group
 versus standard protocol blood group.
@@ -2398,7 +2427,7 @@ OR Estimate:
 </li>
 </ul>
 <ul>
-<li id="sec-11-2-2">Q2<br/>
+<li id="sec-12-2-2">Q2<br/>
 Construct a 2x2 table for the composite outcome versus blood
 group. Are the expected cell counts large enough to conduct a Pearson
 Chi-square test?
@@ -2441,7 +2470,7 @@ tabulate outcome fresh, row expected freq
 </li>
 </ul>
 <ul>
-<li id="sec-11-2-3">Q3<br/>
+<li id="sec-12-2-3">Q3<br/>
 Using the Pearson chi-square test, determine if there is evidence
 of an association between blood group and the composite outcome at the
 level of significance.  What is the value of the test statistic? Round
@@ -2487,12 +2516,12 @@ tabulate outcome fresh, expected chi2
 
 </div>
 
-<div id="outline-container-11-3" class="outline-4">
-<h4 id="sec-11-3">Final Thoughts on the Blood Transfusion Trial</h4>
-<div class="outline-text-4" id="text-11-3">
+<div id="outline-container-12-3" class="outline-4">
+<h4 id="sec-12-3">Final Thoughts on the Blood Transfusion Trial</h4>
+<div class="outline-text-4" id="text-12-3">
 
 <ul>
-<li id="sec-11-3-1">Q4<br/>
+<li id="sec-12-3-1">Q4<br/>
 In this study, the authors state that they powered the study to
 detect an absolute difference of 15% in the two groups with 80% power,
 using a 2-sided test with . After a few more adjustments, their final
@@ -2545,19 +2574,19 @@ total sample size: 1088
 
 </div>
 
-<div id="outline-container-12" class="outline-3">
-<h3 id="sec-12">Home Work 8</h3>
-<div class="outline-text-3" id="text-12">
+<div id="outline-container-13" class="outline-3">
+<h3 id="sec-13">Home Work 8</h3>
+<div class="outline-text-3" id="text-13">
 
 
 </div>
 
-<div id="outline-container-12-1" class="outline-4">
-<h4 id="sec-12-1">Survey Design</h4>
-<div class="outline-text-4" id="text-12-1">
+<div id="outline-container-13-1" class="outline-4">
+<h4 id="sec-13-1">Survey Design</h4>
+<div class="outline-text-4" id="text-13-1">
 
 <ul>
-<li id="sec-12-1-1">Q1<br/>
+<li id="sec-13-1-1">Q1<br/>
 Suppose you decided to randomly sample 1,700 people from the city
 of Boston (call this Design 1). For any given individual in South
 Dorchester, what is the probability of being selected in the survey?
@@ -2566,7 +2595,7 @@ What is this probability for an individual in Harbor Islands?
 </li>
 </ul>
 <ul>
-<li id="sec-12-1-2">Q3<br/>
+<li id="sec-13-1-2">Q3<br/>
 Now, you randomly sample 100 people within each neighborhood
 (Design 2). What is the probability of a random individual in South
 Dorchester being sampled? What is the probability of a randomly
@@ -2575,7 +2604,7 @@ selected individual in Harbor Islands being sampled?
 </li>
 </ul>
 <ul>
-<li id="sec-12-1-3">Q8<br/>
+<li id="sec-13-1-3">Q8<br/>
 Next, you decide you do not want to visit all 17 neighborhoods, so
 you randomly sample 10 neighborhoods. Within each sampled neighborhood
 selected, you randomly sample 170 people. Call this Design 4. What is
@@ -2584,7 +2613,7 @@ included in the survey? What is the probability of a random individual
 in Harbor Islands being included in the survey?
 
 <p>
-Content of boston.csv
+Content of <a href="boston.csv">boston.csv</a>
 </p>
 
 
@@ -2652,16 +2681,16 @@ P (design 2, Harbor Islands): .18691589
 
 </div>
 
-<div id="outline-container-13" class="outline-3">
-<h3 id="sec-13"><span class="todo TODO">TODO</span> Home Work 9</h3>
-<div class="outline-text-3" id="text-13">
+<div id="outline-container-14" class="outline-3">
+<h3 id="sec-14"><span class="todo TODO">TODO</span> Home Work 9</h3>
+<div class="outline-text-3" id="text-14">
 
 
 </div>
 
-<div id="outline-container-13-1" class="outline-4">
-<h4 id="sec-13-1">Trends in Unemployment</h4>
-<div class="outline-text-4" id="text-13-1">
+<div id="outline-container-14-1" class="outline-4">
+<h4 id="sec-14-1">Trends in Unemployment</h4>
+<div class="outline-text-4" id="text-14-1">
 
 <p>We again use publicly available data from the World Bank’s website to
 examine national trends in unemployment percentages (percent
@@ -2678,7 +2707,7 @@ Use the dataset UnemploymentbyCountry.dta to answer the following
 questions.
 </p>
 <ul>
-<li id="sec-13-1-1">Q1<br/>
+<li id="sec-14-1-1">Q1<br/>
 Calculate the Pearson and Spearman correlations between total
 unemployment and year for the United States and for Japan.
 
@@ -2736,7 +2765,7 @@ Test of Ho: unemployedtotal and year are independent
 </li>
 </ul>
 <ul>
-<li id="sec-13-1-2">Q2<br/>
+<li id="sec-14-1-2">Q2<br/>
 Exclude all years after 2007 (recall that the financial collapse
 occurred in late 2008). Recalculate the correlations in
 question 1. (Hint: use an "if" command to restrict to certain years in
@@ -2798,7 +2827,7 @@ Test of Ho: unemployedtotal and year are independent
 </li>
 </ul>
 <ul>
-<li id="sec-13-1-3">Q3<br/>
+<li id="sec-14-1-3">Q3<br/>
 Construct a scatter plot with year on the x-axis and with both
 unemployment in the United States and unemployment in Japan on the
 y-axis. (Hint: try plotting different symbols for the United States
@@ -2826,12 +2855,12 @@ legend( label(1 <span style="color: #8b2252;">"Japan"</span>) label(2 <span styl
 
 </div>
 
-<div id="outline-container-13-2" class="outline-4">
-<h4 id="sec-13-2">Nonparametric Tests</h4>
-<div class="outline-text-4" id="text-13-2">
+<div id="outline-container-14-2" class="outline-4">
+<h4 id="sec-14-2">Nonparametric Tests</h4>
+<div class="outline-text-4" id="text-14-2">
 
 <ul>
-<li id="sec-13-2-1">Q2<br/>
+<li id="sec-14-2-1">Q2<br/>
 Suppose you are conducting a two-sided sign test. You have data from 8
 paired samples, and you observe 1 positive sign and 7 negative
 signs. What is the p-value corresponding to the null hypothesis that
@@ -2902,7 +2931,7 @@ Using formula
 </li>
 </ul>
 <ul>
-<li id="sec-13-2-2">Q3<br/>
+<li id="sec-14-2-2">Q3<br/>
 Walker et al. (1987) examined the characteristics of children dying
 from sudden infant death syndrome. The sids.dta contains the age at
 death (in days) for a sample of 12 girls and 17 boys. Using an
@@ -2959,9 +2988,9 @@ What is your p-value?
 
 </div>
 
-<div id="outline-container-13-3" class="outline-4">
-<h4 id="sec-13-3">Obesity and Rate of Stroke</h4>
-<div class="outline-text-4" id="text-13-3">
+<div id="outline-container-14-3" class="outline-4">
+<h4 id="sec-14-3">Obesity and Rate of Stroke</h4>
+<div class="outline-text-4" id="text-14-3">
 
 <p>In the Framingham dataset that can be downloaded from the course
 website, we would like to examine the association between obesity and
@@ -2970,7 +2999,7 @@ body mass index and they are also at greater risk of a stroke, you may
 be concerned about confounding by hypertension.
 </p>
 <ul>
-<li id="sec-13-3-1">Q1<br/>
+<li id="sec-14-3-1">Q1<br/>
 Use the Framingham dataset and Stata to calculate the incidence rate
 ratio of stroke comparing obese participants (bmi1&gt;=30) to all other
 participants. The variable for incident stroke in this dataset is
@@ -3017,7 +3046,7 @@ Time [years] to  |  11144.75    77530.79  |   88675.54
 </li>
 </ul>
 <ul>
-<li id="sec-13-3-2">Q2<br/>
+<li id="sec-14-3-2">Q2<br/>
 Using the Framingham dataset and Stata, what is the incidence rate
 ratio (round to two decimal points) of stroke among obese participants
 (bmi1&gt;=30) compared to all other participants after adjusting for
@@ -3058,16 +3087,16 @@ Prevalent hypert |      IRR       [95% Conf. Interval]   M-H Weight
 
 </div>
 
-<div id="outline-container-14" class="outline-3">
-<h3 id="sec-14"><span class="todo TODO">TODO</span> Home Work 10</h3>
-<div class="outline-text-3" id="text-14">
+<div id="outline-container-15" class="outline-3">
+<h3 id="sec-15"><span class="todo TODO">TODO</span> Home Work 10</h3>
+<div class="outline-text-3" id="text-15">
 
 
 </div>
 
-<div id="outline-container-14-1" class="outline-4">
-<h4 id="sec-14-1">Simple Linear Regression</h4>
-<div class="outline-text-4" id="text-14-1">
+<div id="outline-container-15-1" class="outline-4">
+<h4 id="sec-15-1">Simple Linear Regression</h4>
+<div class="outline-text-4" id="text-15-1">
 
 <p> We use data from the Environmental Protection Agency (EPA) to track
  the BP oil spill in Louisiana between May and September 2010. The oil
@@ -3109,7 +3138,7 @@ would suggest a violation of the assumptions necessary to analyze this
 data using linear regression.
 </p>
 <ul>
-<li id="sec-14-1-1">Q1<br/>
+<li id="sec-15-1-1">Q1<br/>
 Does the amount of nickel in the soil tend to increase over the
 four month period? <code>TODO: make a histogram plot</code>
 
@@ -3129,7 +3158,7 @@ twoway (scatter nickel month) (lfit nickel month)
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-2"><span class="todo TODO">TODO</span> Q2<br/>
+<li id="sec-15-1-2"><span class="todo TODO">TODO</span> Q2<br/>
 Examine the regression coefficients. Compare how the average nickel
 amount changes by month. Is it reasonable to assume that average
 amount of nickel increases linearly by month?
@@ -3140,7 +3169,7 @@ amount of nickel increases linearly by month?
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-3"><span class="todo TODO">TODO</span> Q3<br/>
+<li id="sec-15-1-3"><span class="todo TODO">TODO</span> Q3<br/>
 Make a residual plot.
 
 
@@ -3163,7 +3192,7 @@ Is there any evidence of outliers? Is there any evidence of heteroscedasticity?
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-4">Q4<br/>
+<li id="sec-15-1-4">Q4<br/>
 Now, assume the amount of nickel increases linearly by month, and the
 assumptions of linear regression continue to hold. Fit a model with
 nickel as the outcome and month modeled as a continuous explanatory
@@ -3197,7 +3226,7 @@ nickel increases in one month by 1.642664
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-5">Q5<br/>
+<li id="sec-15-1-5">Q5<br/>
 What is the 95% confidence interval for the average increase in
 nickel each month?
 
@@ -3233,7 +3262,7 @@ regress nickel month
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-6">Q6<br/>
+<li id="sec-15-1-6">Q6<br/>
 Given that the relationship between month and nickel appears to be
 linear, is it reasonable to use <b>Model 2</b> to predict the amount of
 nickel in the soil in July 2010?
@@ -3244,7 +3273,7 @@ nickel in the soil in July 2010?
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-7">Q7<br/>
+<li id="sec-15-1-7">Q7<br/>
 Given that the relationship between month and nickel appears to be
 linear, is it reasonable to use <b>Model 2</b> to predict the amount of
 nickel in the soil in October 2010?
@@ -3255,7 +3284,7 @@ nickel in the soil in October 2010?
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-8">Q8<br/>
+<li id="sec-15-1-8">Q8<br/>
 What is the average amount of nickel in the soil during August 2010?
 According to model 1 (Hint: Think about how dummy/indicator variables
 are coded.). According to <b>Model 1</b>. According to <b>Model 2</b>
@@ -3291,7 +3320,7 @@ av. nickel in August (Model 2): 18.476433
 </li>
 </ul>
 <ul>
-<li id="sec-14-1-9">Q9<br/>
+<li id="sec-15-1-9">Q9<br/>
 True or False: <b>Model 1</b> makes stronger modeling assumptions
 than <b>Model 2</b>.
 
@@ -3304,9 +3333,9 @@ than <b>Model 2</b>.
 
 </div>
 
-<div id="outline-container-14-2" class="outline-4">
-<h4 id="sec-14-2">Multiple Linear Regression</h4>
-<div class="outline-text-4" id="text-14-2">
+<div id="outline-container-15-2" class="outline-4">
+<h4 id="sec-15-2">Multiple Linear Regression</h4>
+<div class="outline-text-4" id="text-15-2">
 
 <p>Again, we model the amount of nickel found in the sediment. Now, we
 model nickel as a function of both time (month) and location
@@ -3320,7 +3349,7 @@ continuous variable, as in <b>Model 2</b> from the previous question. Call
 this <b>Model 3</b>. Assume the assumptions of linear regression hold.
 </p>
 <ul>
-<li id="sec-14-2-1"><span class="todo TODO">TODO</span> Q1<br/>
+<li id="sec-15-2-1"><span class="todo TODO">TODO</span> Q1<br/>
 Compare the adjusted R-squared from Models 2 and 3. Does the addition
 of longitude improve the adjusted R-square?
 
@@ -3330,7 +3359,7 @@ of longitude improve the adjusted R-square?
 </li>
 </ul>
 <ul>
-<li id="sec-14-2-2">Q2<br/>
+<li id="sec-15-2-2">Q2<br/>
 Test whether the coefficient for longitude in the model is equal to 0
 at the 0.05 level of significance.
 
@@ -3409,12 +3438,12 @@ The p-value?
 
 </div>
 
-<div id="outline-container-14-3" class="outline-4">
-<h4 id="sec-14-3">More Regression</h4>
-<div class="outline-text-4" id="text-14-3">
+<div id="outline-container-15-3" class="outline-4">
+<h4 id="sec-15-3">More Regression</h4>
+<div class="outline-text-4" id="text-15-3">
 
 <ul>
-<li id="sec-14-3-1">Q1<br/>
+<li id="sec-15-3-1">Q1<br/>
  Examine the relationship between vanadium (another marker of oil in
  sediment) and nickel using a scatter plot. Does this relationship
  appear linear?
@@ -3436,7 +3465,7 @@ scatter vanadium nickel
 </li>
 </ul>
 <ul>
-<li id="sec-14-3-2">Q2<br/>
+<li id="sec-15-3-2">Q2<br/>
 How many outliers do you observe in this scatterplot? 
 
 <p>
@@ -3445,7 +3474,7 @@ How many outliers do you observe in this scatterplot?
 </li>
 </ul>
 <ul>
-<li id="sec-14-3-3">Q3<br/>
+<li id="sec-15-3-3">Q3<br/>
 Fit a linear regression model with nickel as the outcome and vanadium
 as the explanatory covariate (Model 4). Use this model to answer
 questions 3 and 4.
@@ -3480,7 +3509,7 @@ nickel increases by  .4379549
 </li>
 </ul>
 <ul>
-<li id="sec-14-3-4">Q4<br/>
+<li id="sec-15-3-4">Q4<br/>
 How much does nickel increase, on average, for a 10 mg/kg increase in
 vanadium?
 
@@ -3521,14 +3550,14 @@ nickel increases by  4.379549
 
 </div>
 
-<div id="outline-container-14-4" class="outline-4">
-<h4 id="sec-14-4">High Blood Pressure and CHD Incidence</h4>
-<div class="outline-text-4" id="text-14-4">
+<div id="outline-container-15-4" class="outline-4">
+<h4 id="sec-15-4">High Blood Pressure and CHD Incidence</h4>
+<div class="outline-text-4" id="text-15-4">
 
 <p>Use Stata and the NHLBI data set to create the two categories of high
 blood pressure (highbp1)
 </p><ul>
-<li id="sec-14-4-1">Q1<br/>
+<li id="sec-15-4-1">Q1<br/>
 What is the incidence rate ratio of stroke comparing those with
 high blood pressure to those without high blood pressure? Hint: The
 variable for stroke in the dataset is "stroke" and the number of years
@@ -3575,7 +3604,7 @@ Time [years] to  |  28887.76    59787.78  |   88675.54
 </li>
 </ul>
 <ul>
-<li id="sec-14-4-2">Q2<br/>
+<li id="sec-15-4-2">Q2<br/>
 What is the incidence rate ratio (rounded to two decimal points)
 for the association between high blood pressure (highbp1) and the rate
 of stroke among men? Hint: Use the variable (sex1).
@@ -3612,7 +3641,7 @@ quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140
 </li>
 </ul>
 <ul>
-<li id="sec-14-4-3">Q3<br/>
+<li id="sec-15-4-3">Q3<br/>
 What is the incidence rate ratio (rounded to two decimal points)
 for the association between high blood pressure (highbp1) and the rate
 of stroke among women?
@@ -3648,7 +3677,7 @@ quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140
 </li>
 </ul>
 <ul>
-<li id="sec-14-4-4"><span class="todo TODO">TODO</span> Q4<br/>
+<li id="sec-15-4-4"><span class="todo TODO">TODO</span> Q4<br/>
 Conduct a test of homogeneity to evaluate whether the association
 between high blood pressure (highbp1) and the rate of stroke is
 different by sex. Based on this test, is there evidence that the
