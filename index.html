@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-06T03:23+0100"/>
+<meta name="generated" content="2013-01-06T03:34+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -2653,9 +2653,9 @@ di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nn_d4</span> = 10
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d4</span> = 170
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P(design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P(design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
 </pre>
 
 
@@ -2667,9 +2667,9 @@ P (design 2, South Dorchester): .00166808
 
 P (design 2, Harbor Islands): .18691589
 
-P (design 2, South Dorchester): .00166808
+P(design 2, South Dorchester): .00166808
 
-P (design 2, Harbor Islands): .18691589
+P(design 2, Harbor Islands): .18691589
 
 </pre>
 
