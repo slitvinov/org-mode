@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-06T13:04+0100"/>
+<meta name="generated" content="2013-01-06T13:20+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -315,7 +315,7 @@ for the JavaScript code below.
 
 
 
-<pre class="example">di "hello world"
+<pre class="src src-stata">di <span style="color: #8b2252;">"hello world"</span>
 </pre>
 
 
@@ -331,8 +331,8 @@ Use macro definition
 </p>
 
 
-<pre class="example">local N = 41
-di `N'+1
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 41
+di `<span style="color: #a0522d;">N</span>'+1
 </pre>
 
 
@@ -348,8 +348,8 @@ di `N'+1
 </p>
 
 
-<pre class="example">quietly set obs 5
-gen x = _n
+<pre class="src src-stata">quietly set obs 5
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
 describe
 </pre>
 
@@ -377,13 +377,13 @@ One can use <code>r(...)</code> or <code>e(...)</code> to get output from stata 
 </p>
 
 
-<pre class="example">quietly { 
-  set obs 5
-  gen x = _n
-  summarize x
+<pre class="src src-stata">quietly { 
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">5</span>
+  <span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+  <span style="color: #008b8b;">summarize</span> x
 }
-di "mean: " r(mean)
-di "std:  " r(sd)
+di <span style="color: #8b2252;">"mean: "</span> <span style="color: #008b8b;">r</span>(mean)
+di <span style="color: #8b2252;">"std:  "</span> <span style="color: #008b8b;">r</span>(sd)
 </pre>
 
 
@@ -401,8 +401,8 @@ Multi-line command
 </p>
 
 
-<pre class="example">di ///
-   "test"
+<pre class="src src-stata">di <span style="color: #b22222;">///</span>
+   <span style="color: #8b2252;">"test"</span>
 </pre>
 
 
@@ -418,9 +418,9 @@ Produce scatter plot
 </p>
 
 
-<pre class="example">set obs 7
-gen x = _n
-gen y = x^2
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">7</span>
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">gen</span> y = x^2
 graph scatter y x
 </pre>
 
@@ -433,7 +433,7 @@ Plot a function
 </p>
 
 
-<pre class="example">twoway function sin(x), range(0 10)
+<pre class="src src-stata">twoway function <span style="color: #008b8b;">sin</span>(x), <span style="color: #a020f0;">range</span>(0 10)
 </pre>
 
 
@@ -445,8 +445,8 @@ Plot two functions
 </p>
 
 
-<pre class="example">local rng range(-12 12)
-twoway (function sin(x), `rng')  (function cos(x), `rng')
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> rng</span> <span style="color: #a020f0;">range</span>(-12 12)
+twoway (function <span style="color: #008b8b;">sin</span>(x), `<span style="color: #a0522d;">rng</span>')  (function <span style="color: #008b8b;">cos</span>(x), `<span style="color: #a0522d;">rng</span>')
 </pre>
 
 
@@ -458,11 +458,11 @@ Bar Charts
 </p>
 
 
-<pre class="example">local nobs = 10
-set obs `nobs'
-generate x = _n
-gen lev = 1 if _n&lt;=`nobs'/2
-replace lev = 0 if _n&gt;`nobs'/2
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> = 10
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
+<span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
 graph bar x, over(lev)
 </pre>
 
@@ -475,9 +475,9 @@ Histogram
 </p>
 
 
-<pre class="example">set obs 1000
-generate x = rnormal()
-twoway (histogram x, bin(20)) (function normalden(x), range(-4 4))
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">1000</span>
+<span style="color: #a020f0;">generate</span> x = rnormal()
+twoway (histogram x, bin(20)) (function normalden(x), <span style="color: #a020f0;">range</span>(-4 4))
 </pre>
 
 
@@ -489,9 +489,9 @@ Box plot
 </p>
 
 
-<pre class="example">set obs 10
-generate x = _n
-generate y = _n + 1
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">generate</span> y = <span style="color: #228b22;">_n</span> + 1
 graph box x y
 </pre>
 
@@ -504,9 +504,9 @@ Horizontal box plot
 </p>
 
 
-<pre class="example">set obs 10
-generate x = _n
-generate y = _n + 1
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">generate</span> y = <span style="color: #228b22;">_n</span> + 1
 graph box x y, horizontal
 </pre>
 
@@ -519,11 +519,11 @@ Combining separate graphs into one graph
 </p>
 
 
-<pre class="example">set obs 10
-generate x = _n
-generate y = _n + 1
-twoway (function normalden(x), range(-4 4)), name(f1)
-twoway (function normal(x), range(-4 4)), name(f2)
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">10</span>
+<span style="color: #a020f0;">generate</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">generate</span> y = <span style="color: #228b22;">_n</span> + 1
+twoway (function normalden(x), <span style="color: #a020f0;">range</span>(-4 4)), name(f1)
+twoway (function normal(x), <span style="color: #a020f0;">range</span>(-4 4)), name(f2)
 graph combine f1 f2, row(2)
 </pre>
 
@@ -549,7 +549,7 @@ graph combine f1 f2, row(2)
 
 
 
-<pre class="example">twoway function normalden(x, 0, 1), range(-4 4) ytitle("pr. density of normal distr.")
+<pre class="src src-stata">twoway function normalden(x, 0, 1), <span style="color: #a020f0;">range</span>(-4 4) ytitle(<span style="color: #8b2252;">"pr. density of normal distr."</span>)
 </pre>
 
 
@@ -569,9 +569,9 @@ successes then probability of one successes is p.
 </p>
 
 
-<pre class="example">twoway (function binomial(30, x, 0.5), range(0 30)) ///
-       (function binomial(30, x, 0.25), range(0 30)), ///
-       legend( label(1 "p=0.5, n=10") label(2 "p=0.25, n=10") )
+<pre class="src src-stata">twoway (function binomial(30, x, 0.5), <span style="color: #a020f0;">range</span>(0 30)) <span style="color: #b22222;">///</span>
+       (function binomial(30, x, 0.25), <span style="color: #a020f0;">range</span>(0 30)), <span style="color: #b22222;">///</span>
+       legend( label(1 <span style="color: #8b2252;">"p=0.5, n=10"</span>) label(2 <span style="color: #8b2252;">"p=0.25, n=10"</span>) )
 </pre>
 
 
@@ -589,10 +589,10 @@ successes then probability of one successes is p.
 
 
 
-<pre class="example">twoway (function tden(2, x), range(-10 10)) ///
-       (function tden(10, x), range(-10 10)), ///
-       legend( label(1 "n=2") label(2 "n=10")) ///
-       ytitle("t-distribution")
+<pre class="src src-stata">twoway (function tden(2, x), <span style="color: #a020f0;">range</span>(-10 10)) <span style="color: #b22222;">///</span>
+       (function tden(10, x), <span style="color: #a020f0;">range</span>(-10 10)), <span style="color: #b22222;">///</span>
+       legend( label(1 <span style="color: #8b2252;">"n=2"</span>) label(2 <span style="color: #8b2252;">"n=10"</span>)) <span style="color: #b22222;">///</span>
+       ytitle(<span style="color: #8b2252;">"t-distribution"</span>)
 </pre>
 
 
@@ -619,8 +619,8 @@ successes then probability of one successes is p.
 </p>
 
 
-<pre class="example">set obs 100
-gen x = rnormal()
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">100</span>
+<span style="color: #a020f0;">gen</span> x = rnormal()
 sum x
 ttest x == 0
 </pre>
@@ -650,9 +650,9 @@ Ho: mean = 0                                     degrees of freedom =       99
 
 
 
-<pre class="example">set obs 20
-gen x = rnormal(1.0)
-gen y = rnormal(1.5)
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+<span style="color: #a020f0;">gen</span> x = rnormal(1.0)
+<span style="color: #a020f0;">gen</span> y = rnormal(1.5)
 ttest x == y
 </pre>
 
@@ -684,14 +684,14 @@ With group variable
 </p>
 
 
-<pre class="example">local nobs = 1000
-set obs `nobs'
-gen lev = 1 if _n&lt;=`nobs'/2
-replace lev = 0 if _n&gt;`nobs'/2
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> = 1000
+<span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
+<span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
+<span style="color: #a020f0;">replace</span> lev = 0 if <span style="color: #228b22;">_n</span>&gt;`<span style="color: #a0522d;">nobs</span>'/2
 
-gen x = rnormal(1) if lev==0
-replace x = rnormal(2) if lev==1
-graph box x, by(lev)
+<span style="color: #a020f0;">gen</span> x = rnormal(1) if lev==0
+<span style="color: #a020f0;">replace</span> x = rnormal(2) if lev==1
+graph box x, <span style="color: #228b22;">by</span>(lev)
 </pre>
 
 
@@ -703,11 +703,11 @@ Immediate form of one-sample mean-comparison test
 </p>
 
 
-<pre class="example">local obs = 20
-local mean = 1.0
-local sd = 1.5
-local val = 1.8
-ttesti `obs' `mean' `sd' `val'
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> obs</span> = 20
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd</span> = 1.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> val</span> = 1.8
+ttesti `<span style="color: #a0522d;">obs</span>' `<span style="color: #a0522d;">mean</span>' `<span style="color: #a0522d;">sd</span>' `<span style="color: #a0522d;">val</span>'
 </pre>
 
 
@@ -740,7 +740,7 @@ Ho: mean = 1.8                                   degrees of freedom =       19
 </p>
 
 
-<pre class="example">sampsi 0.2 0.4
+<pre class="src src-stata">sampsi 0.2 0.4
 </pre>
 
 
@@ -778,10 +778,10 @@ Estimated required sample sizes:
 </p>
 
 
-<pre class="example">quietly {
-  set obs 20
-  gen x = rnormal()
-  gen y = x + 1.0 + rnormal()
+<pre class="src src-stata">quietly {
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+  <span style="color: #a020f0;">gen</span> x = rnormal()
+  <span style="color: #a020f0;">gen</span> y = x + 1.0 + rnormal()
 }
 signtest x=y
 </pre>
@@ -820,9 +820,9 @@ Two-sided test:
 
 
 
-<pre class="example">set obs 20
-gen x = rnormal()
-gen y = 0.15 + rnormal()
+<pre class="src src-stata"><span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> <span style="color: #228b22;">20</span>
+<span style="color: #a020f0;">gen</span> x = rnormal()
+<span style="color: #a020f0;">gen</span> y = 0.15 + rnormal()
 signrank x=y
 ttest x=y
 </pre>
@@ -894,10 +894,10 @@ Construct a linear regression and use <code>lincom</code>
 </p>
 
 
-<pre class="example">quietly set obs 10
-gen x = _n
-gen y = x + 2*rnormal()
-quietly regress y x
+<pre class="src src-stata">quietly set obs 10
+<span style="color: #a020f0;">gen</span> x = <span style="color: #228b22;">_n</span>
+<span style="color: #a020f0;">gen</span> y = x + 2*rnormal()
+quietly <span style="color: #008b8b;">regress</span> y x
 lincom 2*x
 </pre>
 
@@ -932,7 +932,7 @@ patients who would always recommend the hospital (recommendyes).
 
 
 
-<pre class="example">use datasets/hospitaldata.74f90a09d4da.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
 pwcorr recommendyes nursealways, sig
 </pre>
 
@@ -996,7 +996,7 @@ regression.  Assumptions:
 
 
 
-<pre class="example">use datasets/hospitaldata.74f90a09d4da.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
 twoway (scatter recommendyes nursealways)
 </pre>
 
@@ -1013,7 +1013,7 @@ tions of the regression coefficients $&alpha; and \(\beta\).
 
 
 
-<pre class="example">use datasets/hospitaldata.74f90a09d4da.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
 regress recommendyes nursealways
 </pre>
 
@@ -1046,7 +1046,7 @@ appear to fit well? (Are there any outliers?)
 
 
 
-<pre class="example">use datasets/hospitaldata.74f90a09d4da.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
 regress recommendyes nursealways
 rvfplot
 </pre>
@@ -1066,7 +1066,7 @@ confidence interval.
 
 
 
-<pre class="example">use datasets/hospitaldata.74f90a09d4da.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hospitaldata.74f90a09d4da.dta
 regress recommendyes nursealways
 lincom _cons + 80*nursealways
 </pre>
@@ -1110,7 +1110,7 @@ interval.
 
 
 
-<pre class="example">di 73.54339 - invttail(3568, 0.025)*7.281745
+<pre class="src src-stata">di 73.54339 - invttail(3568, 0.025)*7.281745
 </pre>
 
 
@@ -1134,8 +1134,8 @@ interval.
 
 
 
-<pre class="example">use datasets/chis_healthdisparities.e85b34e4c45a.dta
-gen nopov = 1-poverty
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/chis_healthdisparities.e85b34e4c45a.dta
+<span style="color: #a020f0;">gen</span> nopov = 1-poverty
 logit doctor nopov
 lincom nopov, eform
 </pre>
@@ -1205,15 +1205,15 @@ classes?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 quietly {
-gen bmi1_cat=.
-replace bmi1_cat=1 if (bmi1&lt;18.5)
-replace bmi1_cat=2 if (bmi1&gt;=18.5 &amp; bmi1&lt;25)
-replace bmi1_cat=3 if (bmi1&gt;=25 &amp; bmi1&lt;=30)
-replace bmi1_cat=4 if (bmi1&gt;30 &amp; bmi1!=30)
+<span style="color: #a020f0;">gen</span> bmi1_<span style="color: #008b8b;">cat</span>=.
+<span style="color: #a020f0;">replace</span> bmi1_<span style="color: #008b8b;">cat</span>=1 if (bmi1&lt;18.5)
+<span style="color: #a020f0;">replace</span> bmi1_<span style="color: #008b8b;">cat</span>=2 if (bmi1&gt;=18.5 &amp; bmi1&lt;25)
+<span style="color: #a020f0;">replace</span> bmi1_<span style="color: #008b8b;">cat</span>=3 if (bmi1&gt;=25 &amp; bmi1&lt;=30)
+<span style="color: #a020f0;">replace</span> bmi1_<span style="color: #008b8b;">cat</span>=4 if (bmi1&gt;30 &amp; bmi1!=30)
 } 
-tab bmi1_cat prevchd1, missing matcell(table)
+tab bmi1_<span style="color: #008b8b;">cat</span> prevchd1, missing matcell(table)
 </pre>
 
 
@@ -1249,7 +1249,7 @@ What is the prevalence of diabetes at the first exam (diabetes1=1)?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 tab diabetes1
 </pre>
 
@@ -1275,7 +1275,7 @@ What is the prevalence of diabetes at the second exam (diabetes2=1)?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 tab diabetes2
 </pre>
 
@@ -1301,7 +1301,7 @@ What is the prevalence of diabetes at the third exam (diabetes3=1)?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 tab diabetes3
 </pre>
 
@@ -1376,13 +1376,13 @@ Reproduce the table
 </p>
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 quietly {
-  generate more1 = 0 if bmi1&lt;=25 &amp; !missing(bmi2)
-  replace  more1 = 1 if bmi1&gt;25 &amp; !missing(bmi2)
+  <span style="color: #a020f0;">generate</span> more1 = 0 if bmi1&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
+  <span style="color: #a020f0;">replace</span>  more1 = 1 if bmi1&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
 
-  generate more2 = 0 if bmi2&lt;=25 &amp; !missing(bmi1)
-  replace  more2 = 1 if bmi2&gt;25 &amp; !missing(bmi1)
+  <span style="color: #a020f0;">generate</span> more2 = 0 if bmi2&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+  <span style="color: #a020f0;">replace</span>  more2 = 1 if bmi2&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
 }
 tab more1 more2
 </pre>
@@ -1426,30 +1426,30 @@ What is the probability that C occurs, given that A occurs?
 </p>
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 quietly {
-  generate more1 = 0 if bmi1&lt;=25 &amp; !missing(bmi2)
-  replace  more1 = 1 if bmi1&gt;25 &amp; !missing(bmi2)
+  <span style="color: #a020f0;">generate</span> more1 = 0 if bmi1&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
+  <span style="color: #a020f0;">replace</span>  more1 = 1 if bmi1&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi2)
 
-  generate more2 = 0 if bmi2&lt;=25 &amp; !missing(bmi1)
-  replace  more2 = 1 if bmi2&gt;25 &amp; !missing(bmi1)
+  <span style="color: #a020f0;">generate</span> more2 = 0 if bmi2&lt;=25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
+  <span style="color: #a020f0;">replace</span>  more2 = 1 if bmi2&gt;25 &amp; !<span style="color: #008b8b;">missing</span>(bmi1)
 }
 tab more1 more2, matcell(table)
-local ntot = table[1,1]+table[1,2]+table[2,1]+table[2,2]
-local PA = (table[2,1]+table[2,2])/`ntot'
-local PB = (table[1,2]+table[2,2])/`ntot'
-local PAandB = table[2,2]/`ntot'
-di "P(A): " `PA'
-di "P(B): " `PB'
-di "P(A&amp;B): " `PAandB'
-di "P(A||B): " (table[1,2]+table[2,1]+table[2,2])/`ntot'
-di "P(A|B): " (table[2,2])/(table[2,1]+table[2,2])
-di "P(C|A): " (table[2,1])/(table[2,1]+table[2,2])
-if (`PAandB' == `PA'*`PB') {
-   di "A and B are independent"
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> ntot</span> = <span style="color: #008b8b;">table</span>[1,1]+table[1,2]+table[2,1]+table[2,2]
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PA</span> = (table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PB</span> = (table[1,2]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PAandB</span> = <span style="color: #008b8b;">table</span>[2,2]/`<span style="color: #a0522d;">ntot</span>'
+di <span style="color: #8b2252;">"P(A): "</span> `<span style="color: #a0522d;">PA</span>'
+di <span style="color: #8b2252;">"P(B): "</span> `<span style="color: #a0522d;">PB</span>'
+di <span style="color: #8b2252;">"P(A&amp;B): "</span> `<span style="color: #a0522d;">PAandB</span>'
+di <span style="color: #8b2252;">"P(A||B): "</span> (table[1,2]+table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
+di <span style="color: #8b2252;">"P(A|B): "</span> (table[2,2])/(table[2,1]+table[2,2])
+di <span style="color: #8b2252;">"P(C|A): "</span> (table[2,1])/(table[2,1]+table[2,2])
+<span style="color: #008b8b;">if</span> (`<span style="color: #a0522d;">PAandB</span>' == `<span style="color: #a0522d;">PA</span>'*`<span style="color: #a0522d;">PB</span>') {
+   <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are independent"</span>
 }
-else  {
-   di "A and B are not independent"
+<span style="color: #008b8b;">else</span>  {
+   <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are not independent"</span>
 }
 </pre>
 
@@ -1530,29 +1530,29 @@ Are the events A and B independent?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly gen age_cat=.
-quietly replace age_cat=1 if (age1&gt;=30) &amp; (age1&lt;=39)
-quietly replace age_cat=2 if (age1&gt;=40) &amp; (age1&lt;=49)
-quietly replace age_cat=3 if (age1&gt;=50) &amp; (age1&lt;=59)
-quietly replace age_cat=4 if (age1&gt;=60) &amp; (age1&lt;=69)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">gen</span> age_<span style="color: #008b8b;">cat</span>=.
+quietly <span style="color: #a020f0;">replace</span> age_<span style="color: #008b8b;">cat</span>=1 if (age1&gt;=30) &amp; (age1&lt;=39)
+quietly <span style="color: #a020f0;">replace</span> age_<span style="color: #008b8b;">cat</span>=2 if (age1&gt;=40) &amp; (age1&lt;=49)
+quietly <span style="color: #a020f0;">replace</span> age_<span style="color: #008b8b;">cat</span>=3 if (age1&gt;=50) &amp; (age1&lt;=59)
+quietly <span style="color: #a020f0;">replace</span> age_<span style="color: #008b8b;">cat</span>=4 if (age1&gt;=60) &amp; (age1&lt;=69)
 
-tabulate age_cat cursmoke1, cell nofreq matcell(table)
-local nsm = table[1,1]+table[2,1]+table[3,1]+table[4,1]
-local sm = table[1,2]+table[2,2]+table[3,2]+table[4,2]
-local tot = `sm' + `nsm'
-local b = table[4,1]-table[4,2]
-local PA = `sm'/`tot'
-local PB = `b'/`tot'
-local PAandB = table[4,2]
-di "P(A): " `PA'
-di "P(B^C): " 1-`PB'
-di "P(&lt;60, non-smoker): " (table[1,1]+table[2,1]+table[3,1])/`tot'
-if (`PAandB' == `PA'*`PB') {
-   di "A and B are independent"
+tabulate age_<span style="color: #008b8b;">cat</span> cursmoke1, cell nofreq matcell(table)
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsm</span> = <span style="color: #008b8b;">table</span>[1,1]+table[2,1]+table[3,1]+table[4,1]
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sm</span> = <span style="color: #008b8b;">table</span>[1,2]+table[2,2]+table[3,2]+table[4,2]
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> tot</span> = `<span style="color: #a0522d;">sm</span>' + `<span style="color: #a0522d;">nsm</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> b</span> = <span style="color: #008b8b;">table</span>[4,1]-table[4,2]
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PA</span> = `<span style="color: #a0522d;">sm</span>'/`<span style="color: #a0522d;">tot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PB</span> = `<span style="color: #a0522d;">b</span>'/`<span style="color: #a0522d;">tot</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PAandB</span> = <span style="color: #008b8b;">table</span>[4,2]
+di <span style="color: #8b2252;">"P(A): "</span> `<span style="color: #a0522d;">PA</span>'
+di <span style="color: #8b2252;">"P(B^C): "</span> 1-`<span style="color: #a0522d;">PB</span>'
+di <span style="color: #8b2252;">"P(&lt;60, non-smoker): "</span> (table[1,1]+table[2,1]+table[3,1])/`<span style="color: #a0522d;">tot</span>'
+<span style="color: #008b8b;">if</span> (`<span style="color: #a0522d;">PAandB</span>' == `<span style="color: #a0522d;">PA</span>'*`<span style="color: #a0522d;">PB</span>') {
+   <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are independent"</span>
 }
-else  {
-   di "A and B are not independent"
+<span style="color: #008b8b;">else</span>  {
+   <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are not independent"</span>
 }
 </pre>
 
@@ -1613,27 +1613,27 @@ does not have the disease: <code>tn_dn/(tp_dn+tn_dn)</code>.
 </p>
 
 
-<pre class="example">assume_pos: true;
-vars: [tp_dp, tp_dn, tn_dp, tn_dn];
-eq1: total = tp_dp + tp_dn + tn_dp + tn_dn;
-eq2: se = tp_dp/(tp_dp+tn_dp);
-eq3: sp = tn_dn/(tp_dn+tn_dn);
-eq4: pr = (tp_dp+tn_dp)/total;
-/* solve for the groups */
-sol: solve([eq1, eq2, eq3, eq4], vars)[1];
+<pre class="src src-maxima"><span style="color: #a020f0;">assume_pos:</span> <span style="color: #008b8b;">true</span>;
+vars<span style="color: #a020f0;">:</span> [tp_dp, tp_dn, tn_dp, tn_dn];
+eq1<span style="color: #a020f0;">:</span> total <span style="color: #a020f0;">=</span> tp_dp <span style="color: #a020f0;">+</span> tp_dn <span style="color: #a020f0;">+</span> tn_dp <span style="color: #a020f0;">+</span> tn_dn;
+eq2<span style="color: #a020f0;">:</span> se <span style="color: #a020f0;">=</span> tp_dp<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tn_dp);
+eq3<span style="color: #a020f0;">:</span> sp <span style="color: #a020f0;">=</span> tn_dn<span style="color: #a020f0;">/</span>(tp_dn<span style="color: #a020f0;">+</span>tn_dn);
+eq4<span style="color: #a020f0;">:</span> pr <span style="color: #a020f0;">=</span> (tp_dp<span style="color: #a020f0;">+</span>tn_dp)<span style="color: #a020f0;">/</span>total;
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">solve for the groups </span><span style="color: #b22222;">*/</span>
+sol<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">solve</span>([eq1, eq2, eq3, eq4], vars)[<span style="color: #008b8b;">1</span>];
 
-/* get answers as formulas */
-fn: ev(tn_dp/(tp_dp+tn_dp), sol);
-fp: ev(tp_dn/(tp_dn+tn_dn), sol);
-pc: ev(tp_dn/(tp_dp+tp_dn), sol);
-pd: ev(tn_dp/(tn_dp+tn_dn), sol);
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">get answers as formulas </span><span style="color: #b22222;">*/</span>
+fn<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tn_dp<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tn_dp), sol);
+fp<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tp_dn<span style="color: #a020f0;">/</span>(tp_dn<span style="color: #a020f0;">+</span>tn_dn), sol);
+pc<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tp_dn<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tp_dn), sol);
+pd<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tn_dp<span style="color: #a020f0;">/</span>(tn_dp<span style="color: #a020f0;">+</span>tn_dn), sol);
 
-/* substitute numbers */
-val: [se=0.721, sp=0.932, pr=0.161];
-print("pr. of falce negative, P(T-|D+):",  ev(fn, val));
-print("pr. of falce positive, P(T+|D-):",  ev(fp, val));
-print("P(D-|T+): ", ev(pc, val));
-print("P(D+|T-): ", ev(pd, val));
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">substitute numbers </span><span style="color: #b22222;">*/</span>
+val<span style="color: #a020f0;">:</span> [se<span style="color: #a020f0;">=</span>0<span style="color: #a020f0;">.</span>721, sp<span style="color: #a020f0;">=</span>0<span style="color: #a020f0;">.</span>932, pr<span style="color: #a020f0;">=</span>0<span style="color: #a020f0;">.</span>161];
+<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"pr. of falce negative, P(T-|D+):"</span>,  <span style="color: #483d8b;">ev</span>(fn, val));
+<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"pr. of falce positive, P(T+|D-):"</span>,  <span style="color: #483d8b;">ev</span>(fp, val));
+<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"P(D-|T+): "</span>, <span style="color: #483d8b;">ev</span>(pc, val));
+<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"P(D+|T-): "</span>, <span style="color: #483d8b;">ev</span>(pd, val));
 </pre>
 
 
@@ -1708,31 +1708,31 @@ To get table in stata I save it as tex file <a href="#titani.tex">titani.tex</a>
 </p>
 
 
-<pre class="example">\begin{matrix}
-\mathbf{Passenger \space Class} &amp; \mathbf{Age/Sex} &amp; \mathbf{Survival \space Status} &amp; \mathbf{Frequency} \\
-\hline
-\mathrm{First}      &amp; \mathrm{Child} &amp; \mathrm{Survived}  &amp; 6 \\
-\mathrm{First}      &amp; \mathrm{Child} &amp; \mathrm{Did \space not \space survive}  &amp; 0 \\
-\mathrm{First}      &amp; \mathrm{Women} &amp; \mathrm{Survived}  &amp; 140 \\
-\mathrm{First}      &amp; \mathrm{Women} &amp; \mathrm{Did \space not \space survive}  &amp; 4 \\
-\mathrm{First}      &amp; \mathrm{Man}   &amp; \mathrm{Survived}  &amp; 57 \\
-\mathrm{First}      &amp; \mathrm{Man}   &amp; \mathrm{Did \space not \space survive}  &amp; 118 \\
+<pre class="src src-latex"><span style="color: #696969;">\begin</span>{<span style="color: #0000ff;">matrix</span>}
+<span style="color: #696969;">\mathbf</span>{Passenger <span style="color: #696969;">\space</span> Class} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathbf</span>{Age/Sex} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathbf</span>{Survival <span style="color: #696969;">\space</span> Status} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathbf</span>{Frequency} <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\hline</span>
+<span style="color: #696969;">\mathrm</span>{First}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Child} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 6 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{First}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Child} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 0 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{First}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Women} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 140 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{First}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Women} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 4 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{First}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Man}   <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 57 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{First}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Man}   <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 118 <span style="color: #ff0000; font-weight: bold;">\\</span>
 
 
-\mathrm{Second}      &amp; \mathrm{Child} &amp; \mathrm{Survived}  &amp; 24 \\
-\mathrm{Second}      &amp; \mathrm{Child} &amp; \mathrm{Did \space not \space survive}  &amp; 0 \\
-\mathrm{Second}      &amp; \mathrm{Women} &amp; \mathrm{Survived}  &amp; 80 \\
-\mathrm{Second}      &amp; \mathrm{Women} &amp; \mathrm{Did \space not \space survive}  &amp; 13 \\
-\mathrm{Second}      &amp; \mathrm{Man}   &amp; \mathrm{Survived}  &amp; 14 \\
-\mathrm{Second}      &amp; \mathrm{Man}   &amp; \mathrm{Did \space not \space survive}  &amp; 154 \\
+<span style="color: #696969;">\mathrm</span>{Second}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Child} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 24 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Second}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Child} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 0 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Second}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Women} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 80 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Second}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Women} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 13 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Second}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Man}   <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 14 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Second}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Man}   <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 154 <span style="color: #ff0000; font-weight: bold;">\\</span>
 
-\mathrm{Third}      &amp; \mathrm{Child} &amp; \mathrm{Survived}  &amp; 27 \\
-\mathrm{Third}      &amp; \mathrm{Child} &amp; \mathrm{Did \space not \space survive}  &amp; 52 \\
-\mathrm{Third}      &amp; \mathrm{Women} &amp; \mathrm{Survived}  &amp; 76 \\
-\mathrm{Third}      &amp; \mathrm{Women} &amp; \mathrm{Did \space not \space survive}  &amp; 89 \\
-\mathrm{Third}      &amp; \mathrm{Man}   &amp; \mathrm{Survived}  &amp; 75 \\
-\mathrm{Third}      &amp; \mathrm{Man}   &amp; \mathrm{Did \space not \space survive}  &amp; 387 \\
-\end{matrix}
+<span style="color: #696969;">\mathrm</span>{Third}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Child} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 27 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Third}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Child} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 52 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Third}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Women} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 76 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Third}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Women} <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 89 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Third}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Man}   <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Survived}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 75 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\mathrm</span>{Third}      <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Man}   <span style="color: #ff0000; font-weight: bold;">&amp;</span> <span style="color: #696969;">\mathrm</span>{Did <span style="color: #696969;">\space</span> not <span style="color: #696969;">\space</span> survive}  <span style="color: #ff0000; font-weight: bold;">&amp;</span> 387 <span style="color: #ff0000; font-weight: bold;">\\</span>
+<span style="color: #696969;">\end</span>{<span style="color: #0000ff;">matrix</span>}
 </pre>
 
 
@@ -1741,14 +1741,14 @@ and process it with the following shell command to generate <a href="titanic.csv
 </p>
 
 
-<pre class="example">detex titanic.tex | \
-   awk 'NR&gt;1&amp;&amp;NF&gt;1' | \
-   awk -v FS='&amp;' -v OFS="," '{n=NR==1?1:$4; NF=3; for (i=0; i&lt;n; i++) print}' &gt; datasets/titanic.csv
+<pre class="src src-sh">detex titanic.tex | <span style="color: #8b2252;">\</span>
+   awk <span style="color: #8b2252;">'NR&gt;1&amp;&amp;NF&gt;1'</span> | <span style="color: #8b2252;">\</span>
+   awk -v <span style="color: #a0522d;">FS</span>=<span style="color: #8b2252;">'&amp;'</span> -v <span style="color: #a0522d;">OFS</span>=<span style="color: #8b2252;">","</span> <span style="color: #8b2252;">'{n=NR==1?1:$4; NF=3; for (i=0; i&lt;n; i++) print}'</span> &gt; datasets/titanic.csv
 </pre>
 
 
 
-<pre class="example">quietly insheet using "datasets/titanic.csv", names
+<pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/titanic.csv"</span>, names
 describe
 </pre>
 
@@ -1774,11 +1774,11 @@ Sorted by:
 
 
 
-<pre class="example">quietly insheet using "datasets/titanic.csv", names
-quietly gen woc = 1
-quietly replace woc = 0 if agesex=="Man"
-quietly gen sus = 0
-quietly replace sus = 1 if survivalstatus=="Survived"
+<pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/titanic.csv"</span>, names
+quietly <span style="color: #a020f0;">gen</span> woc = 1
+quietly <span style="color: #a020f0;">replace</span> woc = 0 if agesex==<span style="color: #8b2252;">"Man"</span>
+quietly <span style="color: #a020f0;">gen</span> sus = 0
+quietly <span style="color: #a020f0;">replace</span> sus = 1 if survivalstatus==<span style="color: #8b2252;">"Survived"</span>
 </pre>
 
 
@@ -1795,18 +1795,18 @@ the non-exposed group for each passenger class.
 
 
 
-<pre class="example">quietly insheet using "datasets/titanic.csv", names
-quietly gen woc = 1
-quietly replace woc = 0 if agesex=="Man"
-quietly gen sus = 0
-quietly replace sus = 1 if survivalstatus=="Survived"
-quietly cs sus woc
-di "Combined: " r(rr)
-/// loop over all calsses
+<pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/titanic.csv"</span>, names
+quietly <span style="color: #a020f0;">gen</span> woc = 1
+quietly <span style="color: #a020f0;">replace</span> woc = 0 if agesex==<span style="color: #8b2252;">"Man"</span>
+quietly <span style="color: #a020f0;">gen</span> sus = 0
+quietly <span style="color: #a020f0;">replace</span> sus = 1 if survivalstatus==<span style="color: #8b2252;">"Survived"</span>
+quietly <span style="color: #008b8b;">cs</span> sus woc
+di <span style="color: #8b2252;">"Combined: "</span> <span style="color: #008b8b;">r</span>(rr)
+<span style="color: #b22222;">/// loop over all calsses</span>
 quietly levelsof passengerclass, local(pc)
-foreach pc in `pc' {
-quietly cs sus woc if passengerclass=="`pc'"
-di "`pc'" " class: " r(rr)
+foreach pc in `<span style="color: #a0522d;">pc</span>' {
+quietly <span style="color: #008b8b;">cs</span> sus woc if passengerclass==<span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span>
+di <span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span> <span style="color: #8b2252;">" class: "</span> <span style="color: #008b8b;">r</span>(rr)
 }
 </pre>
 
@@ -1866,11 +1866,11 @@ large enough that the Central Limit Theorem is applicable and that
 
 
 
-<pre class="example">local N = 75
-local sigma = 12.5
-local std = `sigma'/sqrt(`N')
-di as text "exp. mean of sample = mean of population: " as result 108
-di as text "standard deviation of sample mean: " as result `std'
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"exp. mean of sample = mean of population: "</span> <span style="color: #008b8b;">as</span> result 108
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"standard deviation of sample mean: "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">std</span>'
 </pre>
 
 
@@ -1893,13 +1893,13 @@ standard deviation of sample mean: 1.4433757
 
 
 
-<pre class="example">local N = 75
-local mean = 108.0
-local sigma = 12.5
-local std = `sigma'/sqrt(`N')
-local z1 = (106 - `mean')/`std'
-local z2 = (110 - `mean')/`std'
-di as text "proportion: " as result normal(`z2')-normal(`z1')
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
@@ -1920,13 +1920,13 @@ proportion: .83414334
 
 
 
-<pre class="example">local N = 25
-local mean = 108.0
-local sigma = 12.5
-local std = `sigma'/sqrt(`N')
-local z1 = (106 - `mean')/`std'
-local z2 = (110 - `mean')/`std'
-di as text "proportion: " as result normal(`z2')-normal(`z1')
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 25
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
@@ -1947,12 +1947,12 @@ proportion of the samples would we expect to have a mean less than
 
 
 
-<pre class="example">local N = 75
-local mean = 108
-local sigma = 12.5
-local std = `sigma'/sqrt(`N')
-local z1 = (103 - `mean')/`std'
-di as text "proportion: " as result normal(`z1')
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (103 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
@@ -1972,12 +1972,12 @@ expect that, in <b>20% of the samples</b>, would be greater than ___?
 
 
 
-<pre class="example">local N = 75
-local mean = 108.0
-local sigma = 12.5
-local std = `sigma'/sqrt(`N')
-local z1 =  invnormal(1-0.2)
-di as text "20% of the samples is greater than " as result `z1'*`std'+`mean'
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 108.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> =  invnormal(1-0.2)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"20% of the samples is greater than "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
 </pre>
 
 
@@ -1997,11 +1997,11 @@ was $\over{x}$=103. Construct a 95% confidence interval for \(\mu\).
 
 
 
-<pre class="example">local N = 75
-local sigma = 12.5
-local sample_mean = 103.0
-local dM = 1.96*`sigma'/sqrt(`N')
-di as text "interval: " `sample_mean'-`dM' as text " " `sample_mean'+`dM'
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sample_mean</span> = 103.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> dM</span> = 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"interval: "</span> `<span style="color: #a0522d;">sample_mean</span>'-`<span style="color: #a0522d;">dM</span>' <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">" "</span> `<span style="color: #a0522d;">sample_mean</span>'+`<span style="color: #a0522d;">dM</span>'
 </pre>
 
 
@@ -2034,11 +2034,11 @@ interval: 100.17098 105.82902
 </p>
 
 
-<pre class="example">local m1 = 1.0
-local m2 = 2.0
-local sd1 = 0.5
-local sd2 = 0.8
-sampsi `m1' `m2', sd1(`sd1') sd2(`sd2')
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
+sampsi `<span style="color: #a0522d;">m1</span>' `<span style="color: #a0522d;">m2</span>', sd1(`<span style="color: #a0522d;">sd1</span>') sd2(`<span style="color: #a0522d;">sd2</span>')
 </pre>
 
 
@@ -2071,15 +2071,15 @@ Plot corresponding normal distributions
 </p>
 
 
-<pre class="example">local m1 = 1.0
-local m2 = 2.0
-local sd1 = 0.5
-local sd2 = 0.8
- local xmax=max(`m1'+4*`sd1', `m2'+4*`sd2')
- local xmin=min(`m1'-4*`sd1', `m2'-4*`sd2')
- twoway (function normalden(x,`m1',`sd1'), range(`xmin' `xmax')) ///
-        (function normalden(x,`m2',`sd2'), range(`xmin' `xmax')), ///
-        legend( label(1 "dist1") label(2 "dist2") )
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m1</span> = 1.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> m2</span> = 2.0
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 0.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 0.8
+ <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmax</span>=<span style="color: #008b8b;">max</span>(`<span style="color: #a0522d;">m1</span>'+4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'+4*`<span style="color: #a0522d;">sd2</span>')
+ <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> xmin</span>=<span style="color: #008b8b;">min</span>(`<span style="color: #a0522d;">m1</span>'-4*`<span style="color: #a0522d;">sd1</span>', `<span style="color: #a0522d;">m2</span>'-4*`<span style="color: #a0522d;">sd2</span>')
+ twoway (function normalden(x,`<span style="color: #a0522d;">m1</span>',`<span style="color: #a0522d;">sd1</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')) <span style="color: #b22222;">///</span>
+        (function normalden(x,`<span style="color: #a0522d;">m2</span>',`<span style="color: #a0522d;">sd2</span>'), <span style="color: #a020f0;">range</span>(`<span style="color: #a0522d;">xmin</span>' `<span style="color: #a0522d;">xmax</span>')), <span style="color: #b22222;">///</span>
+        legend( label(1 <span style="color: #8b2252;">"dist1"</span>) label(2 <span style="color: #8b2252;">"dist2"</span>) )
 </pre>
 
 
@@ -2090,9 +2090,9 @@ local sd2 = 0.8
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-generate totchol = totchol1 - totchol2
-sampsi 0 13, sd1(33.3) alpha(0.05) onesample
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+<span style="color: #a020f0;">generate</span> totchol = totchol1 - totchol2
+sampsi 0 13, sd1(33.3) <span style="color: #008b8b;">alpha</span>(0.05) onesample
 </pre>
 
 
@@ -2120,8 +2120,8 @@ Estimated required sample size:
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly generate dchol = totchol2 - totchol1
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">generate</span> dchol = totchol2 - totchol1
 ttest dchol == 0
 </pre>
 
@@ -2148,9 +2148,9 @@ Independent samples
 </p>
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta, clear
-/* I use 50%  of observations because of limited Stata version */
-sample 50
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #b22222;">/* </span><span style="color: #b22222;">I use 50%  of observations because of limited Stata version </span><span style="color: #b22222;">*/</span>
+<span style="color: #a020f0;">sample</span> 50
 graph box totchol1 totchol2
 </pre>
 
@@ -2163,12 +2163,12 @@ Independent samples
 </p>
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta, clear
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
 quietly {
-  set seed 72576466
-  sample 49, count by(hyperten)
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+  <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
 }
-ttest totchol1, by(hyperten)
+ttest totchol1, <span style="color: #228b22;">by</span>(hyperten)
 </pre>
 
 
@@ -2195,12 +2195,12 @@ Ho: diff = 0                                     degrees of freedom =       94
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta, clear
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta, <span style="color: #a020f0;">clear</span>
 quietly {
-  set seed 72576466
-  sample 49, count by(hyperten)
+<span style="color: #008b8b;">  set</span> <span style="color: #008b8b;">se</span><span style="color: #228b22;">ed</span> 72576466
+  <span style="color: #a020f0;">sample</span> 49, <span style="color: #008b8b;">count</span> <span style="color: #228b22;">by</span>(hyperten)
 }
-graph box totchol1, by(hyperten)
+graph box totchol1, <span style="color: #228b22;">by</span>(hyperten)
 </pre>
 
 
@@ -2257,22 +2257,22 @@ with placebo? A) Yes B) No
 
 
 
-<pre class="example">local obs1 = 23
-local mean1 = 111
-local sd1 = 8
-local obs2 = 24
-local mean2 = 109
-local sd2 = 8
-local level = 95
-ttesti `obs1' `mean1' `sd1' `obs2' `mean2' `sd2', level(`level')
-di "the test statistic = " r(t)
-di "degrees of freedom = " r(df_t)
-di "two-sided p-value = " r(p)
-if r(p)&gt;1-`level'/100 {
-    di "We reject H0: mean(x)==mean(y)"
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> obs1</span> = 23
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean1</span> = 111
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd1</span> = 8
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> obs2</span> = 24
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean2</span> = 109
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd2</span> = 8
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> level</span> = 95
+ttesti `<span style="color: #a0522d;">obs1</span>' `<span style="color: #a0522d;">mean1</span>' `<span style="color: #a0522d;">sd1</span>' `<span style="color: #a0522d;">obs2</span>' `<span style="color: #a0522d;">mean2</span>' `<span style="color: #a0522d;">sd2</span>', level(`<span style="color: #a0522d;">level</span>')
+di <span style="color: #8b2252;">"the test statistic = "</span> <span style="color: #008b8b;">r</span>(t)
+di <span style="color: #8b2252;">"degrees of freedom = "</span> <span style="color: #008b8b;">r</span>(df_t)
+di <span style="color: #8b2252;">"two-sided p-value = "</span> <span style="color: #008b8b;">r</span>(p)
+<span style="color: #008b8b;">if</span> <span style="color: #008b8b;">r</span>(p)&gt;1-`<span style="color: #a0522d;">level</span>'/100 {
+    <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"We reject H0: mean(x)==mean(y)"</span>
 } 
-else {
-  di "We cannot reject H0: mean(x)==mean(y)"
+<span style="color: #008b8b;">else</span> {
+  <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"We cannot reject H0: mean(x)==mean(y)"</span>
 }
 </pre>
 
@@ -2341,10 +2341,10 @@ setting?  <code>I need the number of observations with fresh==1 and fresh==0</co
 
 
 
-<pre class="example">use datasets/hw7.cb28cba7dca3.dta, clear
-ci outcome if fresh==1, binomial
-di r(mean)
-ci outcome if fresh==1, binomial wilson
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">ci</span> outcome if fresh==1, binomial
+di <span style="color: #008b8b;">r</span>(mean)
+<span style="color: #008b8b;">ci</span> outcome if fresh==1, binomial wilson
 </pre>
 
 
@@ -2386,9 +2386,9 @@ minus estimated proportion in the standard blood group.
 
 
 
-<pre class="example">use datasets/hw7.cb28cba7dca3.dta
-gen nfresh = 1-fresh
-prtest outcome, by (nfresh)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta
+<span style="color: #a020f0;">gen</span> nfresh = 1-fresh
+prtest outcome, <span style="color: #008b8b;">by</span> (nfresh)
 </pre>
 
 
@@ -2429,14 +2429,14 @@ What is the p-value?
 </p>
 
 
-<pre class="example">use datasets/hw7.cb28cba7dca3.dta
-gen nfresh = 1-fresh
-prtest outcome, by (nfresh)
-local z = r(z)
-local P = 1 - (normal(abs(`z'))-normal(-abs(`z')))
-di "==================== answers ===================="
-di as text "test statistic = " as result  `z'
-di as text "Pr(|Z| &lt; |z|) = " as result  `P'
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta
+<span style="color: #a020f0;">gen</span> nfresh = 1-fresh
+prtest outcome, <span style="color: #008b8b;">by</span> (nfresh)
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(z)
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> P</span> = 1 - (normal(<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>'))-normal(-<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>')))
+di <span style="color: #8b2252;">"==================== answers ===================="</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"test statistic = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">z</span>'
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"Pr(|Z| &lt; |z|) = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">P</span>'
 </pre>
 
 
@@ -2497,8 +2497,8 @@ OR Estimate:
 
 
 
-<pre class="example">use datasets/hw7.cb28cba7dca3.dta, clear
-cs outcome fresh, or woolf
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
+<span style="color: #008b8b;">cs</span> outcome fresh, or woolf
 </pre>
 
 
@@ -2537,7 +2537,7 @@ Chi-square test?
 
 
 
-<pre class="example">use datasets/hw7.cb28cba7dca3.dta, clear
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
 tabulate outcome fresh, row expected freq
 </pre>
 
@@ -2582,7 +2582,7 @@ your answer to two decimal places.
 
 
 
-<pre class="example">use datasets/hw7.cb28cba7dca3.dta, clear
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/hw7.cb28cba7dca3.dta, <span style="color: #a020f0;">clear</span>
 tabulate outcome fresh, expected chi2
 </pre>
 
@@ -2641,8 +2641,8 @@ standard group was 55% and 45% in the fresh blood group (again, with
 
 
 
-<pre class="example">sampsi .55 .45, alpha(0.05) power(0.90)
-di as text "total sample size: " as result r(N_1) + r(N_2)
+<pre class="src src-stata">sampsi .55 .45, <span style="color: #008b8b;">alpha</span>(0.05) power(0.90)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"total sample size: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(N_1) + <span style="color: #008b8b;">r</span>(N_2)
 </pre>
 
 
@@ -2742,23 +2742,23 @@ Harbor Islands         ,  535
 
 
 
-<pre class="example">quietly insheet using "datasets/boston.csv"
-local nsel_d1 = 1000
-quietly sum pop
-di as text "P (design 1, both): " as result `nsel_d1'/r(mean)
+<pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/boston.csv"</span>
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d1</span> = 1000
+quietly <span style="color: #008b8b;">sum</span> pop
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 1, both): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d1</span>'/<span style="color: #008b8b;">r</span>(mean)
 
-local nsel_d2 = 100
-quietly sum pop if neighborhood=="South Dorchester"
-di as text "P (design 2, South Dorchester): " as result `nsel_d2'/r(mean)
-quietly sum pop if neighborhood=="Harbor Islands"
-di as text "P (design 2, Harbor Islands): " as result `nsel_d2'/r(mean)
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d2</span> = 100
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
 
-local nn_d4 = 10
-local nsel_d4 = 170
-quietly sum pop if neighborhood=="South Dorchester"
-di as text "P(design 2, South Dorchester): " as result `nsel_d4'/r(mean)*`nn_d4'/_N
-quietly sum pop if neighborhood=="Harbor Islands"
-di as text "P(design 2, Harbor Islands): " as result `nsel_d4'/r(mean)*`nn_d4'/_N
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nn_d4</span> = 10
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d4</span> = 170
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P(design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P(design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
 </pre>
 
 
@@ -2817,9 +2817,9 @@ unemployment and year for the United States and for Japan.
 
 
 
-<pre class="example">use datasets/UnemploymentbyCountry.b41235ad3be6.dta
-pwcorr unemployedtotal year if country=="Japan"
-pwcorr unemployedtotal year if country=="United States"
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>
 </pre>
 
 
@@ -2841,9 +2841,9 @@ unemployed~l |   1.0000
 
 
 
-<pre class="example">use datasets/UnemploymentbyCountry.b41235ad3be6.dta
-spearman unemployedtotal year if country=="Japan"
-spearman unemployedtotal year if country=="United States"
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>
 </pre>
 
 
@@ -2878,9 +2878,9 @@ Stata.)
 
 
 
-<pre class="example">use datasets/UnemploymentbyCountry.b41235ad3be6.dta
-pwcorr unemployedtotal year if country=="Japan" &amp;&amp; year&lt;=2007
-pwcorr unemployedtotal year if country=="United States" &amp;&amp; year&lt;=2007
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span> &amp;&amp; year&lt;=2007
+pwcorr unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span> &amp;&amp; year&lt;=2007
 </pre>
 
 
@@ -2902,9 +2902,9 @@ unemployed~l |   1.0000
 
 
 
-<pre class="example">use datasets/UnemploymentbyCountry.b41235ad3be6.dta
-spearman unemployedtotal year if country=="Japan" &amp;&amp; year&lt;=2007
-spearman unemployedtotal year if country=="United States" &amp;&amp; year&lt;=2007
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span> &amp;&amp; year&lt;=2007
+spearman unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span> &amp;&amp; year&lt;=2007
 </pre>
 
 
@@ -2942,10 +2942,10 @@ within each plot window).
 
 
 
-<pre class="example">use datasets/UnemploymentbyCountry.b41235ad3be6.dta
-twoway  (scatter unemployedtotal year if country=="Japan") ///
-(scatter unemployedtotal year if country=="United States"), ///
-legend( label(1 "Japan") label(2 "United States") )
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/UnemploymentbyCountry.b41235ad3be6.dta
+twoway  (scatter unemployedtotal year if country==<span style="color: #8b2252;">"Japan"</span>) <span style="color: #b22222;">///</span>
+(scatter unemployedtotal year if country==<span style="color: #8b2252;">"United States"</span>), <span style="color: #b22222;">///</span>
+legend( label(1 <span style="color: #8b2252;">"Japan"</span>) label(2 <span style="color: #8b2252;">"United States"</span>) )
 </pre>
 
 
@@ -2972,10 +2972,10 @@ there is no difference in median between the two groups?
 
 
 
-<pre class="example">quietly set obs 8
-quietly generate s1 = 1
-quietly replace s1 = -1 if _n == 8
-quietly generate s2 = 0
+<pre class="src src-stata">quietly set obs 8
+quietly <span style="color: #a020f0;">generate</span> s1 = 1
+quietly <span style="color: #a020f0;">replace</span> s1 = -1 if <span style="color: #228b22;">_n</span> == 8
+quietly <span style="color: #a020f0;">generate</span> s2 = 0
 signtest s1=s2
 </pre>
 
@@ -3017,7 +3017,7 @@ Using formula
 </p>
 
 
-<pre class="example">di 2*(1-binomial(8, 6, 0.5))
+<pre class="src src-stata">di 2*(1-binomial(8, 6, 0.5))
 </pre>
 
 
@@ -3045,8 +3045,8 @@ girls. Be sure to verify the assumptions of your test.
 
 
 
-<pre class="example">use datasets/sids910.865dbf143262.dta
-ranksum Age, by(Sex)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/sids910.865dbf143262.dta
+ranksum Age, <span style="color: #228b22;">by</span>(Sex)
 </pre>
 
 
@@ -3112,9 +3112,9 @@ recorded in the “timestrk” variable in the NHLBI dataset.
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly gen ob = 1 if bmi1&gt;=30
-quietly replace ob = 0 if bmi1&lt;30
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">gen</span> ob = 1 if bmi1&gt;=30
+quietly <span style="color: #a020f0;">replace</span> ob = 0 if bmi1&lt;30
 ir stroke  ob timestrk
 </pre>
 
@@ -3158,10 +3158,10 @@ prevalent hypertension at visit 1 (prevhyp1)?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly gen ob = 1 if bmi1&gt;=30
-quietly replace ob = 0 if bmi1&lt;30
-ir stroke ob timestrk, by(prevhyp1)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">gen</span> ob = 1 if bmi1&gt;=30
+quietly <span style="color: #a020f0;">replace</span> ob = 0 if bmi1&lt;30
+ir stroke ob timestrk, <span style="color: #228b22;">by</span>(prevhyp1)
 </pre>
 
 
@@ -3247,7 +3247,7 @@ four month period? <code>TODO: make a histogram plot</code>
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
 twoway (scatter nickel month) (lfit nickel month)
 </pre>
 
@@ -3277,8 +3277,8 @@ Make a residual plot.
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
-xi: regress nickel i.month
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+<span style="color: #a020f0;">xi</span>: <span style="color: #008b8b;">regress</span> nickel i.month
 rvfplot
 </pre>
 
@@ -3307,12 +3307,12 @@ by ______ each month, from May to September.
 </p>
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
-quietly regress nickel month
-/// to extract coefficients from matrix  
-mat beta=e(b)
-svmat double beta, names(matcol)
-di as text "nickel increases in one month by " as result  betamonth[1]
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #008b8b;">regress</span> nickel month
+<span style="color: #b22222;">/// to extract coefficients from matrix  </span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases in one month by "</span> <span style="color: #008b8b;">as</span> result  betamonth[1]
 </pre>
 
 
@@ -3335,7 +3335,7 @@ nickel each month?
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
 regress nickel month
 </pre>
 
@@ -3395,16 +3395,16 @@ are coded.). According to <b>Model 1</b>. According to <b>Model 2</b>
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
-quietly xi: regress nickel i.month
-quietly predict pnickel1
-quietly sum pnickel1 if month==8
-di as text "av. nickel in August (Model 1): " as result r(mean)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #a020f0;">xi</span>: <span style="color: #008b8b;">regress</span> nickel i.month
+quietly <span style="color: #a020f0;">predict</span> pnickel1
+quietly <span style="color: #008b8b;">sum</span> pnickel1 if month==8
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"av. nickel in August (Model 1): "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
 
-quietly regress nickel month
-quietly predict pnickel2
-quietly sum pnickel2 if month==8
-di as text "av. nickel in August (Model 2): " as result r(mean)
+quietly <span style="color: #008b8b;">regress</span> nickel month
+quietly <span style="color: #a020f0;">predict</span> pnickel2
+quietly <span style="color: #008b8b;">sum</span> pnickel2 if month==8
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"av. nickel in August (Model 2): "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
 </pre>
 
 
@@ -3469,14 +3469,14 @@ at the 0.05 level of significance.
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
 regress  nickel month longitude
-/// getting answers from command output
-mat beta=e(b)
-mat varcovar=e(V)
-svmat double beta, names(matcol)
-di as text "estimated coefficient: " as result  betalongitude[1]
-di as text "degrees of freedom: " as result  e(df_r)
+<span style="color: #b22222;">/// getting answers from command output</span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+mat varcovar=<span style="color: #008b8b;">e</span>(V)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"estimated coefficient: "</span> <span style="color: #008b8b;">as</span> result  betalongitude[1]
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"degrees of freedom: "</span> <span style="color: #008b8b;">as</span> result  <span style="color: #008b8b;">e</span>(df_r)
 </pre>
 
 
@@ -3554,7 +3554,7 @@ The p-value?
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
 scatter vanadium nickel
 </pre>
 
@@ -3589,12 +3589,12 @@ vanadium?
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
-quietly regress nickel vanadium
-/// to extract coefficients from matrix  
-mat beta=e(b)
-svmat double beta, names(matcol)
-di as text "nickel increases by  " as result  betavanadium[1]
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #008b8b;">regress</span> nickel vanadium
+<span style="color: #b22222;">/// to extract coefficients from matrix  </span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases by  "</span> <span style="color: #008b8b;">as</span> result  betavanadium[1]
 </pre>
 
 
@@ -3618,13 +3618,13 @@ vanadium?
 
 
 
-<pre class="example">use datasets/oilspill.71f9665e3249.dta
-quietly regress nickel vanadium
-/// to extract coefficients from matrix  
-mat beta=e(b)
-svmat double beta, names(matcol)
-di as text "nickel increases by  " as result  10*betavanadium[1]
-/// another way
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/oilspill.71f9665e3249.dta
+quietly <span style="color: #008b8b;">regress</span> nickel vanadium
+<span style="color: #b22222;">/// to extract coefficients from matrix  </span>
+mat beta=<span style="color: #008b8b;">e</span>(b)
+<span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
+di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases by  "</span> <span style="color: #008b8b;">as</span> result  10*betavanadium[1]
+<span style="color: #b22222;">/// another way</span>
 lincom 10*vanadium
 </pre>
 
@@ -3670,10 +3670,10 @@ variable.
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly generate highbp1=.
-quietly replace highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
-quietly replace highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">generate</span> highbp1=.
+quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
 ir stroke highbp1 timestrk
 </pre>
 
@@ -3715,11 +3715,11 @@ of stroke among men? Hint: Use the variable (sex1).
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly generate highbp1=.
-quietly replace highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
-quietly replace highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
- ir stroke highbp1 timestrk, by(sex1)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">generate</span> highbp1=.
+quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+ <span style="color: #008b8b;">ir</span> stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 </pre>
 
 
@@ -3751,11 +3751,11 @@ of stroke among women?
 
 
 
-<pre class="example">use datasets/fhs.2d92301d751b.dta
-quietly generate highbp1=.
-quietly replace highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
-quietly replace highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
- ir stroke highbp1 timestrk, by(sex1)
+<pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
+quietly <span style="color: #a020f0;">generate</span> highbp1=.
+quietly <span style="color: #a020f0;">replace</span> highbp1=1 if (sysbp1&gt;=140 | diabp1 &gt;= 90)
+quietly <span style="color: #a020f0;">replace</span> highbp1=0 if (sysbp1&lt;140 &amp; diabp1&lt;90)
+ <span style="color: #008b8b;">ir</span> stroke highbp1 timestrk, <span style="color: #228b22;">by</span>(sex1)
 </pre>
 
 
