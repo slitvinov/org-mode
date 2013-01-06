@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="Home works for PH207x Health in Numbers"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2013-01-06T15:25+0100"/>
+<meta name="generated" content="2013-01-06T19:13+0100"/>
 <meta name="author" content="Sergey Litvinov"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -62,30 +62,6 @@
 </style><link rel="stylesheet" type="text/css" href="http://sachachua.com/blog/wp-content/themes/sacha-v3/style.css" />
 <link rel="stylesheet" type="text/css" href="http://sachachua.com/org-export.css" />
 <script type="text/javascript">
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code in this tag.
-
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code in this tag is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code in this tag.
-*/
 <!--/*--><![CDATA[/*><!--*/
  function CodeHighlightOn(elem, id)
  {
@@ -108,56 +84,6 @@ for the JavaScript code in this tag.
 /*]]>*///-->
 </script>
 <script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js">
-/**
- *
- * @source: http://orgmode.org/mathjax/MathJax.js
- *
- * @licstart  The following is the entire license notice for the
- *  JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- * Copyright (C) 2012  MathJax
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- *
- * @licend  The above is the entire license notice
- * for the JavaScript code in http://orgmode.org/mathjax/MathJax.js.
- *
- */
-
-/*
-@licstart  The following is the entire license notice for the
-JavaScript code below.
-
-Copyright (C) 2012  Free Software Foundation, Inc.
-
-The JavaScript code below is free software: you can
-redistribute it and/or modify it under the terms of the GNU
-General Public License (GNU GPL) as published by the Free Software
-Foundation, either version 3 of the License, or (at your option)
-any later version.  The code is distributed WITHOUT ANY WARRANTY;
-without even the implied warranty of MERCHANTABILITY or FITNESS
-FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
-
-As additional permission under GNU GPL version 3 section 7, you
-may distribute non-source (e.g., minimized or compacted) forms of
-that code without the copy of the GNU GPL normally required by
-section 4, provided you include this license notice and a URL
-through which recipients can access the Corresponding Source.
-
-
-@licend  The above is the entire license notice
-for the JavaScript code below.
-*/
 <!--/*--><![CDATA[/*><!--*/
     MathJax.Hub.Config({
         // Only one of the two following lines, depending on user settings
@@ -256,6 +182,8 @@ for the JavaScript code below.
 <li><a href="#sec-10">Home Work 5</a>
 <ul>
 <li><a href="#sec-10-1">Central Limit Theorem and Confidence Intervals</a></li>
+<li><a href="#sec-10-2">Hypothesis Testing with known Variance</a></li>
+<li><a href="#sec-10-3">Confidence intervals and testing with unknown variance</a></li>
 </ul>
 </li>
 <li><a href="#sec-11">Home Work 6</a>
@@ -343,6 +271,24 @@ di `<span style="color: #a0522d;">N</span>'+1
 42
 
 </pre>
+
+
+<p>
+Display result with two decimal points
+</p>
+
+
+<pre class="src src-stata">di <span style="color: #8b2252;">"Result: "</span> %8.2f -100/3
+</pre>
+
+
+<pre class="example">
+
+Result:   -33.33
+
+</pre>
+
+
 
 
 <p>
@@ -686,6 +632,8 @@ With group variable
 </p>
 
 
+
+
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nobs</span> = 1000
 <span style="color: #008b8b;">set</span> <span style="color: #008b8b;">obs</span> `<span style="color: #a0522d;">nobs</span>'
 <span style="color: #a020f0;">gen</span> lev = 1 if <span style="color: #228b22;">_n</span>&lt;=`<span style="color: #a0522d;">nobs</span>'/2
@@ -984,7 +932,7 @@ method of least squares for estimation.
 Construct a scatter plot with nursealways on the x-axis and recommendyes on the y axis.
 Use the scatterplot to evaluate the assumptions of simple linear
 regression.  Assumptions:
-<ul class="org-ul">
+<ul>
 <li>Independent observations
 </li>
 <li>\(Y|X\) is normally distributed
@@ -1112,13 +1060,13 @@ interval.
 
 
 
-<pre class="src src-stata">di 73.54339 - invttail(3568, 0.025)*7.281745
+<pre class="src src-stata">di %8.2f 73.54339 - invttail(3568, 0.025)*7.281745
 </pre>
 
 
 <pre class="example">
 
-59.266589
+   59.27
 
 </pre>
 
@@ -1373,6 +1321,8 @@ Define B as the event that this participant has a high BMI at exam 2.
 Define C as the event that this participant has a low BMI at exam 2.
 </p>
 
+
+
 <p>
 Reproduce the table
 </p>
@@ -1441,12 +1391,12 @@ tab more1 more2, matcell(table)
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PA</span> = (table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PB</span> = (table[1,2]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PAandB</span> = <span style="color: #008b8b;">table</span>[2,2]/`<span style="color: #a0522d;">ntot</span>'
-di <span style="color: #8b2252;">"P(A): "</span> `<span style="color: #a0522d;">PA</span>'
-di <span style="color: #8b2252;">"P(B): "</span> `<span style="color: #a0522d;">PB</span>'
-di <span style="color: #8b2252;">"P(A&amp;B): "</span> `<span style="color: #a0522d;">PAandB</span>'
-di <span style="color: #8b2252;">"P(A||B): "</span> (table[1,2]+table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
-di <span style="color: #8b2252;">"P(A|B): "</span> (table[2,2])/(table[2,1]+table[2,2])
-di <span style="color: #8b2252;">"P(C|A): "</span> (table[2,1])/(table[2,1]+table[2,2])
+di <span style="color: #8b2252;">"P(A): "</span> %8.2f `<span style="color: #a0522d;">PA</span>'
+di <span style="color: #8b2252;">"P(B): "</span> %8.2f `<span style="color: #a0522d;">PB</span>'
+di <span style="color: #8b2252;">"P(A&amp;B): "</span> %8.2f `<span style="color: #a0522d;">PAandB</span>'
+di <span style="color: #8b2252;">"P(A||B): "</span> %8.2f (table[1,2]+table[2,1]+table[2,2])/`<span style="color: #a0522d;">ntot</span>'
+di <span style="color: #8b2252;">"P(A|B): "</span> %8.2f (table[2,2])/(table[2,1]+table[2,2])
+di <span style="color: #8b2252;">"P(C|A): "</span> %8.2f (table[2,1])/(table[2,1]+table[2,2])
 <span style="color: #008b8b;">if</span> (`<span style="color: #a0522d;">PAandB</span>' == `<span style="color: #a0522d;">PA</span>'*`<span style="color: #a0522d;">PB</span>') {
    <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are independent"</span>
 }
@@ -1466,17 +1416,17 @@ di <span style="color: #8b2252;">"P(C|A): "</span> (table[2,1])/(table[2,1]+tabl
 -----------+----------------------+----------
      Total |     1,741      2,168 |     3,909 
 
-P(A): .54719877
+P(A):     0.55
 
-P(B): .55461755
+P(B):     0.55
 
-P(A&amp;B): .48349962
+P(A&amp;B):     0.48
 
-P(A||B): .61831671
+P(A||B):     0.62
 
-P(A|B): .88359046
+P(A|B):     0.88
 
-P(C|A): .11640954
+P(C|A):     0.12
 
 A and B are not independent
 
@@ -1547,9 +1497,9 @@ tabulate age_<span style="color: #008b8b;">cat</span> cursmoke1, cell nofreq mat
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PA</span> = `<span style="color: #a0522d;">sm</span>'/`<span style="color: #a0522d;">tot</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PB</span> = `<span style="color: #a0522d;">b</span>'/`<span style="color: #a0522d;">tot</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> PAandB</span> = <span style="color: #008b8b;">table</span>[4,2]
-di <span style="color: #8b2252;">"P(A): "</span> `<span style="color: #a0522d;">PA</span>'
-di <span style="color: #8b2252;">"P(B^C): "</span> 1-`<span style="color: #a0522d;">PB</span>'
-di <span style="color: #8b2252;">"P(&lt;60, non-smoker): "</span> (table[1,1]+table[2,1]+table[3,1])/`<span style="color: #a0522d;">tot</span>'
+di <span style="color: #8b2252;">"P(A): "</span> %8.2f `<span style="color: #a0522d;">PA</span>'
+di <span style="color: #8b2252;">"P(B^C): "</span> %8.2f 1-`<span style="color: #a0522d;">PB</span>'
+di <span style="color: #8b2252;">"P(&lt;60, non-smoker): "</span> %8.2f (table[1,1]+table[2,1]+table[3,1])/`<span style="color: #a0522d;">tot</span>'
 <span style="color: #008b8b;">if</span> (`<span style="color: #a0522d;">PAandB</span>' == `<span style="color: #a0522d;">PA</span>'*`<span style="color: #a0522d;">PB</span>') {
    <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"A and B are independent"</span>
 }
@@ -1571,11 +1521,11 @@ di <span style="color: #8b2252;">"P(&lt;60, non-smoker): "</span> (table[1,1]+ta
 -----------+----------------------+----------
      Total |     50.79      49.21 |    100.00 
 
-P(A): .49210289
+P(A):     0.49
 
-P(B^C): .93727437
+P(B^C):     0.94
 
-P(&lt;60, non-smoker): .38831227
+P(&lt;60, non-smoker):     0.39
 
 A and B are not independent
 
@@ -1606,12 +1556,13 @@ Family Practice, 16(2): 95-101.
 </p>
 <p>
 I use <a href="http://maxima.sourceforge.net">maxima</a> to do algebra. There are 4 mutually exclusive and
-exhaustive groups: T+ and D+, T+ and D-, T- and D+, T- and D-. I coded
-them as <code>tp_dp</code>, <code>tp_dn</code>, <code>tn_dp</code>, <code>tn_dn</code>. <i>Sensitivity</i> is defined
-as the probability of a positive test result given that the individual
-has the disease: <code>tp_dp/(tp_dp+tn_dp)</code>. <i>Specificity</i> is the
-probability that tests result is negative given that the individual
-does not have the disease: <code>tn_dn/(tp_dn+tn_dn)</code>.
+exhaustive groups: T+ and D+, T+ and D-, T- and D+, T- and D-. Denot
+<code>tp_dp</code>, <code>tp_dn</code>, <code>tn_dp</code>, <code>tn_dn</code> the number of patients in each of
+the groups. <i>Sensitivity</i> is defined as the probability of a positive
+test result given that the individual has the disease:
+<code>tp_dp/(tp_dp+tn_dp)</code>. <i>Specificity</i> is the probability that tests
+result is negative given that the individual does not have the
+disease: <code>tn_dn/(tp_dn+tn_dn)</code>.
 </p>
 
 
@@ -1622,28 +1573,28 @@ eq2<span style="color: #a020f0;">:</span> se <span style="color: #a020f0;">=</sp
 eq3<span style="color: #a020f0;">:</span> sp <span style="color: #a020f0;">=</span> tn_dn<span style="color: #a020f0;">/</span>(tp_dn<span style="color: #a020f0;">+</span>tn_dn);
 eq4<span style="color: #a020f0;">:</span> pr <span style="color: #a020f0;">=</span> (tp_dp<span style="color: #a020f0;">+</span>tn_dp)<span style="color: #a020f0;">/</span>total;
 <span style="color: #b22222;">/* </span><span style="color: #b22222;">solve for the groups </span><span style="color: #b22222;">*/</span>
-sol<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">solve</span>([eq1, eq2, eq3, eq4], vars)[<span style="color: #008b8b;">1</span>];
+sol<span style="color: #a020f0;">:</span> <span style="color: #7a378b;">solve</span>([eq1, eq2, eq3, eq4], vars)[<span style="color: #008b8b;">1</span>];
 
 <span style="color: #b22222;">/* </span><span style="color: #b22222;">get answers as formulas </span><span style="color: #b22222;">*/</span>
-fn<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tn_dp<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tn_dp), sol);
-fp<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tp_dn<span style="color: #a020f0;">/</span>(tp_dn<span style="color: #a020f0;">+</span>tn_dn), sol);
-pc<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tp_dn<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tp_dn), sol);
-pd<span style="color: #a020f0;">:</span> <span style="color: #483d8b;">ev</span>(tn_dp<span style="color: #a020f0;">/</span>(tn_dp<span style="color: #a020f0;">+</span>tn_dn), sol);
+fn<span style="color: #a020f0;">:</span> <span style="color: #7a378b;">ev</span>(tn_dp<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tn_dp), sol);
+fp<span style="color: #a020f0;">:</span> <span style="color: #7a378b;">ev</span>(tp_dn<span style="color: #a020f0;">/</span>(tp_dn<span style="color: #a020f0;">+</span>tn_dn), sol);
+pc<span style="color: #a020f0;">:</span> <span style="color: #7a378b;">ev</span>(tp_dn<span style="color: #a020f0;">/</span>(tp_dp<span style="color: #a020f0;">+</span>tp_dn), sol);
+pd<span style="color: #a020f0;">:</span> <span style="color: #7a378b;">ev</span>(tn_dp<span style="color: #a020f0;">/</span>(tn_dp<span style="color: #a020f0;">+</span>tn_dn), sol);
 
 <span style="color: #b22222;">/* </span><span style="color: #b22222;">substitute numbers </span><span style="color: #b22222;">*/</span>
 val<span style="color: #a020f0;">:</span> [se<span style="color: #a020f0;">=</span>0<span style="color: #a020f0;">.</span>721, sp<span style="color: #a020f0;">=</span>0<span style="color: #a020f0;">.</span>932, pr<span style="color: #a020f0;">=</span>0<span style="color: #a020f0;">.</span>161];
-<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"pr. of falce negative, P(T-|D+):"</span>,  <span style="color: #483d8b;">ev</span>(fn, val));
-<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"pr. of falce positive, P(T+|D-):"</span>,  <span style="color: #483d8b;">ev</span>(fp, val));
-<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"P(D-|T+): "</span>, <span style="color: #483d8b;">ev</span>(pc, val));
-<span style="color: #483d8b;">print</span>(<span style="color: #8b2252;">"P(D+|T-): "</span>, <span style="color: #483d8b;">ev</span>(pd, val));
+<span style="color: #7a378b;">print</span>(<span style="color: #8b2252;">"pr. of falce negative, P(T-|D+):"</span>,  <span style="color: #7a378b;">ev</span>(fn, val));
+<span style="color: #7a378b;">print</span>(<span style="color: #8b2252;">"pr. of falce positive, P(T+|D-):"</span>,  <span style="color: #7a378b;">ev</span>(fp, val));
+<span style="color: #7a378b;">print</span>(<span style="color: #8b2252;">"P(D-|T+): "</span>, <span style="color: #7a378b;">ev</span>(pc, val));
+<span style="color: #7a378b;">print</span>(<span style="color: #8b2252;">"P(D+|T-): "</span>, <span style="color: #7a378b;">ev</span>(pd, val));
 </pre>
 
 
 <pre class="example">
 pr. of falce negative, P(T-|D+): 0.279 
-pr. of falce positive, P(T+|D-): 0.068 
-P(D-|T+):  0.32952701102621 
-P(D+|T-):  0.054324335110725 
+pr. of falce positive, P(T+|D-): .06799999999999999 
+P(D-|T+):  .3295270110262052 
+P(D+|T-):  .05432433511072519 
 </pre>
 
 
@@ -1757,20 +1708,14 @@ describe
 
 
 <pre class="example">
+unexpected end of file
+r(612);
+
 Contains data
-  obs:         1,316                          
- vars:             3                          
- size:        48,692                          
--------------------------------------------------------------------------------
-              storage  display     value
-variable name   type   format      label      variable label
--------------------------------------------------------------------------------
-passengerclass  str12  %12s                   Passenger Class
-agesex          str7   %9s                    Age/Sex
-survivalstatus  str18  %18s                   Survival Status
--------------------------------------------------------------------------------
+  obs:             0                          
+ vars:             0                          
+ size:             0                          
 Sorted by:  
-     Note:  dataset has changed since last saved
 
 </pre>
 
@@ -1807,28 +1752,32 @@ the non-exposed group for each passenger class.
   <span style="color: #a020f0;">replace</span> sus = 1 if survivalstatus==<span style="color: #8b2252;">"Survived"</span>
 }
 quietly <span style="color: #008b8b;">cs</span> sus woc
-di <span style="color: #8b2252;">"Combined: "</span> <span style="color: #008b8b;">r</span>(rr)
+di <span style="color: #8b2252;">"Combined: "</span> %8.2f <span style="color: #008b8b;">r</span>(rr)
 <span style="color: #b22222;">/// loop over all classes</span>
 levelsof passengerclass, local(pc)
 foreach pc in `<span style="color: #a0522d;">pc</span>' {
   <span style="color: #008b8b;">quietly</span> <span style="color: #008b8b;">cs</span> sus woc if passengerclass==<span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span>
-  <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span> <span style="color: #8b2252;">" class: "</span> <span style="color: #008b8b;">r</span>(rr)
+  <span style="color: #008b8b;">di</span> <span style="color: #8b2252;">"`</span><span style="color: #a0522d;">pc</span><span style="color: #8b2252;">'"</span> <span style="color: #8b2252;">" class: "</span> %8.2f  <span style="color: #008b8b;">r</span>(rr)
 }
 </pre>
 
 
 
 <pre class="example">
-Combined: 3.808876
+unexpected end of file
+r(612);
 
-`"First"' `"Second"' `"Third"'
+variable sus not found
+r(111);
+
+Combined:        .
+
+variable passengerclass not found
+r(111);
 
   2.   quietly cs sus woc if passengerclass=="`pc'"
-  3.   di "`pc'" " class: " r(rr)
+  3.   di "`pc'" " class: " %8.2f  r(rr)
   4. }
-First class: 2.9883041
-Second class: 10.666667
-Third class: 2.6003279
 
 </pre>
 
@@ -1868,6 +1817,9 @@ first).
 <p>The following table displays categories of body mass index for the
 participants at the 1956 exam. (Note: 19 of the 4434 participants are
 excluded from this table because of missing data on bmi1.)
+</p>
+
+<p>
 Show table
 </p>
 
@@ -1908,6 +1860,8 @@ n=1936).
 
 
 
+
+
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 <span style="color: #b22222;">/// I fitted this level to get the same table as in question</span>
 quietly {
@@ -1921,7 +1875,7 @@ quietly <span style="color: #a020f0;">gen</span> obs = .
 quietly <span style="color: #a020f0;">replace</span> obs = 1 if bmi1_<span style="color: #008b8b;">cat</span>==4
 quietly <span style="color: #a020f0;">replace</span> obs = 0 if bmi1_<span style="color: #008b8b;">cat</span>==2
 <span style="color: #008b8b;">cs</span> death obs
-di <span style="color: #8b2252;">"risk ratio: "</span> <span style="color: #008b8b;">r</span>(rr)
+di <span style="color: #8b2252;">"risk ratio: "</span> %8.2f <span style="color: #008b8b;">r</span>(rr)
 </pre>
 
 
@@ -1946,7 +1900,7 @@ di <span style="color: #8b2252;">"risk ratio: "</span> <span style="color: #008b
                  +-------------------------------------------------
                                chi2(1) =    47.62  Pr&gt;chi2 = 0.0000
 
-risk ratio: 1.5219248
+risk ratio:     1.52
 
 </pre>
 
@@ -1978,7 +1932,7 @@ quietly <span style="color: #a020f0;">gen</span> obs = .
 quietly <span style="color: #a020f0;">replace</span> obs = 1 if bmi1_<span style="color: #008b8b;">cat</span>==4
 quietly <span style="color: #a020f0;">replace</span> obs = 0 if bmi1_<span style="color: #008b8b;">cat</span>==2
 <span style="color: #008b8b;">cs</span> death obs, or
-di <span style="color: #8b2252;">"or: "</span> <span style="color: #008b8b;">r</span>(or)
+di <span style="color: #8b2252;">"or: "</span> %8.2f <span style="color: #008b8b;">r</span>(or)
 </pre>
 
 
@@ -2004,7 +1958,7 @@ di <span style="color: #8b2252;">"or: "</span> <span style="color: #008b8b;">r</
                  +-------------------------------------------------
                                chi2(1) =    47.62  Pr&gt;chi2 = 0.0000
 
-or: 1.9470145
+or:     1.95
 
 </pre>
 
@@ -2036,7 +1990,7 @@ quietly <span style="color: #a020f0;">gen</span> obs = .
 quietly <span style="color: #a020f0;">replace</span> obs = 1 if bmi1_<span style="color: #008b8b;">cat</span>==4
 quietly <span style="color: #a020f0;">replace</span> obs = 0 if bmi1_<span style="color: #008b8b;">cat</span>==2
 ir death obs timedth
-di <span style="color: #8b2252;">"irr: "</span> <span style="color: #008b8b;">r</span>(irr)
+di <span style="color: #8b2252;">"irr: "</span> %8.2f <span style="color: #008b8b;">r</span>(irr)
 </pre>
 
 
@@ -2061,7 +2015,7 @@ Time [years] to  |   11308.9    40708.74  |   52017.64
                      (midp)   Pr(k&gt;=259) =                   0.0000 (exact)
                      (midp) 2*Pr(k&gt;=259) =                   0.0000 (exact)
 
-irr: 1.6327922
+irr:     1.63
 
 </pre>
 
@@ -2093,7 +2047,7 @@ quietly <span style="color: #a020f0;">gen</span> obs = .
 quietly <span style="color: #a020f0;">replace</span> obs = 1 if bmi1_<span style="color: #008b8b;">cat</span>==4
 quietly <span style="color: #a020f0;">replace</span> obs = 0 if bmi1_<span style="color: #008b8b;">cat</span>==2
 ir anychd obs timechd if prevchd1==0
-di <span style="color: #8b2252;">"irr: "</span> <span style="color: #008b8b;">r</span>(irr)
+di <span style="color: #8b2252;">"irr: "</span> %8.2f <span style="color: #008b8b;">r</span>(irr)
 </pre>
 
 
@@ -2118,7 +2072,7 @@ Time [years] to  |  9387.737    37324.05  |   46711.79
                      (midp)   Pr(k&gt;=180) =                   0.0000 (exact)
                      (midp) 2*Pr(k&gt;=180) =                   0.0000 (exact)
 
-irr: 2.0505718
+irr:     2.05
 
 </pre>
 
@@ -2151,7 +2105,7 @@ quietly <span style="color: #a020f0;">gen</span> obsoov = .
 quietly <span style="color: #a020f0;">replace</span> obsoov = 1 if bmi1_<span style="color: #008b8b;">cat</span>==4 | bmi1_<span style="color: #008b8b;">cat</span>==3
 quietly <span style="color: #a020f0;">replace</span> obsoov = 0 if bmi1_<span style="color: #008b8b;">cat</span>==2
 ir anychd obsoov timechd if prevchd1==0
-di <span style="color: #8b2252;">"irr: "</span> <span style="color: #008b8b;">r</span>(irr)
+di <span style="color: #8b2252;">"irr: "</span> %8.2f <span style="color: #008b8b;">r</span>(irr)
 </pre>
 
 
@@ -2176,7 +2130,7 @@ Time [years] to  |  42251.22    37324.05  |   79575.28
                      (midp)   Pr(k&gt;=686) =                   0.0000 (exact)
                      (midp) 2*Pr(k&gt;=686) =                   0.0000 (exact)
 
-irr: 1.7363938
+irr:     1.74
 
 </pre>
 
@@ -2209,7 +2163,7 @@ quietly <span style="color: #a020f0;">gen</span> underweight = .
 quietly <span style="color: #a020f0;">replace</span> underweight = 1 if bmi1_<span style="color: #008b8b;">cat</span>==1
 quietly <span style="color: #a020f0;">replace</span> underweight = 0 if bmi1_<span style="color: #008b8b;">cat</span>==2 
 ir anychd underweight timechd if prevchd1==0
-di <span style="color: #8b2252;">"irr: "</span> <span style="color: #008b8b;">r</span>(irr)
+di <span style="color: #8b2252;">"irr: "</span> %8.2f <span style="color: #008b8b;">r</span>(irr)
 </pre>
 
 
@@ -2234,7 +2188,7 @@ Time [years] to  |   1119.57    37324.05  |   38443.62
                      (midp)   Pr(k&lt;=6) =                     0.0798 (exact)
                      (midp) 2*Pr(k&lt;=6) =                     0.1596 (exact)
 
-irr: .57314344
+irr:     0.57
 
 </pre>
 
@@ -2268,28 +2222,50 @@ levels among primary school children in Delhi were estimated at \(\mu=
 <p>
 Suppose we took a random sample of <b>75 primary school children</b> in
 Delhi. Denote the mean hemoglobin levels in this sample as
-\(\over{x}\). Throughout this question, assume that the sample size is
+\(\bar{x}\). Throughout this question, assume that the sample size is
 large enough that the Central Limit Theorem is applicable and that
 \(\sigma\) is known.
 </p>
 <ul>
 <li id="sec-10-1-1">Q1<br/>
    According to the Central Limit Theorem, what is the expected value
-   (mean) of \(\over{x}\)?
-</li>
+   (mean) of \(\bar{x}\)?
+
+<p>   
+   <b>Answer: 108</b>
+</p></li>
 </ul>
 <ul>
 <li id="sec-10-1-2">Q2<br/>
    According to the Central Limit Theorem, what is the standard
-   deviation of \(\over{x}\)?
+   deviation of \(\bar{x}\)?
 
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
+di <span style="color: #8b2252;">"std: "</span> %8.2f `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
+</pre>
+
+
+<pre class="example">
+
+std:     1.44
+
+</pre>
+
+
+<p>
+   <b>Answer: 1.44</b>
+</p>
 
 
 <pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 75
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"exp. mean of sample = mean of population: "</span> <span style="color: #008b8b;">as</span> result 108
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"standard deviation of sample mean: "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">std</span>'
+di <span style="color: #8b2252;">"exp. mean of sample = mean of population: "</span> 108
+di <span style="color: #8b2252;">"standard deviation of sample mean: "</span> %8.2f `<span style="color: #a0522d;">std</span>'
 </pre>
 
 
@@ -2297,7 +2273,7 @@ di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"s
 
 exp. mean of sample = mean of population: 108
 
-standard deviation of sample mean: 1.4433757
+standard deviation of sample mean:     1.44
 
 </pre>
 
@@ -2308,7 +2284,7 @@ standard deviation of sample mean: 1.4433757
 <li id="sec-10-1-3">Q3<br/>
    Suppose we take a large number of samples of <b>size 75</b>. What
    proportion of the samples would we expect to have a sample mean
-   \(\over{x}\) that lies between <b>106</b> and <b>110 g/L</b>?
+   \(\bar{x}\) that lies between <b>106</b> and <b>110 g/L</b>?
 
 
 
@@ -2318,17 +2294,20 @@ standard deviation of sample mean: 1.4433757
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
+di <span style="color: #8b2252;">"proportion: "</span> %8.2f normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
 <pre class="example">
 
-proportion: .83414334
+proportion:     0.83
 
 </pre>
 
 
+<p>
+   <b>Answer: 0.83</b>
+</p>
 </li>
 </ul>
 <ul>
@@ -2345,24 +2324,26 @@ proportion: .83414334
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (106 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z2</span> = (110 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
+di <span style="color: #8b2252;">"proportion: "</span> %8.2f normal(`<span style="color: #a0522d;">z2</span>')-normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
 <pre class="example">
 
-proportion: .5762892
+proportion:     0.58
 
 </pre>
 
 
+<p>
+   <b>Answer: 0.58</b>
+</p>
 </li>
 </ul>
 <ul>
-<li id="sec-10-1-5">Q1<br/>
+<li id="sec-10-1-5">Q5<br/>
 Again, suppose we repeatedly took samples of <b>size 75</b>. What
-proportion of the samples would we expect to have a mean less than
-\(\over{x}=103\) ?
+proportion of the samples would we expect to have a mean less <b>than 103</b>?
 
 
 
@@ -2371,22 +2352,25 @@ proportion of the samples would we expect to have a mean less than
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> = (103 - `<span style="color: #a0522d;">mean</span>')/`<span style="color: #a0522d;">std</span>'
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"proportion: "</span> <span style="color: #008b8b;">as</span> result normal(`<span style="color: #a0522d;">z1</span>')
+di  <span style="color: #8b2252;">"proportion: "</span>  %8.5f normal(`<span style="color: #a0522d;">z1</span>')
 </pre>
 
 
 <pre class="example">
 
-proportion: .000266
+proportion:  0.00027
 
 </pre>
 
 
+<p>
+    <b>Answer: 0.000266</b>
+</p>
 </li>
 </ul>
 <ul>
 <li id="sec-10-1-6">Q6<br/>
-If we repeatedly took samples of <b>size 75</b>, \(\over{x}\) we would
+If we repeatedly took samples of <b>size 75</b>, \(\bar{x}\) we would
 expect that, in <b>20% of the samples</b>, would be greater than ___?
 
 
@@ -2396,23 +2380,26 @@ expect that, in <b>20% of the samples</b>, would be greater than ___?
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> std</span> = `<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z1</span> =  invnormal(1-0.2)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"20% of the samples is greater than "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
+di  <span style="color: #8b2252;">"20% of the samples is greater than "</span>  %8.2f `<span style="color: #a0522d;">z1</span>'*`<span style="color: #a0522d;">std</span>'+`<span style="color: #a0522d;">mean</span>'
 </pre>
 
 
 <pre class="example">
 
-20% of the samples is greater than 109.21478
+20% of the samples is greater than   109.21
 
 </pre>
 
 
+<p>
+  <b>Answer: 109.21</b>
+</p>
 </li>
 </ul>
 <ul>
 <li id="sec-10-1-7">Q7<br/>
 After taking a sample of <b>size 75</b>, we found that the sample mean
-was $\over{x}$=103. Construct a 95% confidence interval for \(\mu\).
+was $\bar{x}$=103. Construct a 95% confidence interval for \(\mu\).
 
 
 
@@ -2420,16 +2407,243 @@ was $\over{x}$=103. Construct a 95% confidence interval for \(\mu\).
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sigma</span> = 12.5
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sample_mean</span> = 103.0
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> dM</span> = 1.96*`<span style="color: #a0522d;">sigma</span>'/<span style="color: #008b8b;">sqrt</span>(`<span style="color: #a0522d;">N</span>')
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"interval: "</span> `<span style="color: #a0522d;">sample_mean</span>'-`<span style="color: #a0522d;">dM</span>' <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">" "</span> `<span style="color: #a0522d;">sample_mean</span>'+`<span style="color: #a0522d;">dM</span>'
+di  <span style="color: #8b2252;">"interval: "</span> %8.2f `<span style="color: #a0522d;">sample_mean</span>'-`<span style="color: #a0522d;">dM</span>'  <span style="color: #8b2252;">" "</span> %8.2f `<span style="color: #a0522d;">sample_mean</span>'+`<span style="color: #a0522d;">dM</span>'
 </pre>
 
 
 <pre class="example">
 
-interval: 100.17098 105.82902
+interval:   100.17   105.83
 
 </pre>
 
+
+<p>
+  <b>Answer: 100.171 105.829</b>
+</p></li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-10-2" class="outline-4">
+<h4 id="sec-10-2">Hypothesis Testing with known Variance</h4>
+<div class="outline-text-4" id="text-10-2">
+
+<p>Now, let's switch gears and assume that we didn't know the true
+population mean \(\mu\), and we only observed a sample of <b>25 school</b>
+children in Delhi. Let's use the sample mean from this set of children
+to make inference about the true population mean \(\mu\).
+</p>
+<p>
+For this question, assume that \(\sigma=12.5\) is known and that the
+sample size of <b>25</b> is large enough to use the Central Limit
+Theorem. So, for this question, we will base our inferences off of the
+<b>normal</b> distribution, not the t-distribution.
+</p>
+<p>
+In this scenario, we can conduct a <b>one-sample Z-test</b> for inference
+about in a population with known variance \(\sigma^2\). To test \(H_0:
+\mu = \mu_0\), we can use the test statistic:
+\begin{equation}
+Z^* = \frac{\bar{x} - \mu_0}{\sigma/\sqrt{n}}
+\end{equation}
+</p>
+<p>               
+Under the null hypothesis, \(Z^* \sim N(0,1)\). So, we can use the
+standard normal distribution to calculate a p-value for this
+hypothesis test:
+</p>
+
+<ul>
+<li>For the one-sided test with alternative hypothesis \(H_a: \mu &gt;
+  \mu_0\), we can calculate a p-value using the formula \(p = P(Z &gt;
+  Z^*)\).
+</li>
+<li>For the one-sided test with alternative hypothesis \(H_a: \mu \le
+  \mu_0\), we can calculate a p-value using the formula \(p = 2P(Z \le
+  Z^*)\).
+</li>
+<li>For the two-sided test with alternative hypothesis \(H_a: \mu \neq
+  \mu_0\), we can calculate a p-value using the formula \(p = 2P(Z \le
+  -|Z^*|)\).
+</li>
+</ul>
+
+
+<p>
+Note: there is no command for directly conducting this one-sample
+Z-test in Stata. However, you can use the normal function in Stata to
+calculate the p-values.
+</p>
+<ul>
+<li id="sec-10-2-1">Q1<br/>
+In a sample of size 25, what is the value of the test statistic
+testing whether the mean hemoglobin level is equal to 108 g/L versus
+the alternative that it is <b>not equal</b> to 108 g/L, when
+\(\bar{x}=103\). Use a one-sample Z-test. What is the p-value
+corresponding to this two-sided hypothesis test?
+
+
+
+<p>
+I use <code>ttesti</code> to get test statistics, but to get P value I use normal
+distribution.
+</p>
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 25
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 103
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> val</span> = 108
+ttesti `<span style="color: #a0522d;">N</span>' `<span style="color: #a0522d;">mean</span>' `<span style="color: #a0522d;">sd</span>' `<span style="color: #a0522d;">val</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(t)
+di <span style="color: #8b2252;">"test statistic: "</span> `<span style="color: #a0522d;">z</span>'
+di <span style="color: #8b2252;">"test statistic: "</span> %8.4f 2*normal(`<span style="color: #a0522d;">z</span>')
+</pre>
+
+
+
+<pre class="example">
+One-sample t test
+------------------------------------------------------------------------------
+         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      25         103         2.5        12.5    97.84025    108.1597
+------------------------------------------------------------------------------
+    mean = mean(x)                                                t =  -2.0000
+Ho: mean = 108                                   degrees of freedom =       24
+
+   Ha: mean &lt; 108               Ha: mean != 108               Ha: mean &gt; 108
+ Pr(T &lt; t) = 0.0285         Pr(|T| &gt; |t|) = 0.0569          Pr(T &gt; t) = 0.9715
+
+test statistic: -2
+
+test statistic:   0.0455
+
+</pre>
+
+
+<p>
+ <b>Answer: -2 0.0455</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-10-2-2">Q2<br/>
+In a sample of size 25, what is the value of the test statistic for
+testing whether the mean hemoglobin level in the population is equal
+to 108 g/L versus the alternative that it is <b>less than</b> 108 g/L, when
+\(\bar{x} = 103\). What is the p-value corresponding to this one-sided
+test?
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 25
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 103
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> val</span> = 108
+ttesti `<span style="color: #a0522d;">N</span>' `<span style="color: #a0522d;">mean</span>' `<span style="color: #a0522d;">sd</span>' `<span style="color: #a0522d;">val</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(t)
+di <span style="color: #8b2252;">"test statistic: "</span> `<span style="color: #a0522d;">z</span>'
+di <span style="color: #8b2252;">"test statistic: "</span> %8.4f normal(`<span style="color: #a0522d;">z</span>')
+</pre>
+
+
+
+<pre class="example">
+One-sample t test
+------------------------------------------------------------------------------
+         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      25         103         2.5        12.5    97.84025    108.1597
+------------------------------------------------------------------------------
+    mean = mean(x)                                                t =  -2.0000
+Ho: mean = 108                                   degrees of freedom =       24
+
+   Ha: mean &lt; 108               Ha: mean != 108               Ha: mean &gt; 108
+ Pr(T &lt; t) = 0.0285         Pr(|T| &gt; |t|) = 0.0569          Pr(T &gt; t) = 0.9715
+
+test statistic: -2
+
+test statistic:   0.0228
+
+</pre>
+
+
+<p>
+ <b>Answer: -2 0.0228</b>
+</p>
+</li>
+</ul>
+<ul>
+<li id="sec-10-2-3">Q3<br/>
+In a sample of size 25, what is the value of the test statistic for
+testing whether the mean hemoglobin level in the population is equal
+to 108 g/L versus the alternative that it is <b>greater than</b> 108 g/L,
+when \(\bar{x} = 103\). What is the p-value corresponding to this
+one-sided test?
+
+
+
+
+<pre class="src src-stata"><span style="color: #008b8b;">local</span><span style="color: #a0522d;"> N</span> = 25
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> mean</span> = 103
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> sd</span> = 12.5
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> val</span> = 108
+ttesti `<span style="color: #a0522d;">N</span>' `<span style="color: #a0522d;">mean</span>' `<span style="color: #a0522d;">sd</span>' `<span style="color: #a0522d;">val</span>'
+<span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(t)
+di <span style="color: #8b2252;">"test statistic: "</span> `<span style="color: #a0522d;">z</span>'
+di <span style="color: #8b2252;">"test statistic: "</span> %8.4f 1-normal(`<span style="color: #a0522d;">z</span>')
+</pre>
+
+
+
+<pre class="example">
+One-sample t test
+------------------------------------------------------------------------------
+         |     Obs        Mean    Std. Err.   Std. Dev.   [95% Conf. Interval]
+---------+--------------------------------------------------------------------
+       x |      25         103         2.5        12.5    97.84025    108.1597
+------------------------------------------------------------------------------
+    mean = mean(x)                                                t =  -2.0000
+Ho: mean = 108                                   degrees of freedom =       24
+
+   Ha: mean &lt; 108               Ha: mean != 108               Ha: mean &gt; 108
+ Pr(T &lt; t) = 0.0285         Pr(|T| &gt; |t|) = 0.0569          Pr(T &gt; t) = 0.9715
+
+test statistic: -2
+
+test statistic:   0.9772
+
+</pre>
+
+
+<p>
+  <b>Answer: -2 0.9772</b>
+</p></li>
+</ul>
+</div>
+
+</div>
+
+<div id="outline-container-10-3" class="outline-4">
+<h4 id="sec-10-3">Confidence intervals and testing with unknown variance</h4>
+<div class="outline-text-4" id="text-10-3">
+
+<p>Suppose now that we are interested in the distribution of hemoglobin
+levels in Mumbai. We decide that it is unreasonable to extrapolate the
+Delhi results to Mumbai, and therefore the population standard
+deviation is unknown. We take a random sample of 15 children in
+Mumbai. The sample mean is \(\bar{x}=115\) g/L, with sample standard
+deviation \(s=10.2\) g/L. Assume hemoglobin levels in Mumbai are
+normally distributed (we could check this by looking at the
+distribution of hemoglobin levels in other similar populations).
+</p>
+<ul>
+<li id="sec-10-3-1">Q1<br/>
+Construct a two-sided 95% confidence interval for \(\mu\).
 
 </li>
 </ul>
@@ -2803,8 +3017,8 @@ prtest outcome, <span style="color: #008b8b;">by</span> (nfresh)
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> z</span> = <span style="color: #008b8b;">r</span>(z)
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> P</span> = 1 - (normal(<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>'))-normal(-<span style="color: #008b8b;">abs</span>(`<span style="color: #a0522d;">z</span>')))
 di <span style="color: #8b2252;">"==================== answers ===================="</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"test statistic = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">z</span>'
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"Pr(|Z| &lt; |z|) = "</span> <span style="color: #008b8b;">as</span> result  `<span style="color: #a0522d;">P</span>'
+di  <span style="color: #8b2252;">"test statistic = "</span>   `<span style="color: #a0522d;">z</span>'
+di  <span style="color: #8b2252;">"Pr(|Z| &lt; |z|) = "</span>   `<span style="color: #a0522d;">P</span>'
 </pre>
 
 
@@ -3010,7 +3224,7 @@ standard group was 55% and 45% in the fresh blood group (again, with
 
 
 <pre class="src src-stata">sampsi .55 .45, <span style="color: #008b8b;">alpha</span>(0.05) power(0.90)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"total sample size: "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(N_1) + <span style="color: #008b8b;">r</span>(N_2)
+di  <span style="color: #8b2252;">"total sample size: "</span>  <span style="color: #008b8b;">r</span>(N_1) + <span style="color: #008b8b;">r</span>(N_2)
 </pre>
 
 
@@ -3113,20 +3327,20 @@ Harbor Islands         ,  535
 <pre class="src src-stata">quietly <span style="color: #a020f0;">insheet</span> <span style="color: #008b8b;">using</span> <span style="color: #8b2252;">"datasets/boston.csv"</span>
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d1</span> = 1000
 quietly <span style="color: #008b8b;">sum</span> pop
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 1, both): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d1</span>'/<span style="color: #008b8b;">r</span>(mean)
+di  <span style="color: #8b2252;">"P (design 1, both): "</span>  `<span style="color: #a0522d;">nsel_d1</span>'/<span style="color: #008b8b;">r</span>(mean)
 
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d2</span> = 100
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
+di  <span style="color: #8b2252;">"P (design 2, South Dorchester): "</span>  `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P (design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
+di  <span style="color: #8b2252;">"P (design 2, Harbor Islands): "</span>  `<span style="color: #a0522d;">nsel_d2</span>'/<span style="color: #008b8b;">r</span>(mean)
 
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nn_d4</span> = 10
 <span style="color: #008b8b;">local</span><span style="color: #a0522d;"> nsel_d4</span> = 170
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"South Dorchester"</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P(design 2, South Dorchester): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+di  <span style="color: #8b2252;">"P(design 2, South Dorchester): "</span>  `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
 quietly <span style="color: #008b8b;">sum</span> pop if neighborhood==<span style="color: #8b2252;">"Harbor Islands"</span>
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"P(design 2, Harbor Islands): "</span> <span style="color: #008b8b;">as</span> result `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
+di  <span style="color: #8b2252;">"P(design 2, Harbor Islands): "</span>  `<span style="color: #a0522d;">nsel_d4</span>'/<span style="color: #008b8b;">r</span>(mean)*`<span style="color: #a0522d;">nn_d4</span>'/<span style="color: #a0522d;">_N</span>
 </pre>
 
 
@@ -3480,6 +3694,8 @@ recorded in the “timestrk” variable in the NHLBI dataset.
 
 
 
+
+
 <pre class="src src-stata"><span style="color: #a020f0;">use</span> datasets/fhs.2d92301d751b.dta
 quietly <span style="color: #a020f0;">gen</span> ob = 1 if bmi1&gt;=30
 quietly <span style="color: #a020f0;">replace</span> ob = 0 if bmi1&lt;30
@@ -3680,7 +3896,7 @@ quietly <span style="color: #008b8b;">regress</span> nickel month
 <span style="color: #b22222;">/// to extract coefficients from matrix  </span>
 mat beta=<span style="color: #008b8b;">e</span>(b)
 <span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases in one month by "</span> <span style="color: #008b8b;">as</span> result  betamonth[1]
+di  <span style="color: #8b2252;">"nickel increases in one month by "</span>   betamonth[1]
 </pre>
 
 
@@ -3767,12 +3983,12 @@ are coded.). According to <b>Model 1</b>. According to <b>Model 2</b>
 quietly <span style="color: #a020f0;">xi</span>: <span style="color: #008b8b;">regress</span> nickel i.month
 quietly <span style="color: #a020f0;">predict</span> pnickel1
 quietly <span style="color: #008b8b;">sum</span> pnickel1 if month==8
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"av. nickel in August (Model 1): "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
+di  <span style="color: #8b2252;">"av. nickel in August (Model 1): "</span>  <span style="color: #008b8b;">r</span>(mean)
 
 quietly <span style="color: #008b8b;">regress</span> nickel month
 quietly <span style="color: #a020f0;">predict</span> pnickel2
 quietly <span style="color: #008b8b;">sum</span> pnickel2 if month==8
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"av. nickel in August (Model 2): "</span> <span style="color: #008b8b;">as</span> result <span style="color: #008b8b;">r</span>(mean)
+di  <span style="color: #8b2252;">"av. nickel in August (Model 2): "</span>  <span style="color: #008b8b;">r</span>(mean)
 </pre>
 
 
@@ -3843,8 +4059,8 @@ regress  nickel month longitude
 mat beta=<span style="color: #008b8b;">e</span>(b)
 mat varcovar=<span style="color: #008b8b;">e</span>(V)
 <span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"estimated coefficient: "</span> <span style="color: #008b8b;">as</span> result  betalongitude[1]
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"degrees of freedom: "</span> <span style="color: #008b8b;">as</span> result  <span style="color: #008b8b;">e</span>(df_r)
+di  <span style="color: #8b2252;">"estimated coefficient: "</span>   betalongitude[1]
+di  <span style="color: #8b2252;">"degrees of freedom: "</span>   <span style="color: #008b8b;">e</span>(df_r)
 </pre>
 
 
@@ -3962,7 +4178,7 @@ quietly <span style="color: #008b8b;">regress</span> nickel vanadium
 <span style="color: #b22222;">/// to extract coefficients from matrix  </span>
 mat beta=<span style="color: #008b8b;">e</span>(b)
 <span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases by  "</span> <span style="color: #008b8b;">as</span> result  betavanadium[1]
+di  <span style="color: #8b2252;">"nickel increases by  "</span>   betavanadium[1]
 </pre>
 
 
@@ -3991,7 +4207,7 @@ quietly <span style="color: #008b8b;">regress</span> nickel vanadium
 <span style="color: #b22222;">/// to extract coefficients from matrix  </span>
 mat beta=<span style="color: #008b8b;">e</span>(b)
 <span style="color: #a020f0;">svmat</span> <span style="color: #228b22;">double</span> beta, names(matcol)
-di <span style="color: #008b8b;">as</span> text <span style="color: #8b2252;">"nickel increases by  "</span> <span style="color: #008b8b;">as</span> result  10*betavanadium[1]
+di  <span style="color: #8b2252;">"nickel increases by  "</span>   10*betavanadium[1]
 <span style="color: #b22222;">/// another way</span>
 lincom 10*vanadium
 </pre>
@@ -4027,7 +4243,9 @@ nickel increases by  4.379549
 
 <p>Use Stata and the NHLBI data set to create the two categories of high
 blood pressure (highbp1)
-</p><ul>
+</p>
+
+<ul>
 <li id="sec-15-4-1">Q1<br/>
 What is the incidence rate ratio of stroke comparing those with
 high blood pressure to those without high blood pressure? Hint: The
